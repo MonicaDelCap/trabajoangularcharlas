@@ -10,11 +10,11 @@ export class LoginComponent {
   
   isSignDivVisiable: boolean  = true;
 
-  constructor(private router: Router){}
+  constructor(private _router: Router){}
 
 
   onRegister() {
-   
+   this._router.navigate(["/register"])
   }
 
   onLogin() {

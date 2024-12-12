@@ -1,0 +1,16 @@
+<div>
+    <h1>Registro de Usuario</h1>
+    <div>
+        <form  #createForm="ngForm">
+        <label>Nombre: </label>
+        <input #namebox name="namebox" /> <br><br>
+        <label>Apellidos: </label>
+        <input #surnamebox name="surnamebox" /> <br><br>
+        <label>email: </label>
+        <input #emailbox name="emailbox" /> <br><br>
+        <label>contraseña: </label>
+        <input #passwordbox name="passwordbox" /> <br><br>
+        <button (click) = "registerUser()">Crear usuario</button>
+    </form>
+    </div>
+</div>
