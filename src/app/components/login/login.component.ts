@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { Login } from '../../models/login';
 
 @Component({
   selector: 'app-login',
@@ -8,17 +10,16 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   
-  isSignDivVisiable: boolean  = true;
+  public login:Login = new Login("","");
+  @ViewChild("passwordbox") passswordbox!:ElementRef;
+  @ViewChild("emailbox") emailbox!:ElementRef;
+  constructor(private router: Router, private _service:UserService){}
 
-  constructor(private router: Router){}
-
-
-  onRegister() {
-   
-  }
 
   onLogin() {
-    
+    this.login.password = this.passswordbox.nativeElement.value;
+    this.login.userName = this.emailbox.nativeElement.value;
+    this._service.getToken(this.login).then(r => console.log(r.response))
   }
 
 }
