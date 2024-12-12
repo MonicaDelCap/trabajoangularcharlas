@@ -7,10 +7,8 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  
   isSignDivVisiable: boolean  = true;
-
-  // signUpObj: SignUpModel  = new SignUpModel();
-  // loginObj: LoginModel  = new LoginModel();
 
   constructor(private router: Router){}
 
