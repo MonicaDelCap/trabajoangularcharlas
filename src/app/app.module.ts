@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ChangeDetectionStrategy, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
@@ -7,18 +7,36 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ServiceUser } from './services/user.service';
+import { MenubarComponent } from './components/menubar/menubar.component';
+import { MenubarstudentComponent } from './components/menubarstudent/menubarstudent.component';
+import { RondasstudentComponent } from './components/rondasstudent/rondasstudent.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { ServiceRound } from './services/service.round';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MenubarComponent,
+    MenubarstudentComponent,
+    RondasstudentComponent,
+    ProfileComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,FormsModule
+    AppRoutingModule,
+    FormsModule,
+    MatCardModule, 
+    MatButtonModule
   ],
-  providers: [ServiceUser],
-  bootstrap: [AppComponent]
+  providers: [ServiceUser, ServiceRound],
+  bootstrap: [AppComponent],
+  
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

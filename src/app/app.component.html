@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+@if(isToken){
+    @if(idRole == 1){
+        <app-menubar [isLeftSidebarCollapsed] = "isLeftSidebarCollapsed()"
+        (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)"></app-menubar>
+    }@else if(idRole== 2){
+        <app-menubarstudent [isLeftSidebarCollapsed] = "isLeftSidebarCollapsed()"
+        (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)"></app-menubarstudent>
+    }
+    
+}
+<div class="body" [ngClass]="screenClass()">
+    <router-outlet></router-outlet>
+</div>

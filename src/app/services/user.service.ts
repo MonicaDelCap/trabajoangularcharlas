@@ -7,7 +7,6 @@ import { Login } from "../models/login";
 
 @Injectable()
 export class ServiceUser{
-
     register(name:string,surname:string,email:string,password:string):Observable<any>{
         let user = {
             idUsuario:1,
@@ -31,6 +30,14 @@ export class ServiceUser{
             axios.post(environment.urlCharlas + request,json,{headers: header})
             .then( r => resolve(r.data))
             .catch( r => resolve(r.data))
+        })
+    }
+
+    getProfile(): Promise<any>{
+        let header = {"Authorization": `Bearer ${localStorage.getItem('authToken')}`};
+        let request = "api/Usuarios/Perfil";
+        return new Promise(function(resolve){
+            axios.get(environment.urlCharlas + request,{headers:header}).then( r => resolve(r.data))
         })
     }
 }
