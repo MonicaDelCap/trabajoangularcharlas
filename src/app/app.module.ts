@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ServiceRound } from './services/service.round';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ServiceCharla } from './services/charla.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatCardModule, 
     MatButtonModule
   ],
-  providers: [ServiceUser, ServiceRound],
+  providers: [ServiceUser, ServiceRound,ServiceCharla],
   bootstrap: [AppComponent],
   
 })
