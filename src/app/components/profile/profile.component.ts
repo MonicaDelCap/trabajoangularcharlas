@@ -12,7 +12,7 @@ import { ServiceCharla } from '../../services/charla.service';
 export class ProfileComponent implements OnInit {
 
   public user !:User;
-  public charlas !:Array<Charla>;
+  public charlas :Array<Charla> = [];
 
   constructor(private _service:ServiceUser,
     private _serviceCharla:ServiceCharla
@@ -33,8 +33,26 @@ export class ProfileComponent implements OnInit {
   loadCharlas():void{
    this._serviceCharla.getCharlaAlumno().subscribe(response =>{
     console.log( response.data)
-    this.charlas = response.data;
-    console.log(this.charlas[0].tiempo)
+    this.charlas = response.data.map((item: any) => {
+      const charla = item.charla;
+      return new Charla(
+        charla.descripcion,
+        charla.estadoCharla,
+        new Date(charla.fechaPropuesta),
+        charla.idCharla,
+        charla.idCurso,
+        charla.idEstadoCharla,
+        charla.idRonda,
+        charla.idUsuario,
+        charla.imagenCharla,
+        charla.nombreCurso,
+        charla.tiempo,
+        charla.titulo,
+        charla.usuario
+      );
+    });
+
+    console.log("Charlas mapeadas:", this.charlas);
    })
   }
 

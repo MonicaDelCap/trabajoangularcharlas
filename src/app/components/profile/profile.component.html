@@ -1,13 +1,13 @@
 <div>
     @if(user){
     <div>
-    <h1>Bienvenido, {{user.nombre}}</h1>
-    <img src="{{user.imagen}}">
-    <hr>
-    <h2>Tus charlas</h2>
-    @for(charla of charlas;track charla){
-        <li style="color: black; " > id {{charla.descripcion}}</li>
-    }
-</div>
+        <h1>Bienvenido, {{user.nombre}}</h1>
+        <img src="{{user.imagen}}">
+        <hr>
+        <h2>Tus charlas</h2>
+        @for(charla of charlas;track charla){
+        <li style="color: black; ">{{charla.titulo}}</li>
+        }
+    </div>
     }
 </div>
