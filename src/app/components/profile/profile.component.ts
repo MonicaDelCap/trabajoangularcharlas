@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
   }
 
   loadCharlas():void{
-   this._serviceCharla.getCharlaAlumno().subscribe(response =>{
+    this._serviceCharla.getCharlaAlumno().subscribe(response =>{
     console.log( response.data)
     this.charlas = response.data.map((item: any) => {
       const charla = item.charla;
@@ -51,9 +51,8 @@ export class ProfileComponent implements OnInit {
         charla.usuario
       );
     });
-
     console.log("Charlas mapeadas:", this.charlas);
-   })
+  })
   }
 
 }

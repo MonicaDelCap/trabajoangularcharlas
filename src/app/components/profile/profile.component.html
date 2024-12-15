@@ -1,13 +1,77 @@
-<div>
+<div class="profile-container">
     @if(user){
-    <div>
-        <h1>Bienvenido, {{user.nombre}}</h1>
-        <img src="{{user.imagen}}">
-        <hr>
-        <h2>Tus charlas</h2>
-        @for(charla of charlas;track charla){
-        <li style="color: black; ">{{charla.titulo}}</li>
-        }
+    <div class="profile-header">
+        <div class="profile-info">
+            <img src="{{ user.imagen }}" alt="Imagen del usuario" class="profile-image">
+            <h1>Bienvenido, {{ user.nombre }}</h1>
+            <h4
+            >Correo: {{ user.email }}</h4>
+        </div>
+    </div>
+    
+    <div class="content-container">
+        <!-- Contenedor con Rondas Pendientes y Charlas Pendientes -->
+        <div class="rondas-charlas-container">
+            <!-- Rondas Pendientes -->
+            <div class="rondas-container">
+                <h2>Rondas Pendientes</h2>
+                <div class="rondas-list">
+                    <div class="ronda-card">
+                        <h3 class="ronda-title">Ronda de Innovación</h3>
+                        <p class="ronda-fecha">Fecha límite: 20 de diciembre de 2024</p>
+                        <button class="ronda-action">Registrar</button>
+                    </div>
+                    <div class="ronda-card">
+                        <h3 class="ronda-title">Ronda de Creatividad</h3>
+                        <p class="ronda-fecha">Fecha límite: 10 de enero de 2025</p>
+                        <button class="ronda-action">Registrar</button>
+                    </div>
+                    <!-- Añadir más rondas si es necesario -->
+                </div>
+            </div>
+
+            <!-- Charlas Pendientes -->
+            <div class="charlas-pendientes-container">
+                <h2>Charlas Pendientes</h2>
+                <div class="charlas-list">
+                    <div class="charla-pendiente-card">
+                        <img src="https://via.placeholder.com/100" alt="Imagen de charla" class="charla-pendiente-image">
+                        <div class="charla-pendiente-content">
+                            <h3 class="charla-pendiente-title">Charla sobre Innovación</h3>
+                            <p class="charla-pendiente-fecha">Fecha: 19 de diciembre de 2024</p>
+                            <p class="charla-pendiente-status">Estado: Aceptada</p>
+                            <button class="charla-action">Realizar charla</button>
+                        </div>
+                    </div>
+                    <div class="charla-pendiente-card">
+                        <img src="https://via.placeholder.com/100" alt="Imagen de charla" class="charla-pendiente-image">
+                        <div class="charla-pendiente-content">
+                            <h3 class="charla-pendiente-title">Charla sobre Creatividad</h3>
+                            <p class="charla-pendiente-fecha">Fecha: 9 de enero de 2025</p>
+                            <p class="charla-pendiente-status">Estado: Aceptada</p>
+                            <button class="charla-action">Realizar charla</button>
+                        </div>
+                    </div>
+                    <!-- Añadir más charlas si es necesario -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Charlas Realizadas -->
+        <div class="charlas-realizadas-container">
+            <h2>Tus Charlas Realizadas</h2>
+            <div class="charla-container">
+                @for(charla of charlas; track charla){
+                <div class="charla-card">
+                    <img src="{{ charla.imagenCharla }}" alt="{{ charla.titulo }}" class="charla-image">
+                    <div class="charla-content">
+                        <h3 class="charla-title">{{ charla.titulo }}</h3>
+                        <p class="charla-date">{{ charla.fechaPropuesta | date: 'longDate' }}</p>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
     </div>
     }
 </div>
