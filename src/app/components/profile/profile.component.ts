@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ServiceUser } from '../../services/user.service';
 import { User } from '../../models/user';
 import { Charla } from '../../models/charla';
 import { ServiceCharla } from '../../services/charla.service';
+import { ServiceRound } from '../../services/service.round';
+import { Round } from '../../models/round';
+
 
 @Component({
   selector: 'app-profile',
@@ -13,14 +16,19 @@ export class ProfileComponent implements OnInit {
 
   public user !:User;
   public charlas :Array<Charla> = [];
+  public rondas :Array<Round> = [];
+  public acceptedCharlas: Array<Charla> = [];
+  public isEditing = false;
 
   constructor(private _service:ServiceUser,
-    private _serviceCharla:ServiceCharla
+    private _serviceCharla:ServiceCharla,
+    private _serviceRonda:ServiceRound,
   ){}
 
   ngOnInit(): void {
     this.loadUser()
     this.loadCharlas();
+    this.loadRondas();
   }
 
   loadUser():void{
@@ -51,8 +59,27 @@ export class ProfileComponent implements OnInit {
         charla.usuario
       );
     });
-    console.log("Charlas mapeadas:", this.charlas);
   })
+  this.checkCharla();
+  }
+
+  loadRondas():void{
+    this._serviceRonda.getRounds().then((response) =>{
+      //console.log(response)
+      this.rondas = response
+    })
+  }
+
+  checkCharla():void{
+    for(let i = 0;i < this.charlas.length;i++){
+      if(this.charlas[i].idEstadoCharla != 1){
+        this.acceptedCharlas.push(this.charlas[i])
+      }
+    }
+  }
+
+  editProfile():void{
+    this.isEditing = !this.isEditing;
   }
 
 }

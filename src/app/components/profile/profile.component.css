@@ -76,7 +76,8 @@
     border-radius: 8px;
     background-color: #f9f9f9;
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Cambia la dirección de los elementos a columna */
+    align-items: flex-start; /* Alinea los elementos al inicio horizontalmente */
 }
 
 .ronda-title, .charla-pendiente-title, .charla-title {
@@ -125,3 +126,90 @@
     width: 100%;
     max-width: 1000px;
 }
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF; /* Azul por defecto */
+    color: #ffffff; /* Texto blanco */
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Animaciones suaves */
+  }
+  
+  .button:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
+    transform: translateY(-2px); /* Eleva el botón ligeramente */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Incrementa la sombra */
+  }
+  
+  .button:active {
+    background-color: #003d80; /* Azul aún más oscuro al presionar */
+    transform: translateY(0); /* Vuelve a su lugar */
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Sombra más pequeña */
+  }
+  
+  .button:disabled {
+    background-color: #cccccc; /* Gris desactivado */
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .edit-profile-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    z-index: 1000;
+  }
+  
+  .edit-profile-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .edit-profile-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .cancel-button {
+    background-color: #dc3545;
+  }
+  
+  .cancel-button:hover {
+    background-color: #a71d2a;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo gris semi-translúcido */
+    z-index: 999; /* Se asegura de que esté por encima del contenido */
+  }
