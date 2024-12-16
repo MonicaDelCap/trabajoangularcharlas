@@ -4,27 +4,41 @@
             <i class="fal fa-bars"></i>
         </button>
         @if(!isLeftSidebarCollapsed()){
-            <div class="logo-text">Charlas</div>
-            <button class="btn-close" (click)="closeSidenav()">
-                <i class="fal fa-times close-icon"></i>
-            </button>
+        <div class="logo-text">Charlas</div>
+        <button class="btn-close" (click)="closeSidenav()">
+            <i class="fal fa-times close-icon"></i>
+        </button>
         }
-        
+
     </div>
     <div class="sidenav-nav">
         @for(item of itemsStudent; track $index){
-            <li class="sidenav-nav-item">
-                <a 
-                class="sidenav-nav-link" 
-                [routerLink]="item.routeLink" 
-                routerLinkActive="active" 
+        <li class="sidenav-nav-item">
+            <a class="sidenav-nav-link" [routerLink]="item.routeLink" routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }">
-                    <i class="sidenav-link-icon" [class]="item.icon"></i>
-                    @if(!isLeftSidebarCollapsed()){
-                        <span class="sidenav-link-text">{{item.label}}</span>
-                    }
-                </a>     
-            </li>
+                <i class="sidenav-link-icon" [class]="item.icon"></i>
+                @if(!isLeftSidebarCollapsed()){
+                <span class="sidenav-link-text">{{item.label}}</span>
+                }
+            </a>
+        </li>
         }
+        <li class="sidenav-nav-item">
+            <div class="btn-group" [class]="'sidenav-nav-link'">
+                <i class="sidenav-link-icon" [class]="'fal fa-home'"></i>
+                @if(!isLeftSidebarCollapsed()){
+                    <span class="sidenav-link-text"  data-bs-toggle="dropdown" aria-expanded="false">
+                        Ronda
+                        <i class="fal fa-arrow-down" [class]="'arrow'"></i>
+                    </span>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><button class="dropdown-item" type="button">Action</button></li>
+                        <li><button class="dropdown-item" type="button">Another action</button></li>
+                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    </ul>
+                }
+            </div>
+        </li>
+
     </div>
 </div>

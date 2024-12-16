@@ -94,3 +94,6 @@
   .active .sidenav-link-text {
     color: #000;
   }
+  .arrow{
+    padding-left: 10px;
+  }

@@ -1,7 +1,7 @@
 import { Component, input, output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { RondasstudentComponent } from '../rondasstudent/rondasstudent.component';
 
 @Component({
   selector: 'app-menubarstudent',
