@@ -13,7 +13,7 @@
     @if(isEditing){
         <div class="overlay"></div>
         <div class="edit-profile-container">
-            <form  class="edit-profile-form">
+            <form #fileForm="ngForm" class="edit-profile-form">
                 <h2>Editar Perfil</h2>
                 <label for="editName">Nombre:</label>
                 <input type="text" #cajanombre id="editName" name="cajanombre" value="{{user.nombre}}" disabled>
@@ -25,7 +25,7 @@
                 <input type="file" #cajafile id="editImage"  name="cajafile">
                 
                 <div class="form-actions">
-                  <button type="submit" class="button">Guardar</button>
+                  <button type="submit" class="button" (click)="subirFichero($event)" >Guardar</button>
                   <button type="button" class="button cancel-button" (click)="editProfile()">Cancelar</button>
                 </div>
               </form>
@@ -45,7 +45,7 @@
                         <p class="ronda-fecha">Fecha Límite: {{ronda.fechaCierre | date: 'MMMM dd, yyyy'}}</p>
                         <p class="ronda-fecha">Fecha Presentación: {{ronda.fechaPresentacion | date: 'MMMM dd, yyyy'}}</p>
                         <p class="ronda-fecha">Duración: {{ronda.duracion}} min</p>
-                        <button class="ronda-action">Registrar</button>
+                        <button class="ronda-action">Ir a Ronda</button>
                     </div>
                 </div>
                 }

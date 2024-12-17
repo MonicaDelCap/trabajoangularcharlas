@@ -3,6 +3,7 @@ import { Observable, from } from "rxjs";
 import axios from "axios";
 import { environment } from "../../environments/environment";
 import { Login } from "../models/login";
+import { User } from "../models/user";
 
 
 @Injectable()
@@ -40,4 +41,15 @@ export class ServiceUser{
             axios.get(environment.urlCharlas + request,{headers:header}).then( r => resolve(r.data))
         })
     }
+
+    updateUser(user: User): Observable<any> {
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+        };
+        const request = "api/usuarios";
+        const url = environment.urlCharlas + request;
+        return from(axios.put(url, user, { headers: headers }));
+    }
+    
 }

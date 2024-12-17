@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { provideHttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,8 @@ import { MatCardModule } from '@angular/material/card';
 import { ServiceRound } from './services/service.round';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ServiceCharla } from './services/charla.service';
+import { ServicePostFiles } from './services/service.postfiles';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +37,7 @@ import { ServiceCharla } from './services/charla.service';
     MatCardModule, 
     MatButtonModule
   ],
-  providers: [ServiceUser, ServiceRound,ServiceCharla],
+  providers: [provideHttpClient(),ServiceUser, ServiceRound,ServiceCharla,ServicePostFiles],
   bootstrap: [AppComponent],
   
 })
