@@ -1,3 +1,28 @@
 .container{
     margin-bottom: 30px;
 }
+.card-footer {
+    display: grid; /* Usamos Grid Layout */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Distribución dinámica */
+    gap: 1rem; /* Espacio entre los elementos */
+    padding: 1rem; /* Espaciado interno */
+    background-color: #f8f9fa; /* Color de fondo suave */
+    border-top: 1px solid #dee2e6; /* Borde superior */
+    border-radius: 0 0 0.25rem 0.25rem; /* Redondeo para armonía visual */
+}
+
+/* Ajustes específicos para los elementos hijos */
+.card-footer > app-charlascardcomponent {
+    display: block; /* Asegura que los hijos se comporten correctamente */
+    width: 100%; /* Ocupa todo el ancho de su celda */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacar */
+    border-radius: 0.25rem; /* Bordes redondeados */
+    overflow: hidden; /* Maneja contenido desbordante */
+}
+
+/* Media queries opcionales para ajuste responsivo */
+@media (max-width: 768px) {
+    .card-footer {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Más compacto en pantallas pequeñas */
+    }
+}

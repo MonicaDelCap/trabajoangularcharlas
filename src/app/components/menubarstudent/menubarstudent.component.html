@@ -24,17 +24,15 @@
         </li>
         }
         <li class="sidenav-nav-item">
-            <div class="btn-group" [class]="'sidenav-nav-link'">
+            <div class="btn-group" [class]="'sidenav-nav-link'"  data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="sidenav-link-icon" [class]="'fal fa-home'"></i>
                 @if(!isLeftSidebarCollapsed()){
-                    <span class="sidenav-link-text"  data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="sidenav-link-text" data-bs-toggle="dropdown" aria-expanded="false">
                         Ronda
                         <i class="fal fa-arrow-down" [class]="'arrow'"></i>
                     </span>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><button class="dropdown-item" type="button">Action</button></li>
-                        <li><button class="dropdown-item" type="button">Another action</button></li>
-                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                        <li *ngFor="let round of roundsArray"><button class="dropdown-item" type="button" [routerLink]="['/studentround/', round.idRonda]">Ronda {{round.idRonda}}</button></li>
                     </ul>
                 }
             </div>

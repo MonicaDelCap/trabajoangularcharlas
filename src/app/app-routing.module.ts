@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RondasstudentComponent } from './components/rondasstudent/rondasstudent.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CharlascardcomponentComponent } from './components/charlascardcomponent/charlascardcomponent.component';
 
 const routes: Routes = [
   {
@@ -13,10 +14,13 @@ const routes: Routes = [
     path:"register", component: RegisterComponent
   },
   {
-    path: "studentround", component:RondasstudentComponent
+    path: "studentround/:id", component:RondasstudentComponent
   },
   {
     path: "profile", component:ProfileComponent
+  },
+  {
+    path:"charlas", component:CharlascardcomponentComponent
   }
 ];
 

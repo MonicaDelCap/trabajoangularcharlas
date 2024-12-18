@@ -1,12 +1,19 @@
-<div *ngFor="let round of roundsArray" class="container">
+<div class="container">
     <div class="card text-center">
         <div class="card-body">
-            <h5 class="card-title">{{round.descripcionModulo}}</h5>
-            <p class="card-text">Ronda {{round.idRonda}}</p>
-            <a href="#" class="btn btn-primary">Ver Charlas</a>
+            <h5 class="card-title">Ronda {{idRonda}}</h5>
+            <p class="card-text">Ronda {{idRonda}}</p>
+            
           </div>
           <div class="card-footer text-body-secondary">
-            2 days ago
+            <app-charlascardcomponent></app-charlascardcomponent>
+            <app-charlascardcomponent></app-charlascardcomponent>
+            <app-charlascardcomponent></app-charlascardcomponent>
+            <app-charlascardcomponent></app-charlascardcomponent>
+            <app-charlascardcomponent></app-charlascardcomponent>
+            <app-charlascardcomponent></app-charlascardcomponent>
+            <app-charlascardcomponent></app-charlascardcomponent>
+            <app-charlascardcomponent></app-charlascardcomponent>
           </div>
     </div>
 </div>

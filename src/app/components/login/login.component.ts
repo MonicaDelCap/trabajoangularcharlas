@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit{
       this._service.getProfile().then(r => {
         let role = r.usuario.idRole;
         if(role == 1){
-          this._router.navigate(["/studentround"]);
+          this._router.navigate(["/profile"]);
         }else if(role == 2){
-          this._router.navigate(["/studentround"]);
+          this._router.navigate(["/profile"]);
         }
       })
     })

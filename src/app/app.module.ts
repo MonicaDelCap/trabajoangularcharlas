@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ServiceRound } from './services/service.round';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CharlascardcomponentComponent } from './components/charlascardcomponent/charlascardcomponent.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     MenubarstudentComponent,
     RondasstudentComponent,
     ProfileComponent,
+    CharlascardcomponentComponent,
 
   ],
   imports: [
