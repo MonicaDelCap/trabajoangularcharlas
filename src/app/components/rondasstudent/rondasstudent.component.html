@@ -3,22 +3,11 @@
         <div class="card-body">
             <h5 class="card-title">Ronda {{idRonda}}</h5>
             <p class="card-text">Ronda {{idRonda}}</p>
-            
-          </div>
-          <div class="card-footer text-body-secondary">
-            <app-charlascardcomponent></app-charlascardcomponent>
-            <app-charlascardcomponent></app-charlascardcomponent>
-            <app-charlascardcomponent></app-charlascardcomponent>
-            <app-charlascardcomponent></app-charlascardcomponent>
-            <app-charlascardcomponent></app-charlascardcomponent>
-            <app-charlascardcomponent></app-charlascardcomponent>
-            <app-charlascardcomponent></app-charlascardcomponent>
-            <app-charlascardcomponent></app-charlascardcomponent>
-          </div>
+        </div>
+        <div class="charlas-container">
+            @for(talk of talks; track $index){
+            <app-charlascardcomponent [idTalk]="talk"></app-charlascardcomponent>
+            }
+        </div>
     </div>
 </div>
-    
-
-
-
-

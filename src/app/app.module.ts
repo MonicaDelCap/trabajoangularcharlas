@@ -15,6 +15,15 @@ import { MatCardModule } from '@angular/material/card';
 import { ServiceRound } from './services/service.round';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CharlascardcomponentComponent } from './components/charlascardcomponent/charlascardcomponent.component';
+import { ServiceTalks } from './services/service.talks';
+import { DatePipe } from '@angular/common';
+import { LOCALE_ID } from '@angular/core';
+
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+
+// Registra la localización española
+registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
@@ -35,7 +44,7 @@ import { CharlascardcomponentComponent } from './components/charlascardcomponent
     MatCardModule, 
     MatButtonModule
   ],
-  providers: [ServiceUser, ServiceRound],
+  providers: [ServiceUser, ServiceRound,ServiceTalks,DatePipe,{ provide: LOCALE_ID, useValue: 'es-ES' }],
   bootstrap: [AppComponent],
   
 })

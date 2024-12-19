@@ -3,6 +3,8 @@ import { ServiceRound } from '../../services/service.round';
 import { Round } from '../../models/round';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CharlascardcomponentComponent } from '../charlascardcomponent/charlascardcomponent.component';
+import { Talks } from '../../models/talks';
+import { ServiceTalks } from '../../services/service.talks';
 @Component({
   selector: 'app-rondasstudent',
   templateUrl: './rondasstudent.component.html',
@@ -10,12 +12,14 @@ import { CharlascardcomponentComponent } from '../charlascardcomponent/charlasca
 })
 export class RondasstudentComponent implements OnInit{
 
-  roundsArray!:Array<Round>
   inicio!: Date;
   final!:  Date;
   idRonda!: number;
+  talks!: Array<Talks>;
+
   constructor(
     private _serviceRound: ServiceRound,
+    private _serviceTalks: ServiceTalks,
     private _router:Router,
     private _active:ActivatedRoute
   ){}
@@ -25,11 +29,10 @@ export class RondasstudentComponent implements OnInit{
     if(!localStorage.getItem('authToken')){
       this._router.navigate(["/"])
     }
-    this._serviceRound.getRounds().then(r => {
-      this.roundsArray = r
-    })
+    
     this._active.params.subscribe((params: Params) => {
       this.idRonda = params['id']
+      this._serviceTalks.getTalks(this.idRonda).then(r => this.talks = r)
     })
 
   }
