@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { ServiceUser } from './services/user.service';
 import { MenubarComponent } from './components/menubar/menubar.component';
 import { MenubarstudentComponent } from './components/menubarstudent/menubarstudent.component';
@@ -21,6 +19,7 @@ import { LOCALE_ID } from '@angular/core';
 
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
+import { LoginComponent } from './components/login/login.component';
 
 // Registra la localización española
 registerLocaleData(localeEs);
@@ -28,13 +27,12 @@ registerLocaleData(localeEs);
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
     MenubarComponent,
     MenubarstudentComponent,
     RondasstudentComponent,
     ProfileComponent,
     CharlascardcomponentComponent,
+    LoginComponent,
 
   ],
   imports: [

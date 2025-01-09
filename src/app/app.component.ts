@@ -54,7 +54,6 @@ export class AppComponent implements OnInit {
     }
   }
 
-
   changeIsLeftSidebarCollapsed(isLeftSidebarCollapsed: boolean):void{
     this.isLeftSidebarCollapsed.set(isLeftSidebarCollapsed);
   }

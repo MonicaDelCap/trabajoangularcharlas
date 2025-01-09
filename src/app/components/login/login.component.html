@@ -1,16 +1,28 @@
-
-<div class="parent"> 
-    <div class="container" id="container">
-        <div class="form-container sign-in" >
-           
-                <h1>Sign In</h1>
-                <span>or use your email password</span>
-                <input type="text" name="emailbox" #emailbox placeholder="Email">
-                <input type="text" name="passwordbox"  #passwordbox  placeholder="Password">
-                <button (click)="onLogin()">Sign In</button>
-                <button (click)="onRegister()">Registrarse</button>
-            
-        </div>
-    </div>
+<!-- Contenido de la Pantalla 1: Inicio de sesion -->
+<div *ngIf="pantallaSeleccionada === 'signin'">
+  <div class="form-container-signin">
+    <h1>Sign In</h1>
+    <span>or use your email password</span>
+    <input type="text" name="emailbox" #emailbox placeholder="Email">
+    <input type="text" name="passwordbox" #passwordbox placeholder="Password">
+    <button (click)="onLogin()">Iniciar sesion</button>
+    <a href="#" *ngIf="pantallaSeleccionada === 'signin'" (click)="cambiarPantalla('register')">¿No tienes cuenta?
+      Registrate</a>
+  </div>
 </div>
-
+<!-- Contenido de la Pantalla 2: Registro de Usuario -->
+<div *ngIf="pantallaSeleccionada === 'register'">
+  <div class="form-container-resgister">
+    <h1>Registro</h1>
+    <div class="form-container-resgister-inputs">
+      <input type="text" name="nameBox" #nameBox placeholder="Nombre">
+      <input type="text" name="surnameBox" #surnameBox placeholder="Apellidos">
+      <input type="text" name="emailBoxRegister" #emailBoxRegister placeholder="Email">
+      <input type="text" name="passwordBoxRegister" #passwordBoxRegister placeholder="Contraseña">
+      <input type="text" name="coursecode" #coursecode placeholder="Codigo curso">
+      <button (click)="registerUser()">Registrate</button>
+      <a href="#" *ngIf="pantallaSeleccionada === 'register'" (click)="cambiarPantalla('signin')">¿Ya tienes cuenta?
+        Inicia sesion</a>
+    </div>
+  </div>
+</div>
