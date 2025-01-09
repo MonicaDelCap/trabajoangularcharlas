@@ -23,6 +23,7 @@ import { LoginComponent } from './components/login/login.component';
 
 // Registra la localización española
 registerLocaleData(localeEs);
+import { ServiceCharla } from './services/charla.service';
 
 @NgModule({
   declarations: [
