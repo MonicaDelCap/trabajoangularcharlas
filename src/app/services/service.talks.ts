@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import axios from "axios";
 import { environment } from "../../environments/environment";
+import { from, Observable } from "rxjs";
 
 @Injectable()
 export class ServiceTalks{
@@ -19,6 +20,12 @@ export class ServiceTalks{
         return new Promise(function(resolve){
             axios.get(environment.urlCharlas + request, {headers: header}).then ( r => resolve(r.data))
         })
+    }
+
+    getCharlaAlumno():Observable<any>{
+        let headers = {"Authorization": `Bearer ${localStorage.getItem('authToken')}`};
+        let request = "api/charlas/charlasalumno";
+        return from(axios.get(environment.urlCharlas + request,{headers}));
     }
 
 

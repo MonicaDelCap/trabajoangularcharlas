@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceUser } from '../../services/user.service';
 import { User } from '../../models/user';
 import { Charla } from '../../models/charla';
-import { ServiceCharla } from '../../services/charla.service';
+import { ServiceTalks } from '../../services/service.talks';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   public charlas :Array<Charla> = [];
 
   constructor(private _service:ServiceUser,
-    private _serviceCharla:ServiceCharla
+    private _serviceTalks:ServiceTalks
   ){}
 
   ngOnInit(): void {
@@ -25,13 +25,13 @@ export class ProfileComponent implements OnInit {
 
   loadUser():void{
     this._service.getProfile().then(response => {
-      //console.log(response)
+      console.log(response)
       this.user = response.usuario;
     })
   }
 
   loadCharlas():void{
-    this._serviceCharla.getCharlaAlumno().subscribe(response =>{
+    this._serviceTalks.getCharlaAlumno().subscribe(response =>{
     console.log( response.data)
     this.charlas = response.data.map((item: any) => {
       const charla = item.charla;
