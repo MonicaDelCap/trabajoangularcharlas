@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { provideHttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,12 +18,16 @@ import { ServiceTalks } from './services/service.talks';
 import { DatePipe } from '@angular/common';
 import { LOCALE_ID } from '@angular/core';
 
+
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
 
 // Registra la localización española
 registerLocaleData(localeEs);
+import { ServicePostFiles } from './services/service.postfiles';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +46,7 @@ registerLocaleData(localeEs);
     MatCardModule, 
     MatButtonModule
   ],
-  providers: [ServiceUser, ServiceRound,ServiceTalks,DatePipe,{ provide: LOCALE_ID, useValue: 'es-ES' }],
+  providers: [provideHttpClient(),ServiceUser, ServiceRound,ServiceTalks,DatePipe,{ provide: LOCALE_ID, useValue: 'es-ES' },ServicePostFiles],
   bootstrap: [AppComponent],
   
 })

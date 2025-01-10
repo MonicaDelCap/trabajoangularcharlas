@@ -3,14 +3,14 @@ import { Observable, from } from "rxjs";
 import axios from "axios";
 import { environment } from "../../environments/environment";
 import { Login } from "../models/login";
-import { Register } from "../models/register";
+import { User } from "../models/user";
 
 
 @Injectable()
 export class ServiceUser{
-    register(register:Register, courseCode:string):Promise<any>{
+    register(user:User, courseCode:string):Promise<any>{
         let request = "api/Usuarios/NewAlumno/" + courseCode;
-        let json = JSON.stringify(register);
+        let json = JSON.stringify(user);
         return new Promise(function(resolve){
             axios.post(environment.urlCharlas + request,json)
             .then( r => resolve(r.data))
@@ -36,4 +36,15 @@ export class ServiceUser{
             axios.get(environment.urlCharlas + request,{headers:header}).then( r => resolve(r.data))
         })
     }
+
+    updateUser(user: User): Observable<any> {
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+        };
+        const request = "api/usuarios";
+        const url = environment.urlCharlas + request;
+        return from(axios.put(url, user, { headers: headers }));
+    }
+    
 }

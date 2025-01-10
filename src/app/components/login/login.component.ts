@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Login } from '../../models/login';
 import { Router } from '@angular/router';
 import { ServiceUser } from '../../services/user.service';
-import { Register } from '../../models/register';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit{
 
   pantallaSeleccionada: string;
   public login: Login; 
-  public register:Register;
+  public user:User;
   
   @ViewChild("passwordbox") passswordbox!: ElementRef;
   @ViewChild("emailbox") emailbox!: ElementRef;
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit{
 
   constructor(private _router: Router, private _service:ServiceUser){
     this.login  = new Login("", "");
-    this.register  = new Register(1,"","","",true,"imagen.png", "" , 2);
+    this.user  = new User(1,"","","",true,"imagen.png", "" , 2);
     this.pantallaSeleccionada = 'signin';
   }
 
@@ -39,13 +39,13 @@ export class LoginComponent implements OnInit{
   }
 
   registerUser():void{
-    this.register.nombre = this.nameBox.nativeElement.value;
-    this.register.apellidos = this.surnameBox.nativeElement.value;
-    this.register.email = this.emailBoxRegister.nativeElement.value;
-    this.register.password = this.passwordBoxRegister.nativeElement.value;
+    this.user.nombre = this.nameBox.nativeElement.value;
+    this.user.apellidos = this.surnameBox.nativeElement.value;
+    this.user.email = this.emailBoxRegister.nativeElement.value;
+    this.user.password = this.passwordBoxRegister.nativeElement.value;
     let courseCode = this.coursecode.nativeElement.value;
 
-    this._service.register(this.register,courseCode)
+    this._service.register(this.user,courseCode)
     .then( response =>{
       this.cambiarPantalla("signin")
     }).catch( r => {
