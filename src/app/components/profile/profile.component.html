@@ -45,7 +45,7 @@
                         <p class="ronda-fecha">Fecha Límite: {{ronda.fechaCierre | date: 'MMMM dd, yyyy'}}</p>
                         <p class="ronda-fecha">Fecha Presentación: {{ronda.fechaPresentacion | date: 'MMMM dd, yyyy'}}</p>
                         <p class="ronda-fecha">Duración: {{ronda.duracion}} min</p>
-                        <button class="ronda-action">Ir a Ronda</button>
+                        <button class="ronda-action" [routerLink]="['/studentround/', ronda.idRonda]">Ir a Ronda</button>
                     </div>
                 </div>
                 }

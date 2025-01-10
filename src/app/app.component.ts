@@ -1,7 +1,7 @@
 import { Component, computed, HostListener, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { ServiceUser } from './services/user.service';
+import { ServiceUser } from './services/service.user';
 
 @Component({
   selector: 'app-root',

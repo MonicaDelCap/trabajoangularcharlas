@@ -5,7 +5,7 @@ import { provideHttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ServiceUser } from './services/user.service';
+import { ServiceUser } from './services/service.user';
 import { MenubarComponent } from './components/menubar/menubar.component';
 import { MenubarstudentComponent } from './components/menubarstudent/menubarstudent.component';
 import { RondasstudentComponent } from './components/rondasstudent/rondasstudent.component';

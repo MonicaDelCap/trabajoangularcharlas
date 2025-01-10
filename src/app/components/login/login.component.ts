@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Login } from '../../models/login';
 import { Router } from '@angular/router';
-import { ServiceUser } from '../../services/user.service';
+import { ServiceUser } from '../../services/service.user';
 import { User } from '../../models/user';
 
 @Component({
