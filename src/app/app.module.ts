@@ -26,6 +26,8 @@ import { LoginComponent } from './components/login/login.component';
 // Registra la localización española
 registerLocaleData(localeEs);
 import { ServicePostFiles } from './services/service.postfiles';
+import { CharlasComponent } from './components/charlas/charlas.component';
+import { CharlaComponent } from './components/charla/charla.component';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { ServicePostFiles } from './services/service.postfiles';
     ProfileComponent,
     CharlascardcomponentComponent,
     LoginComponent,
+    CharlasComponent,
+    CharlaComponent,
 
   ],
   imports: [

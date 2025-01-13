@@ -1,0 +1,28 @@
+<div class="charlas-container">
+    <h1>Charlas del Curso</h1>
+
+    <!-- Filtro de búsqueda con ícono de lupa -->
+    <div class="search-bar">
+        <input type="text" [(ngModel)]="searchText" (input)="filterCharlas()"
+            placeholder="Buscar charla por nombre..." />
+        <span class="search-icon">
+            <i class="fas fa-search"></i> <!-- Aquí estamos utilizando Font Awesome para el ícono -->
+        </span>
+    </div>
+
+    <div class="charlas-grid">
+        <div class="charla-card" *ngFor="let charla of filteredCharlas">
+            <div class="charla-card-content">
+                <a [routerLink]="['/talk', charla.idCharla]" class="charla-card-content">
+                    <div class="charla-image">
+                        <img [src]="charla.imagenCharla" alt="{{ charla.titulo }}" />
+                    </div>
+                    <div class="charla-info">
+                        <h2>{{ charla.titulo }}</h2>
+                        <p class="fecha-propuesta">{{ charla.fechaPropuesta | date:'short' }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

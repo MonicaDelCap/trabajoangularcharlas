@@ -1,0 +1,96 @@
+.charlas-container {
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    padding: 10px 40px 10px 15px;
+    /* Añadimos espacio a la derecha para el ícono */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    width: 300px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-bar input:focus {
+    border-color: #0056b3;
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    font-size: 18px;
+    color: #888;
+    pointer-events: none;
+    /* Evita que el clic afecte el input */
+}
+
+.charlas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.charla-card {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.charla-card:hover {
+    transform: translateY(-5px);
+}
+
+.charla-card-content {
+    display: flex;
+    padding: 15px;
+}
+
+.charla-image {
+    flex: 1;
+    max-width: 150px;
+    margin-right: 20px;
+}
+
+.charla-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.charla-info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.charla-info h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.fecha-propuesta {
+    font-size: 14px;
+    color: #666;
+}

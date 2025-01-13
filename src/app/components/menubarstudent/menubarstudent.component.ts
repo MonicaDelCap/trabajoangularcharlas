@@ -21,7 +21,12 @@ export class MenubarstudentComponent implements OnInit {
       label: 'Inicio'
     },
     {
-      routeLink: 'studentround',
+      routeLink: 'profile',
+      icon: 'fal fa-home',
+      label: 'Perfil'
+    },
+    {
+      routeLink: 'talks',
       icon: 'fal fa-home',
       label: 'Charlas'
     },
@@ -30,11 +35,6 @@ export class MenubarstudentComponent implements OnInit {
       icon: 'fal fa-home',
       label: 'Rondas'
     },
-    {
-      routeLink: 'profile',
-      icon: 'fal fa-home',
-      label: 'Perfil'
-    }
 
   ]
 

@@ -1,3 +1,5 @@
+import { Comentario } from "./comentario";
+
 export class Charla{
     constructor(
         public descripcion:string,
@@ -12,6 +14,7 @@ export class Charla{
         public nombreCurso:string,
         public tiempo:number,
         public titulo:string,
-        public usuario:string
+        public usuario:string,
+        public comentarios: Comentario[] = []
     ){}
 }

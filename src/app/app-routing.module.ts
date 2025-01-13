@@ -4,6 +4,8 @@ import { RondasstudentComponent } from './components/rondasstudent/rondasstudent
 import { ProfileComponent } from './components/profile/profile.component';
 import { CharlascardcomponentComponent } from './components/charlascardcomponent/charlascardcomponent.component';
 import { LoginComponent } from './components/login/login.component';
+import { CharlasComponent } from './components/charlas/charlas.component';
+import { CharlaComponent } from './components/charla/charla.component';
 
 const routes: Routes = [
   {
@@ -17,7 +19,11 @@ const routes: Routes = [
   },
   {
     path:"charlas", component:CharlascardcomponentComponent
-  }
+  },
+  {
+    path: "talks", component:CharlasComponent
+  },
+  { path: 'talk/:id', component: CharlaComponent }
 ];
 
 @NgModule({

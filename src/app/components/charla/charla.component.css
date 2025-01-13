@@ -1,0 +1,134 @@
+/* Estilo general para el contenedor de la charla */
+.charla-details {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de la charla */
+.charla-details h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Imagen de la charla */
+.charla-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Descripción y fecha */
+.charla-details p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Enlace de volver */
+.back-link {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #0078d4;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #005a9e;
+}
+
+/* Sección de comentarios */
+.comentarios-section {
+    margin-top: 30px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de la sección de comentarios */
+.comentarios-section h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Estilo para cada comentario */
+.comentario {
+    background-color: #f1f1f1;
+    border-left: 4px solid #0078d4;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.comentario p {
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.comentario span {
+    font-size: 0.875rem;
+    color: #888;
+}
+
+/* Formulario para agregar un comentario */
+.add-comentario {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-comentario textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: none;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.add-comentario textarea:focus {
+    border-color: #0078d4;
+    outline: none;
+}
+
+.add-comentario button {
+    padding: 10px 15px;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-comentario button:hover {
+    background-color: #005a9e;
+}
+
+/* Mensaje de error */
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 1rem;
+}

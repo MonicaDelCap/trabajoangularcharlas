@@ -1,0 +1,26 @@
+<div *ngIf="charla" class="charla-details">
+    <h1>{{ charla.titulo }}</h1>
+    <img [src]="charla.imagenCharla" alt="{{ charla.titulo }}" class="charla-image" />
+    <p>{{ charla.descripcion }}</p>
+    <p><strong>Fecha propuesta:</strong> {{ charla.fechaPropuesta | date:'fullDate' }}</p>
+    <a routerLink="/talks" class="back-link">← Volver a las charlas</a>
+
+    <!-- Lista de comentarios -->
+    <div class="comentarios-section">
+        <h2>Comentarios</h2>
+        <div *ngFor="let comentario of charla.comentarios" class="comentario">
+            <p>{{ comentario.contenido }}</p>
+            <span>{{ comentario.fecha | date:'short' }}</span>
+        </div>
+    </div>
+
+    <!-- Formulario para agregar comentario -->
+    <div class="add-comentario">
+        <textarea [(ngModel)]="nuevoComentario" placeholder="Escribe un comentario..."></textarea>
+        <button (click)="agregarComentario()">Agregar comentario</button>
+    </div>
+</div>
+
+<div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+</div>
