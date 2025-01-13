@@ -8,6 +8,7 @@
     <button (click)="onLogin()">Iniciar sesion</button>
     <a href="#" *ngIf="pantallaSeleccionada === 'signin'" (click)="cambiarPantalla('register')">¿No tienes cuenta?
       Registrate</a>
+    <p style="color: red;">{{mensaje}}</p>
   </div>
 </div>
 <!-- Contenido de la Pantalla 2: Registro de Usuario -->

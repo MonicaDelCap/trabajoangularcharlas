@@ -12,12 +12,13 @@ import { User } from '../../models/user';
 export class LoginComponent implements OnInit{
 
   pantallaSeleccionada: string;
-  public login: Login; 
+  public login: Login;
   public user:User;
-  
+  public mensaje!: string;
+
   @ViewChild("passwordbox") passswordbox!: ElementRef;
   @ViewChild("emailbox") emailbox!: ElementRef;
- 
+
   @ViewChild("nameBox") nameBox!: ElementRef;
   @ViewChild("surnameBox") surnameBox!: ElementRef;
   @ViewChild("emailBoxRegister") emailBoxRegister!: ElementRef;
@@ -52,11 +53,12 @@ export class LoginComponent implements OnInit{
       console.log("error " +r );
     })
   }
-  
+
   onLogin() {
     this.login.password = this.passswordbox.nativeElement.value;
     this.login.userName = this.emailbox.nativeElement.value;
-    this._service.getToken(this.login).then(r => {
+    this._service.getToken(this.login)
+    .then(r => {
       localStorage.setItem('authToken', r.response)
       this._service.getProfile().then(r => {
         let role = r.usuario.idRole;
@@ -66,6 +68,9 @@ export class LoginComponent implements OnInit{
           this._router.navigate(["/profile"]);
         }
       })
+    })
+    .catch(r => {
+      this.mensaje = r
     })
   }
 }

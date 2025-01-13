@@ -11,10 +11,10 @@ export class ServiceUser{
     register(user:User, courseCode:string):Promise<any>{
         let request = "api/Usuarios/NewAlumno/" + courseCode;
         let json = JSON.stringify(user);
-        return new Promise(function(resolve){
+        return new Promise(function(resolve,reject){
             axios.post(environment.urlCharlas + request,json)
             .then( r => resolve(r.data))
-            .catch( r => resolve(r.data))
+            .catch( r => reject(r.code))
         })
         
     }
@@ -22,10 +22,10 @@ export class ServiceUser{
         let json = JSON.stringify(login);
         let header = {"Content-Type": "application/json"};
         let request = "api/Auth/Login";
-        return new Promise(function(resolve){
+        return new Promise(function(resolve,reject){
             axios.post(environment.urlCharlas + request,json,{headers: header})
             .then( r => resolve(r.data))
-            .catch( r => resolve(r.data))
+            .catch( r => reject(r.code))
         })
     }
 
