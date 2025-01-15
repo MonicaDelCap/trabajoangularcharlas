@@ -10,7 +10,6 @@
     z-index: -1; /* En el fondo */
   }
   
-  /* Estilo básico para las partículas */
   .particle {
     position: absolute;
     width: 12px;

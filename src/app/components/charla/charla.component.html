@@ -1,26 +1,76 @@
-<div *ngIf="charla" class="charla-details">
-    <h1>{{ charla.titulo }}</h1>
-    <img [src]="charla.imagenCharla" alt="{{ charla.titulo }}" class="charla-image" />
-    <p>{{ charla.descripcion }}</p>
-    <p><strong>Fecha propuesta:</strong> {{ charla.fechaPropuesta | date:'fullDate' }}</p>
-    <a routerLink="/talks" class="back-link">← Volver a las charlas</a>
+<div *ngIf="charla"
+    class="bg-white rounded-xl p-8 mx-auto my-8 max-w-4xl shadow-2xl transition-transform transform hover:scale-105 duration-300">
+    <!-- Título de la charla -->
+    <h1 class="text-3xl font-bold text-blue-900 mb-4 hover:text-blue-700 transition-colors duration-300">{{
+        charla.titulo }}</h1>
 
-    <!-- Lista de comentarios -->
-    <div class="comentarios-section">
-        <h2>Comentarios</h2>
-        <div *ngFor="let comentario of charla.comentarios" class="comentario">
-            <p>{{ comentario.contenido }}</p>
-            <span>{{ comentario.fecha | date:'short' }}</span>
+    <!-- Imagen de la charla -->
+    <img [src]="charla.imagenCharla" alt="{{ charla.titulo }}"
+        class="w-full h-90 object-cover rounded-xl mb-6 hover:opacity-90 transition-opacity duration-300" />
+
+    <!-- Descripción de la charla -->
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">{{ charla.descripcion }}</p>
+
+    <!-- Fecha propuesta -->
+    <p class="text-sm text-gray-500 mb-6"><strong>Fecha propuesta:</strong> {{ charla.fechaPropuesta | date:'fullDate'
+        }}</p>
+
+    <!-- Enlace de volver -->
+    <div class="flex justify-start mt-6">
+        <a routerLink="/talks"
+            class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-xl shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-300">
+            ← Volver a las charlas
+        </a>
+    </div>
+
+    <!-- Sección de comentarios -->
+    <div class="mt-10 bg-gray-50 p-6 rounded-xl shadow-lg">
+        <h2 class="text-2xl font-semibold text-blue-900 mb-6">Comentarios</h2>
+
+        <!-- Contenedor con scroll para comentarios -->
+        <div class="max-h-96 overflow-y-auto pr-2">
+            <div *ngFor="let comentario of charla.comentarios" class="bg-gray-100 p-4 rounded-xl shadow-sm mb-6">
+                <p class="text-gray-800 text-base mb-2">{{ comentario.contenido }}</p>
+                <span class="text-sm text-gray-500">{{ comentario.fecha | date:'short' }}</span>
+            </div>
         </div>
     </div>
 
     <!-- Formulario para agregar comentario -->
-    <div class="add-comentario">
-        <textarea [(ngModel)]="nuevoComentario" placeholder="Escribe un comentario..."></textarea>
-        <button (click)="agregarComentario()">Agregar comentario</button>
+    <div class="mt-10 bg-gray-100 p-6 rounded-xl shadow-md">
+        <textarea [(ngModel)]="nuevoComentario" placeholder="Escribe un comentario..."
+            class="w-full h-32 p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-gray-800 placeholder-gray-500 mb-4 transition-all duration-300"></textarea>
+        <button (click)="agregarComentario()"
+            class="w-full py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transform hover:scale-105 ease-in-out">Agregar
+            comentario</button>
     </div>
 </div>
 
-<div *ngIf="errorMessage" class="error-message">
+<!-- Mensaje de error -->
+<div *ngIf="errorMessage"
+    class="bg-red-100 text-red-800 border border-red-300 p-6 rounded-xl mt-8 text-lg shadow-lg animate-pulse">
     <p>{{ errorMessage }}</p>
+</div>
+
+<div class="particles-container">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
 </div>

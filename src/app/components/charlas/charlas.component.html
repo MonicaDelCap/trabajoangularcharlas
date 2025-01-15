@@ -9,12 +9,9 @@
             placeholder="Buscar charla por nombre..." 
             class="w-full max-w-md px-4 py-2 pr-12 border border-gray-300 rounded-full shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
         />
-        <span class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500">
-            <i class="fas fa-search"></i>
-        </span>
     </div>
 
-    <div class="charlas-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="charlas-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         <div 
             class="charla-card max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-2"
             *ngFor="let charla of filteredCharlas"
