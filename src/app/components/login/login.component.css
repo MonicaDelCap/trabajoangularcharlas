@@ -48,12 +48,28 @@ a:hover {
     align-items: center; /* Centra el contenido internamente */
     justify-content: flex-start;
 }
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Altura del viewport */
+    width: 100vw; /* Ancho del viewport */
+    position: fixed; /* Asegura que siempre esté visible */
+    top: 0;
+    left: 0;
+    background-color: #f0f0f0; /* Opcional: color de fondo para el área completa */
+    overflow: hidden; /* Evita que el contenido desborde */
+    box-sizing: border-box; /* Incluye bordes y padding en las dimensiones */
+    margin: 0;
+    padding: 0;
+}
+
 
 .form-container-resgister {
-    margin-left: 250px;
-    margin-top: 40px;
+    margin: 0;
+    /* margin-left: 250px; */
     width: 400px;
-    height: 550px;
+    height: 598px;
     border: 3px solid #012a5b; /* Borde con un color destacado */
     padding: 20px;
     display: flex;
@@ -63,14 +79,13 @@ a:hover {
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
     background: linear-gradient(to bottom right, #ffffff, #f1f1f1); /* Fondo degradado */
-    transition: all 0.3s ease; /* Transiciones suaves al cambiar contenido */
+    transition: all 0.8s ease; /* Transiciones suaves al cambiar contenido */
 
 }
-.form-container-resgister-inputs{
-    margin-top: 15px;
-}
 .form-container-signin{
-    margin-left: 250px;
+    /* margin-left: 250px; */
+    margin: 0;
+    margin-bottom: 100px;
     margin-top: 80px;
     width: 400px; 
     height: 400px;
@@ -83,7 +98,7 @@ a:hover {
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
     background: linear-gradient(to bottom right, #ffffff, #f1f1f1); /* Fondo degradado */
-    transition: all 0.3s ease; /* Transiciones suaves al cambiar contenido */
+    transition: all 0.8s ease; /* Transiciones suaves al cambiar contenido */
 }
 h1 {
     font-size: 2rem;

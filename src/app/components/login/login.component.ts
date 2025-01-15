@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Login } from '../../models/login';
 import { Router } from '@angular/router';
 import { ServiceUser } from '../../services/service.user';
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit{
   public login: Login;
   public user:User;
   public mensaje!: string;
-
+  public inputs!: Array<any> ;
   @ViewChild("passwordbox") passswordbox!: ElementRef;
   @ViewChild("emailbox") emailbox!: ElementRef;
 
@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit{
   @ViewChild("surnameBox") surnameBox!: ElementRef;
   @ViewChild("emailBoxRegister") emailBoxRegister!: ElementRef;
   @ViewChild("passwordBoxRegister") passwordBoxRegister!: ElementRef;
+  @ViewChild("passwordBoxRegisterRepeat") passwordBoxRegisterRepeat!: ElementRef;
   @ViewChild("coursecode") coursecode!: ElementRef;
 
   constructor(private _router: Router, private _service:ServiceUser){
@@ -39,22 +40,9 @@ export class LoginComponent implements OnInit{
     localStorage.removeItem('authToken');
   }
 
-  registerUser():void{
-    this.user.nombre = this.nameBox.nativeElement.value;
-    this.user.apellidos = this.surnameBox.nativeElement.value;
-    this.user.email = this.emailBoxRegister.nativeElement.value;
-    this.user.password = this.passwordBoxRegister.nativeElement.value;
-    let courseCode = this.coursecode.nativeElement.value;
+  
 
-    this._service.register(this.user,courseCode)
-    .then( response =>{
-      this.cambiarPantalla("signin")
-    }).catch( r => {
-      console.log("error " +r );
-    })
-  }
-
-  onLogin() {
+  onLogin():void {
     this.login.password = this.passswordbox.nativeElement.value;
     this.login.userName = this.emailbox.nativeElement.value;
     this._service.getToken(this.login)
@@ -70,7 +58,143 @@ export class LoginComponent implements OnInit{
       })
     })
     .catch(r => {
-      this.mensaje = r
+      this.mensaje = "Credenciales incorrectas"
     })
   }
+
+  registerUser():void{
+    
+    if(this.checkPassword()){
+      this.user.nombre = this.nameBox.nativeElement.value;
+      
+      if(this.checkName(this.user.nombre)){    
+        this.user.apellidos = this.surnameBox.nativeElement.value;
+        
+        if(this.checkSurname(this.user.apellidos)){ 
+          this.user.email = this.emailBoxRegister.nativeElement.value;
+          this.user.password = this.passwordBoxRegister.nativeElement.value;
+          let courseCode = this.coursecode.nativeElement.value;
+      
+          this._service.register(this.user,courseCode)
+          .then( response =>{
+            this.cambiarPantalla("signin")
+          }).catch( e => {
+            if(e == "ERR_BAD_RESPONSE"){
+              this.changeInputEmailColorRegister();
+            }else if(e == "ERR_BAD_REQUEST"){
+              this.changeInputCodeColorRegister();
+            } 
+          })
+        }else{
+          this.changeInputSurnameColorRegister();
+        }
+
+      }else{
+        this.changeInputNameColorRegister();
+      }
+
+    }else{
+      this.changeInputPasswordColorRegister();
+    }
+  }
+
+  checkPassword():boolean{
+    if(this.passwordBoxRegister.nativeElement.value == this.passwordBoxRegisterRepeat.nativeElement.value){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  checkName(name:string):boolean{
+    
+    let regex = /^[a-zA-Z]+$/; 
+    if(regex.test(name)){
+      return true ;
+    }else{
+      return false;
+    }
+  }
+
+  checkSurname(surname:string):boolean{
+    
+    let regex = /^[a-zA-Z]+$/; 
+    if(regex.test(surname)){
+      return true ;
+    }else{
+      return false;
+    }
+  }
+
+
+  changeInputNameColorRegister():void{
+    this.changeAllInputColorRegisterInit();
+    let nameInput = this.nameBox.nativeElement;
+    nameInput.style.border = '2px solid red'; // Cambia el borde
+    nameInput.style.color = 'black'; // Cambia el texto
+  }
+
+  changeInputSurnameColorRegister():void{
+    this.changeAllInputColorRegisterInit();
+    let surnameBox = this.surnameBox.nativeElement;
+    surnameBox.style.border = '2px solid red'; // Cambia el borde
+    surnameBox.style.color = 'black'; // Cambia el texto
+  }
+
+  changeInputPasswordColorRegister():void{
+    this.changeAllInputColorRegisterInit();
+    let passwordInput = this.passwordBoxRegister.nativeElement;
+    passwordInput.style.border = '2px solid red'; // Cambia el borde
+    passwordInput.style.color = 'black'; // Cambia el texto
+    
+    let passwordInputRepeat = this.passwordBoxRegisterRepeat.nativeElement;
+    passwordInputRepeat.style.border = '2px solid red'; // Cambia el borde
+    passwordInputRepeat.style.color = 'black'; // Cambia el texto
+  }
+
+  changeInputEmailColorRegister():void{
+    this.changeAllInputColorRegisterInit();
+    let email = this.emailBoxRegister.nativeElement;
+    email.style.border = '2px solid red'; // Cambia el borde
+    email.style.color = 'black'; // Cambia el texto
+  }
+
+  changeInputCodeColorRegister():void{
+    this.changeAllInputColorRegisterInit();
+    let code = this.coursecode.nativeElement;
+    code.style.border = '2px solid red'; // Cambia el borde
+    code.style.color = 'black'; // Cambia el texto
+  }
+
+  changeAllInputColorRegisterInit():void{
+    let code = this.coursecode.nativeElement;
+    code.style.border = '2px solid white'; // Cambia el borde
+    code.style.color = 'black';
+    let name = this.nameBox.nativeElement;
+    name.style.border = '2px solid white'; // Cambia el borde
+    name.style.color = 'black'; 
+    let surname = this.surnameBox.nativeElement;
+    surname.style.border = '2px solid white'; // Cambia el borde
+    surname.style.color = 'black'; 
+    let email = this.emailBoxRegister.nativeElement;
+    email.style.border = '2px solid white'; // Cambia el borde
+    email.style.color = 'black'; 
+    let password = this.passwordBoxRegister.nativeElement;
+    password.style.border = '2px solid white'; // Cambia el borde
+    password.style.color = 'black'; 
+    let passwordRepeat = this.passwordBoxRegisterRepeat.nativeElement;
+    passwordRepeat.style.border = '2px solid white'; // Cambia el borde
+    passwordRepeat.style.color = 'black'; 
+    // Cambia el texto
+  }
+
+  erroresRegister(e:string):void{
+    console.log(e)
+    if(e == "ERR_BAD_RESPONSE"){
+      this.changeInputEmailColorRegister();
+    }else if(e == "ERR_BAD_REQUEST"){
+      this.changeInputCodeColorRegister();
+    } 
+  }
+
 }
