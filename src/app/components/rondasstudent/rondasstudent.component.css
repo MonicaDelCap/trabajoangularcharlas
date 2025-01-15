@@ -53,6 +53,16 @@
     background-color: #0056b3;
 }
 
+.button:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: #C0DEFF;
+
+}
+
+
+
+
 .charlas-container {
     padding: 20px;
     display: flex;

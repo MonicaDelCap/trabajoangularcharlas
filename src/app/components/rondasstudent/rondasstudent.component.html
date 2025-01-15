@@ -1,14 +1,17 @@
-
-    <div class="container">
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">Ronda {{idRonda}}</h5>
-                <p class="card-text">Ronda {{idRonda}}</p>
-                <button class="button" [routerLink]="['/createtalk/', idRonda]">Añadir charla</button>
-            </div>
-            <div class="charlas-container">
-                <!-- Replace @for logic with Angular structural directive logic -->
-                <app-charlascardcomponent *ngFor="let talk of talks" [idTalk]="talk"></app-charlascardcomponent>
-            </div>
+<div class="container">
+    <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">Ronda {{idRonda}}</h5>
+            <p class="card-text">Ronda {{idRonda}}</p>
+            <button class="button" [routerLink]="['/createtalk/', idRonda]" *ngIf="true" 
+                [disabled]="didUAddTalk"
+                [ngClass]="{ 'disabled-button': didUAddTalk }">
+                Añadir charla
+            </button>
+        </div>
+        <div class="charlas-container">
+            <!-- Replace @for logic with Angular structural directive logic -->
+            <app-charlascardcomponent *ngFor="let talk of talks" [idTalk]="talk"></app-charlascardcomponent>
         </div>
     </div>
+</div>

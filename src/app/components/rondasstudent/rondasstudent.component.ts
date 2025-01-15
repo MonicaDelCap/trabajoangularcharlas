@@ -5,6 +5,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CharlascardcomponentComponent } from '../charlascardcomponent/charlascardcomponent.component';
 import { TalksByCourse } from '../../models/talks';
 import { ServiceTalks } from '../../services/service.talks';
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-rondasstudent',
   templateUrl: './rondasstudent.component.html',
@@ -16,13 +17,17 @@ export class RondasstudentComponent implements OnInit{
   final!:  Date;
   idRonda!: number;
   talks!: Array<TalksByCourse>;
+  didUAddTalk!: boolean;
+  isButtonDisabled = false;
 
   constructor(
     private _serviceRound: ServiceRound,
     private _serviceTalks: ServiceTalks,
     private _router:Router,
     private _active:ActivatedRoute
-  ){}
+  ){
+    this.didUAddTalk = false;
+  }
 
 
   ngOnInit(): void {
@@ -32,7 +37,12 @@ export class RondasstudentComponent implements OnInit{
     
     this._active.params.subscribe((params: Params) => {
       this.idRonda = params['id']
-      this._serviceTalks.getTalks(this.idRonda).then(r => this.talks = r)
+      this._serviceTalks.getTalks(this.idRonda).then(r => {
+        this.talks = r;
+        this.didUAddTalk = this.searchTalkInRound();
+        console.log(this.didUAddTalk)
+      })
+
     })
 
   }
@@ -45,6 +55,15 @@ export class RondasstudentComponent implements OnInit{
 
     console.log(Math.round(diferenciaDias))
     return Math.round(diferenciaDias);
+  }
+
+  searchTalkInRound():boolean{
+    for(let talk of this.talks){
+      if(talk.idUsuario == environment.idUsuario){
+        return true;
+      }
+    }
+    return false;
   }
 
 
