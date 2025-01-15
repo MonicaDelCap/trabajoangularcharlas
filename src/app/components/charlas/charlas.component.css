@@ -1,96 +1,101 @@
-.charlas-container {
-    padding: 20px;
-}
-
-h1 {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin-bottom: 20px;
-}
-
-.search-bar input {
-    padding: 10px 40px 10px 15px;
-    /* Añadimos espacio a la derecha para el ícono */
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    width: 300px;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-.search-bar input:focus {
-    border-color: #0056b3;
-}
-
-.search-icon {
-    position: absolute;
-    right: 15px;
-    font-size: 18px;
-    color: #888;
-    pointer-events: none;
-    /* Evita que el clic afecte el input */
-}
-
-.charlas-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.charla-card {
-    display: flex;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-}
-
-.charla-card:hover {
-    transform: translateY(-5px);
-}
-
-.charla-card-content {
-    display: flex;
-    padding: 15px;
-}
-
-.charla-image {
-    flex: 1;
-    max-width: 150px;
-    margin-right: 20px;
-}
-
-.charla-image img {
+/* Contenedor para las partículas */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-.charla-info {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.charla-info h2 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.fecha-propuesta {
-    font-size: 14px;
-    color: #666;
-}
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(to top, #87ceeb 20%, #ffffff 80%); /* Azul claro en 30%, blanco arriba */
+    z-index: -1; /* En el fondo */
+  }
+  
+  /* Estilo básico para las partículas */
+  .particle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.8); /* Por defecto blanco */
+    border-radius: 50%; /* Forma circular */
+    animation: float 5s infinite ease-in-out;
+    
+  }
+  
+  /* Animación para las partículas */
+  @keyframes float {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-100px) translateX(50px);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateY(-200px) translateX(-50px);
+      opacity: 0;
+    }
+  }
+  
+  /* Colores llamativos para las partículas */
+  .particle:nth-child(1) {
+    top: 10%;
+    left: 20%;
+    background-color: #ff6f61; /* Rosa coral */
+    animation-duration: 4s;
+  }
+  .particle:nth-child(2) {
+    top: 50%;
+    left: 70%;
+    background-color: #ffeb3b; /* Amarillo brillante */
+    animation-duration: 6s;
+  }
+  .particle:nth-child(3) {
+    top: 80%;
+    left: 30%;
+    background-color: #4caf50; /* Verde pastel */
+    animation-duration: 5s;
+  }
+  .particle:nth-child(4) {
+    top: 25%;
+    left: 80%;
+    background-color: #2196f3; /* Azul vibrante */
+    animation-duration: 7s;
+  }
+  .particle:nth-child(5) {
+    top: 60%;
+    left: 50%;
+    background-color: #f50057; /* Rosa intenso */
+    animation-duration: 3s;
+  }
+  .particle:nth-child(6) {
+    top: 15%;
+    left: 40%;
+    background-color: #9c27b0; /* Morado vibrante */
+    animation-duration: 8s;
+  }
+  .particle:nth-child(7) {
+    top: 70%;
+    left: 10%;
+    background-color: #03a9f4; /* Azul claro */
+    animation-duration: 4s;
+  }
+  .particle:nth-child(8) {
+    top: 30%;
+    left: 90%;
+    background-color: #ff9800; /* Naranja vibrante */
+    animation-duration: 5s;
+  }
+  .particle:nth-child(9) {
+    top: 85%;
+    left: 60%;
+    background-color: #8bc34a; /* Verde lima */
+    animation-duration: 6s;
+  }
+  .particle:nth-child(10) {
+    top: 40%;
+    left: 25%;
+    background-color: #e91e63; /* Rosa oscuro */
+    animation-duration: 5s;
+  }
+  

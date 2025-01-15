@@ -1,28 +1,64 @@
-<div class="charlas-container">
-    <h1>Charlas del Curso</h1>
+<div class="charlas-container px-6 py-8">
+    <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Charlas del Curso</h1>
 
-    <!-- Filtro de búsqueda con ícono de lupa -->
-    <div class="search-bar">
-        <input type="text" [(ngModel)]="searchText" (input)="filterCharlas()"
-            placeholder="Buscar charla por nombre..." />
-        <span class="search-icon">
-            <i class="fas fa-search"></i> <!-- Aquí estamos utilizando Font Awesome para el ícono -->
+    <div class="search-bar relative flex justify-center mb-8">
+        <input 
+            type="text" 
+            [(ngModel)]="searchText" 
+            (input)="filterCharlas()"
+            placeholder="Buscar charla por nombre..." 
+            class="w-full max-w-md px-4 py-2 pr-12 border border-gray-300 rounded-full shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
+        <span class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500">
+            <i class="fas fa-search"></i>
         </span>
     </div>
 
-    <div class="charlas-grid">
-        <div class="charla-card" *ngFor="let charla of filteredCharlas">
-            <div class="charla-card-content">
-                <a [routerLink]="['/talk', charla.idCharla]" class="charla-card-content">
-                    <div class="charla-image">
-                        <img [src]="charla.imagenCharla" alt="{{ charla.titulo }}" />
-                    </div>
-                    <div class="charla-info">
-                        <h2>{{ charla.titulo }}</h2>
-                        <p class="fecha-propuesta">{{ charla.fechaPropuesta | date:'short' }}</p>
-                    </div>
-                </a>
-            </div>
+    <div class="charlas-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div 
+            class="charla-card max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-2"
+            *ngFor="let charla of filteredCharlas"
+        >
+            <a 
+                [routerLink]="['/talk', charla.idCharla]" 
+                class="charla-card-content flex flex-col"
+            >
+                <div class="charla-image">
+                    <!-- Si la charla tiene imagen, la mostramos, si no mostramos la imagen por defecto -->
+                    <img 
+                        *ngIf="charla.imagenCharla; else noImage" 
+                        [src]="charla.imagenCharla" 
+                        [alt]="charla.titulo" 
+                        class="w-full h-40 object-fill rounded-t-lg"
+                    />
+                    <ng-template #noImage>
+                        <!-- Imagen por defecto cuando no hay imagen -->
+                        <img 
+                            src="https://media.istockphoto.com/id/1484725428/es/vector/icono-de-charla-de-caf%C3%A9.jpg?s=612x612&w=0&k=20&c=ojrzvyjniKn4pLJXYzFn_6tJ1G5CFsKFkawKr_NN_5E=" 
+                            alt="Charla sin imagen" 
+                            class="w-full h-40 object-fill rounded-t-lg"
+                        />
+                    </ng-template>
+                </div>
+                <div class="charla-info p-4">
+                    <h2 class="text-xl font-semibold text-gray-800 truncate">{{ charla.titulo }}</h2>
+                    <p class="fecha-propuesta text-sm text-gray-500 mt-2">{{ charla.fechaPropuesta | date:'short' }}</p>
+                </div>
+            </a>
         </div>
     </div>
+</div>
+
+<div class="particles-container">
+    <!-- Partículas -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
 </div>
