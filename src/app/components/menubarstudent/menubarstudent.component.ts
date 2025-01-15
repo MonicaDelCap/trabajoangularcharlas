@@ -8,50 +8,36 @@ import { Round } from '../../models/round';
 @Component({
   selector: 'app-menubarstudent',
   templateUrl: './menubarstudent.component.html',
-  styleUrl: './menubarstudent.component.css'
+  styleUrl: './menubarstudent.component.css',
 })
 export class MenubarstudentComponent implements OnInit {
   isLeftSidebarCollapsed = input.required<boolean>();
   changeIsLeftSidebarCollapsed = output<boolean>();
-  roundsArray!:Array<Round>;
+  roundsArray!: Array<Round>;
   itemsStudent = [
     {
-      routeLink: 'studentround',
-      icon: 'fal fa-home',
-      label: 'Inicio'
-    },
-    {
       routeLink: 'profile',
-      icon: 'fal fa-home',
-      label: 'Perfil'
+      icon: 'fal fa-user',
+      label: 'Perfil',
     },
     {
       routeLink: 'talks',
-      icon: 'fal fa-home',
-      label: 'Charlas'
+      icon: 'fal fa-comments',
+      label: 'Charlas',
     },
-    {
-      routeLink: 'studentround',
-      icon: 'fal fa-home',
-      label: 'Rondas'
-    },
+  ];
 
-  ]
-
-  constructor(private _serviceRound:ServiceRound){}
+  constructor(private _serviceRound: ServiceRound) {}
   ngOnInit(): void {
-    this._serviceRound.getRounds().then(r => {
-      this.roundsArray = r
-    })
+    this._serviceRound.getRounds().then((r) => {
+      this.roundsArray = r;
+    });
   }
 
-  toggleCollapse(): void{
-    this.changeIsLeftSidebarCollapsed.emit(!this.isLeftSidebarCollapsed())
+  toggleCollapse(): void {
+    this.changeIsLeftSidebarCollapsed.emit(!this.isLeftSidebarCollapsed());
   }
-  closeSidenav():void{
-    this.changeIsLeftSidebarCollapsed.emit(true)
-
+  closeSidenav(): void {
+    this.changeIsLeftSidebarCollapsed.emit(true);
   }
-
-  
 }

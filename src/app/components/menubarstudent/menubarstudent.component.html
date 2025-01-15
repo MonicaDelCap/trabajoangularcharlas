@@ -1,42 +1,64 @@
-<div class="sidenav" [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : '' ">
-    <div class="logo-container">
-        <button class="logo" (click)="toggleCollapse()">
-            <i class="fal fa-bars"></i>
-        </button>
+<div
+  class="sidenav"
+  [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''"
+>
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">
+      <i class="fal fa-bars"></i>
+    </button>
+    @if(!isLeftSidebarCollapsed()){
+    <div class="logo-text">Charlas</div>
+    <button class="btn-close" (click)="closeSidenav()">
+      <i class="fal fa-times close-icon"></i>
+    </button>
+    }
+  </div>
+  <div class="sidenav-nav">
+    @for(item of itemsStudent; track $index){
+    <li class="sidenav-nav-item">
+      <a
+        class="sidenav-nav-link"
+        [routerLink]="item.routeLink"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <i class="sidenav-link-icon" [class]="item.icon"></i>
         @if(!isLeftSidebarCollapsed()){
-        <div class="logo-text">Charlas</div>
-        <button class="btn-close" (click)="closeSidenav()">
-            <i class="fal fa-times close-icon"></i>
-        </button>
+        <span class="sidenav-link-text">{{ item.label }}</span>
         }
-
-    </div>
-    <div class="sidenav-nav">
-        @for(item of itemsStudent; track $index){
-        <li class="sidenav-nav-item">
-            <a class="sidenav-nav-link" [routerLink]="item.routeLink" routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }">
-                <i class="sidenav-link-icon" [class]="item.icon"></i>
-                @if(!isLeftSidebarCollapsed()){
-                <span class="sidenav-link-text">{{item.label}}</span>
-                }
-            </a>
-        </li>
+      </a>
+    </li>
+    }
+    <li class="sidenav-nav-item">
+      <div
+        class="btn-group"
+        [class]="'sidenav-nav-link'"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="sidenav-link-icon" [class]="'fal fa-circle-notch'"></i>
+        @if(!isLeftSidebarCollapsed()){
+        <span
+          class="sidenav-link-text"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Ronda
+          <i class="fal fa-arrow-down" [class]="'arrow'"></i>
+        </span>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li *ngFor="let round of roundsArray">
+            <button
+              class="dropdown-item"
+              type="button"
+              [routerLink]="['/studentround/', round.idRonda]"
+            >
+              Ronda {{ round.idRonda }}
+            </button>
+          </li>
+        </ul>
         }
-        <li class="sidenav-nav-item">
-            <div class="btn-group" [class]="'sidenav-nav-link'"  data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="sidenav-link-icon" [class]="'fal fa-home'"></i>
-                @if(!isLeftSidebarCollapsed()){
-                    <span class="sidenav-link-text" data-bs-toggle="dropdown" aria-expanded="false">
-                        Ronda
-                        <i class="fal fa-arrow-down" [class]="'arrow'"></i>
-                    </span>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li *ngFor="let round of roundsArray"><button class="dropdown-item" type="button" [routerLink]="['/studentround/', round.idRonda]">Ronda {{round.idRonda}}</button></li>
-                    </ul>
-                }
-            </div>
-        </li>
-
-    </div>
+      </div>
+    </li>
+  </div>
 </div>

@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+.button-primario {
+  background-color: #1e90ff; /* Azul Eléctrico */
+  color: #ffffff; /* Blanco */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.button-primario:hover {
+  background-color: #1c86ee; /* Un poco más oscuro al pasar el ratón */
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Incrementa la sombra */
+}
+
+.button-primario:active {
+  background-color: #1874cd; /* Azul aún más oscuro al presionar */
+  transform: translateY(0);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Sombra más pequeña */
+}
+.prueba {
+  background-color: #524f4d83;
+}
+.primario {
+  background-color: #204b5e;
+}
