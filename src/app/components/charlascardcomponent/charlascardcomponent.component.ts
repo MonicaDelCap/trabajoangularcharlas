@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Talks } from '../../models/talks';
+import { TalksByCourse } from '../../models/talks';
 import { ServiceTalks } from '../../services/service.talks';
 import { DatePipe } from '@angular/common';
 
@@ -11,7 +11,7 @@ import { DatePipe } from '@angular/common';
 })
 export class CharlascardcomponentComponent implements OnInit {
 
-  @Input() idTalk!: Talks;
+  @Input() idTalk!: TalksByCourse;
   fecha!: string;
 
   constructor(private datePipe: DatePipe){}

@@ -2,6 +2,7 @@ import { Component, computed, HostListener, OnInit, signal } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ServiceUser } from './services/service.user';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,10 @@ export class AppComponent implements OnInit {
   
   ngOnInit(): void {
     console.log("init")
-    this._service.getProfile().then(r => this.idRole = r.usuario.idRole)
+    this._service.getProfile().then(r => {
+      this.idRole = r.usuario.idRole;
+      environment.idUsuario = r.usuario.idUsuario
+    })
     if(localStorage.getItem('authToken')){
       this.isToken= true;
     }

@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import axios from "axios";
 import { environment } from "../../environments/environment";
 import { from, Observable } from "rxjs";
+import { Talk } from "../models/createtalk";
+import { Resource } from "../models/resource";
 
 @Injectable()
 export class ServiceTalks{
@@ -26,6 +28,38 @@ export class ServiceTalks{
         let headers = {"Authorization": `Bearer ${localStorage.getItem('authToken')}`};
         let request = "api/charlas/charlasalumno";
         return from(axios.get(environment.urlCharlas + request,{headers}));
+    }
+
+    createTalk(newTalk:Talk):Promise<any>{
+        const header = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+        };
+        let request = "api/Charlas";
+        let json = JSON.stringify(newTalk);
+
+        return new Promise(function(resolve,reject){
+            axios.post(environment.urlCharlas2 + request, json,{headers:header})
+            .then(r => resolve(r.data)).catch(r => reject(r))
+
+        })
+    }
+
+    createResourceForTalk(newResource:Resource):Promise<any>{
+        const header = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+        };
+        let request = "api/Recursos";
+        let json = JSON.stringify(newResource);
+
+        return new Promise(function(resolve,reject){
+            axios.post(environment.urlCharlas + request, json,{headers:header}).then(r =>{
+                resolve(r.data)
+            }).catch(r => reject(r))
+
+        })
+
     }
 
 

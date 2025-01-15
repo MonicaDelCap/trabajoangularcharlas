@@ -1,0 +1,89 @@
+/* General Styles */
+.input-container {
+  display: flex;
+  align-items: center;
+  padding-left: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-container:focus-within {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px #c7d2fe;
+}
+
+.form-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  color: #111827;
+  placeholder: #9ca3af;
+}
+
+.photo-icon {
+  width: 2rem;
+  height: 2rem;
+  color: #6b7280;
+}
+
+/* File Upload Label */
+.upload-label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  background-color: #fff;
+  color: #4f46e5;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.upload-label:hover {
+  color: #4338ca;
+}
+
+.form-input {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+}
+
+/* CSS para textarea */
+.form-textarea {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  border: 1px solid #012a5b;
+  border-radius: 5px;
+}
+
+/* CSS para botones */
+button {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  width: 150px;
+}
+
+.form-textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px #c7d2fe;
+}
+
+/* Card styling */
+.w-full.max-w-4xl {
+  max-width: 700px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #333;
+}

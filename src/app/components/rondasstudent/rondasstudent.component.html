@@ -3,6 +3,7 @@
         <div class="card-body">
             <h5 class="card-title">Ronda {{idRonda}}</h5>
             <p class="card-text">Ronda {{idRonda}}</p>
+            <button class="button" [routerLink]="['/createtalk/', idRonda]">Añadir charla</button>
         </div>
         <div class="charlas-container">
             @for(talk of talks; track $index){

@@ -15,6 +15,15 @@
     max-width: calc(33.33% - 15px); /* Asegura que no se exceda el ancho disponible */
     min-width: 200px; /* Define un ancho mínimo para cada tarjeta */
 }
+
+.button{
+    padding: 8px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 @media (max-width: 768px) {
     .charlas-container app-charlascardcomponent {
         flex: 1 1 calc(50% - 15px); /* Dos elementos por fila en pantallas medianas */
