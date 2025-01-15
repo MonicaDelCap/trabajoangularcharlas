@@ -3,7 +3,7 @@ import { ServiceRound } from '../../services/service.round';
 import { Round } from '../../models/round';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CharlascardcomponentComponent } from '../charlascardcomponent/charlascardcomponent.component';
-import { Talks } from '../../models/talks';
+import { TalksByCourse } from '../../models/talks';
 import { ServiceTalks } from '../../services/service.talks';
 @Component({
   selector: 'app-rondasstudent',
@@ -15,7 +15,7 @@ export class RondasstudentComponent implements OnInit{
   inicio!: Date;
   final!:  Date;
   idRonda!: number;
-  talks!: Array<Talks>;
+  talks!: Array<TalksByCourse>;
 
   constructor(
     private _serviceRound: ServiceRound,

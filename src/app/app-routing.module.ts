@@ -6,6 +6,7 @@ import { CharlascardcomponentComponent } from './components/charlascardcomponent
 import { LoginComponent } from './components/login/login.component';
 import { CharlasComponent } from './components/charlas/charlas.component';
 import { CharlaComponent } from './components/charla/charla.component';
+import { CreateTalkComponent } from './components/create-talk/create-talk.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,12 @@ const routes: Routes = [
   {
     path: "talks", component:CharlasComponent
   },
-  { path: 'talk/:id', component: CharlaComponent }
+  { 
+    path: 'talk/:id', component: CharlaComponent 
+  },
+  {
+    path: 'createtalk/:id', component:CreateTalkComponent
+  }
 ];
 
 @NgModule({

@@ -15,4 +15,12 @@ export class ServiceRound{
             axios.get(environment.urlCharlas + request, {headers: header}).then(r => resolve(r.data))
         })
     }
+
+    getRoundById(id:number) :Promise<any>{
+        let request = "api/Rondas/" + id;
+        let header = {"Authorization": `Bearer ${localStorage.getItem('authToken')}`}; 
+        return new Promise(function(resolve){
+            axios.get(environment.urlCharlas + request,{headers:header}).then(r => resolve(r.data))
+        })
+    }
 }

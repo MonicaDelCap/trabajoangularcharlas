@@ -1,0 +1,90 @@
+<div class="flex justify-center bg-grey-100 mt-7">
+    <div class="w-full max-w-3xl bg-light p-8 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold text-center mb-8">Crear Charla</h1>
+        <div class="space-y-8">
+            <!-- Username Field -->
+            <div class="flex justify-between items-center gap-x-6">
+                <div class="flex-1">
+                    <label for="username" class="block text-sm font-medium text-gray-900">Titulo</label>
+                    <div class="mt-2">
+                        <div class="input-container w-full">
+                            <input type="text" name="titleTalk" #titleTalk id="username" placeholder="Título de la charla" class="form-input w-full">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <img class="w-20" [src]="imagenPredef" *ngIf="imagenPredef"/>
+                    <label for="file-upload" class="upload-label">
+                        <span>Subir Imagen</span>
+                        <input 
+                            id="file-upload" 
+                            name="fileupload" 
+                            #fileupload 
+                            type="file" 
+                            class="sr-only" 
+                            (change)="onImageSelect($event)">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Time Fields -->
+            <div>
+                <label for="time" class="block mb-2 text-sm font-medium text-gray-900">Fecha presentación: {{fechaPresentacion}}</label>
+                <div>
+                    <label for="time" class="block mb-2 text-sm font-medium text-gray-900">Duración maxima: {{dateround.duracion}} min</label>
+                    <div class="relative">
+                        <input type="time" name="duration" #duration id="time" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-32 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" min="09:00" max="18:00" value="00:00" required />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Description Field -->
+            <div>
+                <label for="about" class="block text-sm font-medium text-gray-900">Descripción</label>
+                <div class="mt-2">
+                    <textarea name="description" #description id="about" rows="3" class="form-textarea" placeholder="Escribe una breve descripción sobre tu charla."></textarea>
+                </div>
+            </div>
+
+            <!-- Recursos Field -->
+            <div>
+                <label for="about" class="block text-sm font-medium text-gray-900">Recursos</label>
+                <div class="mt-4 flex flex-col gap-y-4">
+                    <div id="dynamic-container" class="flex flex-col gap-y-2">
+                        <div *ngFor="let input of inputs; let i = index" class="flex flex-col gap-y-2">
+                            <div class="flex items-center gap-x-2">
+                                <input type="text" 
+                                       [placeholder]="'Nombre ' + (i + 1)" 
+                                       [(ngModel)]="inputs[i].nombre" 
+                                       class="form-input" />
+                            </div>
+                            <div class="flex items-center gap-x-2">
+                                <input type="url" 
+                                       [placeholder]="'URL ' + (i + 1)" 
+                                       [(ngModel)]="inputs[i].url" 
+                                       class="form-input" />
+                            </div>
+                            <div class="flex items-center gap-x-2">
+                                <textarea placeholder="Descripción" 
+                                          [(ngModel)]="inputs[i].descripcion" 
+                                          class="form-input"></textarea>
+                            </div>
+                            <button type="button" 
+                                    (click)="removeInput(i)" 
+                                    class="bg-red-600 text-white px-2 py-1 rounded-md hover:bg-red-700 focus:outline-none">Eliminar</button>
+                        </div>
+                        <button type="button" 
+                                (click)="addInput()" 
+                                class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none">Añadir recurso</button>
+                    </div>
+                </div>
+            
+                <div class="block text-sm font-medium text-gray-900 mt-6">
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none" 
+                            (click)="createTalk()">Crear</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

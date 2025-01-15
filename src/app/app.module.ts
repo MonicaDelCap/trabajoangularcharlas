@@ -28,6 +28,7 @@ registerLocaleData(localeEs);
 import { ServicePostFiles } from './services/service.postfiles';
 import { CharlasComponent } from './components/charlas/charlas.component';
 import { CharlaComponent } from './components/charla/charla.component';
+import { CreateTalkComponent } from './components/create-talk/create-talk.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { CharlaComponent } from './components/charla/charla.component';
     LoginComponent,
     CharlasComponent,
     CharlaComponent,
+    CreateTalkComponent,
 
   ],
   imports: [
