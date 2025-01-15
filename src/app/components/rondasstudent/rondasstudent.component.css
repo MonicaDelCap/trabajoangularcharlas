@@ -1,37 +1,77 @@
-.container{
-    margin-bottom: 30px;
-}
-.charlas-container {
-    display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan en nuevas filas */
-    gap: 15px; /* Espaciado entre elementos */
-    justify-content: flex-start; /* Alinea los elementos al inicio de cada fila */
-    margin-top: 20px; /* Espaciado superior */
+
+
+.container {
+    max-width: auto;
+    width: 100%;
+    padding: 10px; /* Reduced padding */
 }
 
-.charlas-container app-charlascardcomponent {
-    flex: 1 1 calc(33.33% - 15px); /* Tres elementos por fila (ajusta el porcentaje según lo necesites) */
-    box-sizing: border-box; /* Incluye padding y borde en el ancho total */
-    max-width: calc(33.33% - 15px); /* Asegura que no se exceda el ancho disponible */
-    min-width: 200px; /* Define un ancho mínimo para cada tarjeta */
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.button{
-    padding: 8px 15px;
-    background-color: #007BFF;
-    color: white;
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555555;
+    margin-bottom: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #007bff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-@media (max-width: 768px) {
-    .charlas-container app-charlascardcomponent {
-        flex: 1 1 calc(50% - 15px); /* Dos elementos por fila en pantallas medianas */
-    }
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
-@media (max-width: 480px) {
-    .charlas-container app-charlascardcomponent {
-        flex: 1 1 100%; /* Un elemento por fila en pantallas pequeñas */
-    }
+.button:hover {
+    background-color: #0056b3;
+}
+
+.charlas-container {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #f9f9f9;
+    border-top: 1px solid #dddddd;
+}
+
+app-charlascardcomponent {
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 10px;
+    transition: box-shadow 0.3s ease;
+}
+
+app-charlascardcomponent:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
