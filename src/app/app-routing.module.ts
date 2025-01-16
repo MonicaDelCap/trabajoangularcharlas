@@ -9,6 +9,7 @@ import { CharlaComponent } from './components/charla/charla.component';
 import { CreateTalkComponent } from './components/create-talk/create-talk.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { StudentsComponent } from './components/students/students.component';
+import { CoursewithstudentComponent } from './components/coursewithstudent/coursewithstudent.component';
 
 const routes: Routes = [
   {
@@ -36,7 +37,7 @@ const routes: Routes = [
     path:"courses", component:CoursesComponent
   },
   {
-    path:"studentslist" , component:StudentsComponent
+    path:"studentslist" , component:CoursewithstudentComponent
   }
 ];
 

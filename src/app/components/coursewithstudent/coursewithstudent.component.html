@@ -1,1 +1,17 @@
-<p>coursewithstudent works!</p>
+<div class="card-container" [class.flipped]="isFlipped">
+    <div class="card">
+      <!-- Cara frontal -->
+      <div class="card-front">
+        <h1>Contenido Frontal</h1>
+        <p>Aquí puedes mostrar contenido.</p>
+        <button (click)="flipCard()">Voltear</button>
+      </div>
+      <!-- Cara trasera -->
+      <div class="card-back">
+        <h1>Contenido Trasero</h1>
+        <textarea rows="10" placeholder="Escribe algo aquí..."></textarea>
+        <button (click)="flipCard()">Volver</button>
+      </div>
+    </div>
+  </div>
+  

@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class CoursewithstudentComponent {
 
+  isFlipped = false;
+
+  flipCard() {
+    this.isFlipped = !this.isFlipped;
+  }
 }
