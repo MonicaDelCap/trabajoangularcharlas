@@ -64,6 +64,7 @@ export class ServiceTalks{
     }
 
     createPostFileTalk(fileModel: FileModel, id: number): Promise<any> {
+        console.log(JSON.stringify(fileModel))
         let header = {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('authToken')}`
@@ -71,7 +72,8 @@ export class ServiceTalks{
         let request = 'api/Files/UploadImagenCharla/' + id;
         return new Promise(function(resolve,reject){ 
             axios.post(environment.urlCharlas + request, JSON.stringify(fileModel),{ headers:header })
-            .then(r => resolve(r.data));
+            .then(r => resolve(r.data))
+            .catch(r => reject(r));
         })
     }
       
