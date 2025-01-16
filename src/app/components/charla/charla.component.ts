@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { Charla } from '../../models/charla';
 import { ServiceUser } from '../../services/service.user';
 import { ActivatedRoute } from '@angular/router';
@@ -7,13 +7,17 @@ import { Comentario } from '../../models/comentario';
 @Component({
   selector: 'app-charla',
   templateUrl: './charla.component.html',
-  styleUrl: './charla.component.css'
+  styleUrls: ['./charla.component.css']
 })
-export class CharlaComponent implements OnInit {
+export class CharlaComponent implements OnInit, AfterViewChecked {
   public charla: Charla | null = null;
   public errorMessage: string | null = null;
   public nuevoComentario: string = '';
   public idUsuario: number = 0; // Inicializar el idUsuario
+  public usuario: string = '';
+
+  // Agrega la referencia a la lista de comentarios
+  @ViewChild('comentariosContainer') comentariosContainer: ElementRef | undefined;
 
   constructor(private route: ActivatedRoute, private _service: ServiceUser) {}
 
@@ -22,12 +26,14 @@ export class CharlaComponent implements OnInit {
     this._service.getProfile()
       .then(profile => {
         this.idUsuario = profile.usuario.idUsuario; // Asignar el idUsuario
+        this.usuario= profile.usuario.nombre
       })
       .catch(error => {
         console.error('Error al obtener el perfil:', error);
       });
 
     const id = this.route.snapshot.paramMap.get('id');
+    
     if (id) {
       this._service.getCharlaById(id).then((charla) => {
         this.charla = charla;
@@ -40,12 +46,13 @@ export class CharlaComponent implements OnInit {
 
   agregarComentario(): void {
     if (this.charla && this.nuevoComentario.trim()) {
-      this._service.addComentario(this.charla.idCharla, this.idUsuario, this.nuevoComentario.trim())
+      this._service.addComentario(this.charla.idCharla, this.idUsuario, this.usuario, this.nuevoComentario.trim())
         .then(() => {
           const nuevoComentario = new Comentario(
             0,
             this.charla!.idCharla,
             this.idUsuario,
+            this.usuario,
             this.nuevoComentario.trim(),
             new Date()
           );
@@ -53,6 +60,19 @@ export class CharlaComponent implements OnInit {
           this.nuevoComentario = '';
         })
         .catch(error => console.error('Error al agregar comentario:', error));
+    }
+  }
+
+  // Método que se ejecuta después de que Angular actualiza la vista
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  // Método para hacer scroll al último comentario
+  private scrollToBottom(): void {
+    if (this.comentariosContainer) {
+      const container = this.comentariosContainer.nativeElement;
+      container.scrollTop = container.scrollHeight;
     }
   }
 }

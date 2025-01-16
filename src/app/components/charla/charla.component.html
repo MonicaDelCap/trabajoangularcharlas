@@ -28,10 +28,13 @@
         <h2 class="text-2xl font-semibold text-blue-900 mb-6">Comentarios</h2>
 
         <!-- Contenedor con scroll para comentarios -->
-        <div class="max-h-96 overflow-y-auto pr-2">
-            <div *ngFor="let comentario of charla.comentarios" class="bg-gray-100 p-4 rounded-xl shadow-sm mb-6">
-                <p class="text-gray-800 text-base mb-2">{{ comentario.contenido }}</p>
-                <span class="text-sm text-gray-500">{{ comentario.fecha | date:'short' }}</span>
+        <div class="max-h-96 overflow-y-auto pr-2" #comentariosContainer>
+            <div *ngFor="let comentario of charla.comentarios">
+                <p class="text-black text-base mb-1">{{ comentario.usuario }}</p>
+                <div class="bg-gray-100 p-4 rounded-xl shadow-sm mb-6">
+                    <p class="text-gray-800 text-base mb-2">{{ comentario.contenido }}</p>
+                    <span class="text-sm text-gray-500">{{ comentario.fecha | date:'short' }}</span>
+                </div>
             </div>
         </div>
     </div>

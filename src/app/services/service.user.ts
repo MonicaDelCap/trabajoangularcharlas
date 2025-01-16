@@ -90,6 +90,7 @@ export class ServiceUser{
                         comentario.idComentario,
                         comentario.idCharla,
                         comentario.idUsuario,
+                        comentario.usuario,
                         comentario.contenido,
                         new Date(comentario.fecha)
                     ));
@@ -114,7 +115,7 @@ export class ServiceUser{
                 .catch(error => reject(error));
         });
     }
-    addComentario(idCharla: number, idUsuario: number, contenido: string): Promise<void> {
+    addComentario(idCharla: number, idUsuario: number, usuario:string, contenido: string): Promise<void> {
         const request = `api/Comentarios`;
         const header = { "Authorization": `Bearer ${localStorage.getItem('authToken')}` };
     
@@ -122,6 +123,7 @@ export class ServiceUser{
             idComentario: 0,  // El ID se generará automáticamente en el servidor
             idCharla: idCharla,
             idUsuario: idUsuario,
+            usuario: usuario,
             contenido: contenido,
             fecha: new Date().toISOString()
         };
