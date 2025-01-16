@@ -8,6 +8,7 @@ import { ServiceRound } from '../../services/service.round';
 import { Round } from '../../models/round';
 import { DatePipe } from '@angular/common';
 import { Resource } from '../../models/resource';
+import { FileModel } from '../../models/filemodel';
 @Component({
   selector: 'app-create-talk',
   templateUrl: './create-talk.component.html',
@@ -23,6 +24,8 @@ export class CreateTalkComponent implements OnInit {
   imagenPredef: string | ArrayBuffer | null = '';
   newTalkCreate!: Talk;
   newResource !: Resource;
+  fileContent !: string;
+  imagenServer !: FileModel;
 
   @ViewChild("titleTalk") titleTalk!: ElementRef;
   @ViewChild("fileupload") fileupload!: ElementRef;
@@ -41,7 +44,9 @@ export class CreateTalkComponent implements OnInit {
     this.newTalk = new Talk(1, "", "", 0, "2025-01-15T12:36:04.757Z", 0, 1, 0, "");
     this.newTalkCreate = new Talk(1, "", "", 0, "2025-01-15T12:36:04.757Z", 0, 1, 0, "");
     this.newResource = new Resource(0, 0, "", "", "");
+    this.fileContent = "";
     this.imagenPredef = "/assets/images/charla.png"
+    this.imagenServer = new FileModel("","");
   }
 
   ngOnInit(): void {
@@ -75,7 +80,7 @@ export class CreateTalkComponent implements OnInit {
   }
 
   createTalk(): void {
-    console.log('Inicio de createTalk');
+
     this.newTalk.titulo = this.titleTalk.nativeElement.value;
     this.newTalk.descripcion = this.description.nativeElement.value;
     this.newTalk.tiempo = this.convertTimeInMinutes(this.duration.nativeElement.value);
@@ -92,6 +97,7 @@ export class CreateTalkComponent implements OnInit {
             this.newResource = new Resource(0, this.newTalkCreate.idCharla, input.url, input.nombre, input.descripcion);
             this._serviceTalks.createResourceForTalk(this.newResource).then(r => console.log(r))
           }
+          this._serviceTalks.createPostFileTalk(this.imagenServer,this.newTalkCreate.idCharla);
           this._router.navigate(["/studentround/", this.round.idRonda])
         })
     } else {
@@ -129,6 +135,36 @@ export class CreateTalkComponent implements OnInit {
 
   changeImage(): void {
     document.getElementById('file-upload')?.click();
+  }
+
+  subirFichero(event: Event): void {
+
+    let inputElement = event.target as HTMLInputElement;
+
+    if (inputElement.files && inputElement.files.length > 0) {
+      let path = this.fileupload.nativeElement.value.split("\\");
+      let file = this.fileupload.nativeElement.files[0];
+      let fileName = path[2];
+
+
+      // Leer el archivo como Base64
+      let reader = new FileReader();
+      reader.readAsArrayBuffer(file);
+      reader.onload = () => {
+
+        let buffer: ArrayBuffer;
+        buffer = reader.result as ArrayBuffer;
+        var base64: string;
+        base64 = btoa(
+          new Uint8Array(buffer)
+            .reduce((data, byte) => data + String.fromCharCode(byte), '')
+        );
+        
+        this.imagenServer = new FileModel(fileName, base64);
+        console.log(this.imagenServer);
+      };
+      reader.readAsDataURL(file);
+    }
   }
 
 
