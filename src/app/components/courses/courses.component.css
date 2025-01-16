@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    width: 200px;
+}
+
+.main-content {
+    flex-grow: 1;
+}
+
+header h1 {
+    margin: 0;
+    color: #3498db;
+}
+
+.course-list {
+    margin-top: 20px; /* Espaciado adicional */
+}
+
+.course-item {
+    background-color: #ecf0f1;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 150px; /* Ajusta esta altura según tus necesidades */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.3s, background-color 0.3s; /* Transiciones suaves */
+}
+
+.course-item:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    background-color: #3498db; /* Cambia el color de fondo */
+    color: black; /* Cambia el color del texto */
+}
+
+.add-button {
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}

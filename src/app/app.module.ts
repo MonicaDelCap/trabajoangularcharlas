@@ -29,6 +29,9 @@ import { ServicePostFiles } from './services/service.postfiles';
 import { CharlasComponent } from './components/charlas/charlas.component';
 import { CharlaComponent } from './components/charla/charla.component';
 import { CreateTalkComponent } from './components/create-talk/create-talk.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { CoursewithstudentComponent } from './components/coursewithstudent/coursewithstudent.component';
+import { StudentsComponent } from './components/students/students.component';
 
 
 @NgModule({
@@ -43,6 +46,9 @@ import { CreateTalkComponent } from './components/create-talk/create-talk.compon
     CharlasComponent,
     CharlaComponent,
     CreateTalkComponent,
+    CoursesComponent,
+    CoursewithstudentComponent,
+    StudentsComponent,
 
   ],
   imports: [

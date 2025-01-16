@@ -11,7 +11,7 @@ export class MenubarComponent {
   changeIsLeftSidebarCollapsed = output<boolean>();
   itemsStudent = [
     {
-      routeLink: 'studentround',
+      routeLink: 'courses',
       icon: 'fal fa-home',
       label: 'Cursos'
     },
