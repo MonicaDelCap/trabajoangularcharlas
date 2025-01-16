@@ -93,8 +93,7 @@ export class ProfileComponent implements OnInit {
   }
 
   subirFichero(event: any): void {
-    console.log(event);
-    //var contenido = "";
+
     var file = this.cajaFileRef.nativeElement.files[0];
     var miPath = this.cajaFileRef.nativeElement.value.split("\\");
     var ficheroNombre = miPath[2];

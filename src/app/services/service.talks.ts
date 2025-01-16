@@ -4,6 +4,7 @@ import { environment } from "../../environments/environment";
 import { from, Observable } from "rxjs";
 import { Talk } from "../models/createtalk";
 import { Resource } from "../models/resource";
+import { FileModel } from "../models/filemodel";
 
 @Injectable()
 export class ServiceTalks{
@@ -31,7 +32,7 @@ export class ServiceTalks{
     }
 
     createTalk(newTalk:Talk):Promise<any>{
-        const header = {
+        let header = {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('authToken')}`
         };
@@ -46,7 +47,7 @@ export class ServiceTalks{
     }
 
     createResourceForTalk(newResource:Resource):Promise<any>{
-        const header = {
+        let header = {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('authToken')}`
         };
@@ -61,6 +62,21 @@ export class ServiceTalks{
         })
 
     }
+
+    createPostFileTalk(fileModel: FileModel, id: number): Promise<any> {
+        console.log(JSON.stringify(fileModel))
+        let header = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+        };
+        let request = 'api/Files/UploadImagenCharla/' + id;
+        return new Promise(function(resolve,reject){ 
+            axios.post(environment.urlCharlas + request, JSON.stringify(fileModel),{ headers:header })
+            .then(r => resolve(r.data))
+            .catch(r => reject(r));
+        })
+    }
+      
 
 
 }
