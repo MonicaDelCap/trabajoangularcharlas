@@ -23,12 +23,19 @@ import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
 
+
 // Registra la localización española
 registerLocaleData(localeEs);
 import { ServicePostFiles } from './services/service.postfiles';
 import { CharlasComponent } from './components/charlas/charlas.component';
 import { CharlaComponent } from './components/charla/charla.component';
 import { CreateTalkComponent } from './components/create-talk/create-talk.component';
+import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
+
+import { ServiceTeacher } from './services/serivece.teacher';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule,DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 
 @NgModule({
@@ -43,6 +50,7 @@ import { CreateTalkComponent } from './components/create-talk/create-talk.compon
     CharlasComponent,
     CharlaComponent,
     CreateTalkComponent,
+    TeacherprofileComponent,
 
   ],
   imports: [
@@ -50,12 +58,18 @@ import { CreateTalkComponent } from './components/create-talk/create-talk.compon
     AppRoutingModule,
     FormsModule,
     MatCardModule, 
-    MatButtonModule
+    MatButtonModule,
+    BrowserAnimationsModule,
+    CalendarModule.forRoot({
+      provide:DateAdapter,
+      useFactory: adapterFactory
+    })
+
   ],
-  providers: [provideHttpClient(),ServiceUser, ServiceRound,ServiceTalks,DatePipe,{ provide: LOCALE_ID, useValue: 'es-ES' },ServicePostFiles],
+  providers: [provideHttpClient(),ServiceUser, ServiceRound,ServiceTalks,DatePipe,{ provide: LOCALE_ID, useValue: 'es-ES' },ServicePostFiles,ServiceTeacher],
   bootstrap: [AppComponent],
   
 })
 export class AppModule { 
-  
+
 }

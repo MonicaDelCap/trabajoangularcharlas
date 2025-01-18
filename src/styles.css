@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/angular-calendar/css/angular-calendar.css"; 
+
 .button-primario {
   background-color: #1e90ff; /* Azul Eléctrico */
   color: #ffffff; /* Blanco */
@@ -26,3 +28,11 @@
 .primario {
   background-color: #204b5e;
 }
+
+.calendar-container {
+  max-width: 100%;
+  margin: 0 auto;
+  overflow-x: auto; /* Permite el desplazamiento horizontal si es necesario */
+}
+
+
