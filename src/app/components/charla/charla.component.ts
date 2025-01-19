@@ -15,6 +15,9 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
   public nuevoComentario: string = '';
   public idUsuario: number = 0; // Inicializar el idUsuario
   public usuario: string = '';
+  public esPropietario: boolean = false;
+  public charlaEditada: Partial<Charla> = {};
+  public modalEditarAbierto: boolean = false;
 
   // Agrega la referencia a la lista de comentarios
   @ViewChild('comentariosContainer') comentariosContainer: ElementRef | undefined;
@@ -25,21 +28,36 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
     // Obtener id del usuario autenticado
     this._service.getProfile()
       .then(profile => {
-        this.idUsuario = profile.usuario.idUsuario; // Asignar el idUsuario
-        this.usuario= profile.usuario.nombre
+        this.idUsuario = profile.usuario.idUsuario;
+        console.log(this.idUsuario);
+        this.usuario= profile.usuario.nombre;
+        const id = this.route.snapshot.paramMap.get('id');
+        if (id) {
+          this._service.getCharlaById(id).then((charla) => {
+            this.charla = charla;
+            this.charlaEditada = { ...charla };
+            this.esPropietario = charla.idUsuario === this.idUsuario; // Verificar si es propietario
+            console.log(this.esPropietario)
+            console.log(charla.idUsuario)
+            console.log(this.idUsuario)
+          });
+        }
       })
       .catch(error => {
         console.error('Error al obtener el perfil:', error);
       });
-
-    const id = this.route.snapshot.paramMap.get('id');
-    
-    if (id) {
-      this._service.getCharlaById(id).then((charla) => {
-        this.charla = charla;
-      }).catch((error) => {
-        this.errorMessage = 'No se pudo cargar la charla. Por favor, inténtelo más tarde.';
-        console.error('Error al cargar la charla:', error);
+  }
+  abrirModalEditar(): void {
+    this.modalEditarAbierto = true;
+  } 
+  cerrarModalEditar(): void {
+    this.modalEditarAbierto = false;
+  }
+  guardarCambios(): void {
+    if (this.charla) {
+      this._service.updateCharla(this.charlaEditada).then(() => {
+        Object.assign(this.charla!, this.charlaEditada);
+        this.modalEditarAbierto = false;
       });
     }
   }
