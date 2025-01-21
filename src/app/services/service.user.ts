@@ -115,7 +115,7 @@ export class ServiceUser {
                 .catch(error => reject(error));
         });
     }
-    addComentario(idCharla: number, idUsuario: number, usuario: string, contenido: string): Promise<void> {
+    async addComentario(idCharla: number, idUsuario: number, usuario: string, contenido: string): Promise<void> {
         const request = `api/Comentarios`;
         const header = { "Authorization": `Bearer ${localStorage.getItem('authToken')}` };
 
@@ -128,12 +128,13 @@ export class ServiceUser {
             fecha: new Date().toISOString()
         };
 
-        return axios.post(environment.urlCharlas + request, comentario, { headers: header })
-            .then(() => console.log('Comentario agregado con éxito'))
-            .catch(error => {
-                console.error('Error al agregar comentario:', error);
-                throw error;
-            });
+        try {
+            await axios.post(environment.urlCharlas + request, comentario, { headers: header });
+            return console.log('Comentario agregado con éxito');
+        } catch (error) {
+            console.error('Error al agregar comentario:', error);
+            throw error;
+        }
     }
 
     updateCharla(charla: Partial<Charla>): Promise<void> {
@@ -147,4 +148,69 @@ export class ServiceUser {
                 throw error;
             });
     }
+    async voteForCharla(idCharla: number, idUsuario: number, idRonda: number): Promise<void> {
+        const request = `api/Votos`;
+        const header = { Authorization: `Bearer ${localStorage.getItem('authToken')}` };
+
+        const voto = {
+            idVoto: 0,
+            idCharla: idCharla,
+            idUsuario: idUsuario,
+            idRonda: idRonda
+        };
+        console.log("idcharla: "+idCharla)
+        console.log("idcharla: "+idUsuario)
+        console.log("idRonda: "+idRonda)
+        
+
+        try {
+            await axios.post(environment.urlCharlas + request, voto, { headers: header });
+            return console.log('Voto registrado con éxito');
+        } catch (error) {
+            console.error('Error al registrar el voto:', error);
+            throw error;
+        }
+    }
+    getVoteByCharla(idCharla: number): Promise<any> {
+        const request = `api/Votos/VotosCharla/${idCharla}`;
+        const header = { "Authorization": `Bearer ${localStorage.getItem('authToken')}` };
+    
+        return new Promise((resolve, reject) => {
+            axios.get(environment.urlCharlas + request, { headers: header })
+                .then(response => {
+                    const result = response.data;
+                    resolve(result);
+                })
+                .catch(error => reject(error));
+        });
+    }
+    
+    getVoteByRound(idRonda: number): Promise<any> {
+        const request = `api/Votos/VotosRonda/${idRonda}`;
+        const header = { "Authorization": `Bearer ${localStorage.getItem('authToken')}` };
+    
+        return new Promise((resolve, reject) => {
+            axios.get(environment.urlCharlas + request, { headers: header })
+                .then(response => {
+                    const result = response.data;  // Respuesta que contiene los votos por charla en la ronda
+                    resolve(result);
+                })
+                .catch(error => reject(error));
+        });
+    }
+    getVotosAlumno(): Promise<any> {
+        const request = `api/Votos/VotosAlumno`;
+        const header = { "Authorization": `Bearer ${localStorage.getItem('authToken')}` };
+    
+        return new Promise((resolve, reject) => {
+            axios.get(environment.urlCharlas + request, { headers: header })
+                .then(response => {
+                    const result = response.data; // Respuesta que contiene los votos del alumno
+                    resolve(result);
+                })
+                .catch(error => reject(error));
+        });
+    }
+
+
 }

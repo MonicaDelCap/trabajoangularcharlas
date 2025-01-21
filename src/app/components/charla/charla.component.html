@@ -1,6 +1,6 @@
 <div *ngIf="charla"
     class="bg-white rounded-xl p-8 mx-auto my-8 max-w-4xl shadow-2xl transition-transform transform hover:scale-105 duration-300">
-    
+
     <!-- Si el modo de edición no está activado, mostrar la vista normal -->
     <div *ngIf="!modalEditarAbierto">
         <!-- Título de la charla -->
@@ -19,6 +19,14 @@
         <p class="text-sm text-gray-500 mb-6">
             <strong>Fecha propuesta:</strong> {{ charla.fechaPropuesta | date: 'fullDate' }}
         </p>
+        <div class="vote-icon" *ngIf="!esPropietario">
+            <i class="fas fa-star fa-3x" [class.filled]="isVoted" (click)="!isVoted && attemptVote()"
+                [title]="isVoted ? 'Ya has votado esta charla' : 'Votar esta charla'" [ngClass]="{
+                 'text-yellow-500': isVoted,
+                 'text-gray-400': !isVoted,
+                 'cursor-not-allowed': isVoted
+               }" [style.pointer-events]="isVoted ? 'none' : 'auto'"></i>
+        </div>
 
         <!-- Botones de navegación -->
         <div class="flex justify-between items-center mt-6">
@@ -71,7 +79,7 @@
             </button>
         </div>
     </div>
-    
+
     <!-- Sección de comentarios -->
     <div class="mt-10 bg-gray-50 p-6 rounded-xl shadow-lg">
         <h2 class="text-2xl font-semibold text-blue-900 mb-6">Comentarios</h2>

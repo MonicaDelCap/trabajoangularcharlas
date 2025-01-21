@@ -29,6 +29,10 @@ import { ServicePostFiles } from './services/service.postfiles';
 import { CharlasComponent } from './components/charlas/charlas.component';
 import { CharlaComponent } from './components/charla/charla.component';
 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +52,9 @@ import { CharlaComponent } from './components/charla/charla.component';
     AppRoutingModule,
     FormsModule,
     MatCardModule, 
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
   ],
   providers: [provideHttpClient(),ServiceUser, ServiceRound,ServiceTalks,DatePipe,{ provide: LOCALE_ID, useValue: 'es-ES' },ServicePostFiles],
   bootstrap: [AppComponent],
