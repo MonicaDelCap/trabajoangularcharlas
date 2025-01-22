@@ -1,4 +1,5 @@
 import { Comentario } from "./comentario";
+import { Recurso } from "./recurso";
 
 export class Charla{
     constructor(
@@ -15,6 +16,7 @@ export class Charla{
         public tiempo:number,
         public titulo:string,
         public usuario:string,
-        public comentarios: Comentario[] = []
+        public comentarios: Comentario[] = [],
+        public recursos: Recurso[] = []
     ){}
 }
