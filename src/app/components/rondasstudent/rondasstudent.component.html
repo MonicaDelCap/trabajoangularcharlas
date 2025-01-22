@@ -3,15 +3,30 @@
         <div class="card-body">
             <h5 class="card-title">Ronda {{idRonda}}</h5>
             <p class="card-text">Ronda {{idRonda}}</p>
-            <button class="button" [routerLink]="['/createtalk/', idRonda]" *ngIf="true" 
-                [disabled]="didUAddTalk"
+            <button class="button" [routerLink]="['/createtalk/', idRonda]" *ngIf="true" [disabled]="didUAddTalk"
                 [ngClass]="{ 'disabled-button': didUAddTalk }">
                 Añadir charla
             </button>
         </div>
-        <div class="charlas-container">
-            <!-- Replace @for logic with Angular structural directive logic -->
-            <app-charlascardcomponent *ngFor="let talk of talks" [idTalk]="talk"></app-charlascardcomponent>
+        <div class="charlas-container px-6 py-8">
+            <div class="charlas-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <app-charla-card *ngFor="let talk of talks" [charla]="talk"></app-charla-card>
+            </div>
         </div>
     </div>
+</div>
+
+
+<div class="particles-container">
+    <!-- Partículas -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
 </div>

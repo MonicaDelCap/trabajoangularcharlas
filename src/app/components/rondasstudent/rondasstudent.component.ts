@@ -6,6 +6,7 @@ import { CharlascardcomponentComponent } from '../charlascardcomponent/charlasca
 import { TalksByCourse } from '../../models/talks';
 import { ServiceTalks } from '../../services/service.talks';
 import { environment } from '../../../environments/environment';
+import { Charla } from '../../models/charla';
 @Component({
   selector: 'app-rondasstudent',
   templateUrl: './rondasstudent.component.html',
@@ -16,7 +17,8 @@ export class RondasstudentComponent implements OnInit{
   inicio!: Date;
   final!:  Date;
   idRonda!: number;
-  talks!: Array<TalksByCourse>;
+  talks: Charla[] = []; // Todas las charlas
+  
   didUAddTalk!: boolean;
   isButtonDisabled = false;
 
