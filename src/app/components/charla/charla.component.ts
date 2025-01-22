@@ -4,6 +4,7 @@ import { ServiceUser } from '../../services/service.user';
 import { ActivatedRoute } from '@angular/router';
 import { Comentario } from '../../models/comentario';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Recurso } from '../../models/recurso';
 
 interface Voto {
   idVoto: number;
@@ -28,10 +29,11 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
   public charlaEditada: Partial<Charla> = {};
   public modalEditarAbierto: boolean = false;
   public isVoted: boolean = false;
+
+  public showVoteConfirm: boolean = false;  
   public alreadyVotedInRound: boolean = false;
   public votedCharlaTitle: string | null = null;
-  
-
+  public isDropdownOpen: boolean = false;
 
 
   // Agrega la referencia a la lista de comentarios
@@ -50,6 +52,7 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
         if (id) {
           this._service.getCharlaById(id).then((charla) => {
             this.charla = charla;
+            console.log(charla)
             this.charlaEditada = { ...charla };
             this.esPropietario = charla.idUsuario === this.idUsuario; // Verificar si es propietario
             console.log("Pasa por aqui ")
@@ -62,6 +65,9 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
       });
 
   }
+    toggleDropdown(): void {
+      this.isDropdownOpen = !this.isDropdownOpen;
+    }
 
   async checkVoteStatus(): Promise<void> {
     try {
@@ -100,10 +106,15 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
       );
       return;
     }
-  
+    this.showVoteConfirm = true;
+  }
+  // Método para confirmar el voto
+  confirmVote(): void {
+    this.isVoted = true;  // Marca que ha votado
+    this.showVoteConfirm = false;  // Cierra el modal
     if (this.charla) {
       try {
-        await this._service.voteForCharla(this.charla.idCharla, this.idUsuario, this.charla.idRonda);
+        this._service.voteForCharla(this.charla.idCharla, this.idUsuario, this.charla.idRonda);
         this.isVoted = true;
         this.snackBar.open('Tu voto fue registrado con éxito.', 'Cerrar', { duration: 3000 });
       } catch (error) {
@@ -113,15 +124,12 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
     }
   }
 
-  async voteForCharla(): Promise<void> {
-    if (this.charla) {
-      this._service.voteForCharla(this.charla.idCharla, this.idUsuario, this.charla.idRonda).then(() => {
-        this.isVoted = true;
-        this.snackBar.open('¡Tu voto ha sido registrado!', 'Cerrar', { duration: 3000 });
-      });
-    }
-
+  // Método para cancelar la acción y cerrar el modal
+  cancelVote(): void {
+    this.showVoteConfirm = false;
   }
+
+  
 
 
 

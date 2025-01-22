@@ -42,6 +42,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CharlaCardComponent } from './components/charla-card/charla-card.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -71,8 +72,9 @@ import { CharlaCardComponent } from './components/charla-card/charla-card.compon
     CalendarModule.forRoot({
       provide:DateAdapter,
       useFactory: adapterFactory
-    })
+    }),
 
+    MatExpansionModule
   ],
   providers: [provideHttpClient(),ServiceUser, ServiceRound,ServiceTalks,DatePipe,{ provide: LOCALE_ID, useValue: 'es-ES' },ServicePostFiles,ServiceTeacher],
   bootstrap: [AppComponent],

@@ -6,6 +6,7 @@ import { Login } from "../models/login";
 import { User } from "../models/user";
 import { Charla } from "../models/charla";
 import { Comentario } from "../models/comentario";
+import { Recurso } from "../models/recurso";
 
 
 @Injectable()
@@ -70,7 +71,7 @@ export class ServiceUser {
                         charlaData.nombreCurso,
                         charlaData.tiempo,
                         charlaData.titulo,
-                        charlaData.usuario
+                        charlaData.usuario,
                     ));
                     resolve(charlas);
                 })
@@ -80,12 +81,15 @@ export class ServiceUser {
     getCharlaById(id: string): Promise<Charla> {
         const request = `api/Charlas/${id}`;
         const header = { "Authorization": `Bearer ${localStorage.getItem('authToken')}` };
-
+    
         return new Promise((resolve, reject) => {
             axios.get(environment.urlCharlas + request, { headers: header })
                 .then(response => {
                     const charlaData = response.data.charla;
                     const comentariosData = response.data.comentarios;
+                    const recursosData = response.data.recursos; // Asegúrate de que la API devuelva los recursos
+    
+                    // Mapear los comentarios
                     const comentarios = comentariosData.map((comentario: any) => new Comentario(
                         comentario.idComentario,
                         comentario.idCharla,
@@ -94,6 +98,17 @@ export class ServiceUser {
                         comentario.contenido,
                         new Date(comentario.fecha)
                     ));
+    
+                    // Mapear los recursos
+                    const recursos = recursosData.map((recurso: any) => new Recurso(
+                        recurso.idRecurso,
+                        recurso.idCharla,
+                        recurso.url,
+                        recurso.nombre,
+                        recurso.descripcion
+                    ));
+    
+                    // Crear la charla
                     const charla = new Charla(
                         charlaData.descripcion || "",
                         "", // Estado no incluido en el API
@@ -108,8 +123,10 @@ export class ServiceUser {
                         charlaData.tiempo || 0,
                         charlaData.titulo || "",
                         "", // Usuario no incluido en el API
-                        comentarios // Array de comentarios
+                        comentarios, // Array de comentarios
+                        recursos // Array de recursos
                     );
+                    
                     resolve(charla);
                 })
                 .catch(error => reject(error));
