@@ -1,4 +1,8 @@
 /* Contenedor para las partículas */
+.inline-flex  {
+    text-decoration: none;
+}
+
 .particles-container {
     position: fixed;
     top: 0;

@@ -1,0 +1,7 @@
+.charla-card-content {
+    text-decoration: none;
+}
+
+.charla-card-content:hover {
+    text-decoration: none; /* Asegúrate de que el hover no lo reactive */
+}
