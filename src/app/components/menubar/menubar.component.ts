@@ -16,7 +16,7 @@ export class MenubarComponent {
       label: 'Cursos'
     },
     {
-      routeLink: 'profile',
+      routeLink: 'teacherProfile',
       icon: 'fal fa-home',
       label: 'Perfil'
     }
