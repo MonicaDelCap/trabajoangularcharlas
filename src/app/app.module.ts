@@ -32,6 +32,7 @@ import { CharlaComponent } from './components/charla/charla.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CharlaCardComponent } from './components/charla-card/charla-card.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     CharlasComponent,
     CharlaComponent,
+    CharlaCardComponent,
 
   ],
   imports: [
