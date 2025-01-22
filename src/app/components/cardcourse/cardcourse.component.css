@@ -4,21 +4,35 @@
     margin-bottom: 10px;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    height: 150px; /* Ajusta esta altura según tus necesidades */
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    transition: transform 0.3s, background-color 0.3s; /* Transiciones suaves */
+    transition: transform 0.3s, background-color 0.3s;
 }
 
 .course-item:hover {
-    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
-    background-color: #3498db; /* Cambia el color de fondo */
-    color: black; /* Cambia el color del texto */
+    transform: scale(1.05);
+    background-color: #3498db;
+    color: black;
 }
+
 .course-item.disabled {
-    opacity: 0.5; /* Reducir opacidad para indicar deshabilitado */
-    pointer-events: none; /* Evitar interacción con el componente */
-    cursor: not-allowed; /* Cambiar el cursor a "no permitido" */
-  }
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.button-group {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.button-group .btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}

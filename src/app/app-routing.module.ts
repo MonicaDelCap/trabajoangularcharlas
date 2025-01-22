@@ -11,6 +11,7 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { CoursewithstudentComponent } from './components/coursewithstudent/coursewithstudent.component';
 import { UpdateroundComponent } from './components/updateround/updateround.component';
 import { CreateroundComponent } from './components/createround/createround.component';
+import { UpdatecourseComponent } from './components/updatecourse/updatecourse.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,9 @@ const routes: Routes = [
   },
   {
     path:"createround", component:CreateroundComponent
+  },
+  {
+    path:"updatecourse/:id", component:UpdatecourseComponent
   }
 ];
 
