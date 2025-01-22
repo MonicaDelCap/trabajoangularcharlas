@@ -31,14 +31,17 @@ import { CharlasComponent } from './components/charlas/charlas.component';
 import { CharlaComponent } from './components/charla/charla.component';
 import { CreateTalkComponent } from './components/create-talk/create-talk.component';
 
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 
 import { ServiceTeacher } from './services/serivece.teacher';
 import { CalendarModule,DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CharlaCardComponent } from './components/charla-card/charla-card.component';
 
 
 @NgModule({
@@ -54,6 +57,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     CharlaComponent,
     CreateTalkComponent,
     TeacherprofileComponent,
+    CharlaCardComponent,
 
   ],
   imports: [
