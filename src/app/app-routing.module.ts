@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { CharlasComponent } from './components/charlas/charlas.component';
 import { CharlaComponent } from './components/charla/charla.component';
 import { CreateTalkComponent } from './components/create-talk/create-talk.component';
+import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,9 @@ const routes: Routes = [
   },
   {
     path: 'createtalk/:id', component:CreateTalkComponent
+  },
+  {
+    path: "teacherProfile", component:TeacherprofileComponent
   }
 ];
 
