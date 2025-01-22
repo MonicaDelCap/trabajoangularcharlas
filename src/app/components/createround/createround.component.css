@@ -1,0 +1,26 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .card {
+    border-radius: 15px;
+  }
+  
+  .card-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  
+  .form-control {
+    border-radius: 8px;
+  }
+  
+  .btn {
+    border-radius: 8px;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  

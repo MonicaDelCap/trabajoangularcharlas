@@ -31,7 +31,13 @@ import { CharlaComponent } from './components/charla/charla.component';
 import { CreateTalkComponent } from './components/create-talk/create-talk.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { CoursewithstudentComponent } from './components/coursewithstudent/coursewithstudent.component';
-import { StudentsComponent } from './components/students/students.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CardroundComponent } from './components/cardround/cardround.component';
+import { CardcourseComponent } from './components/cardcourse/cardcourse.component';
+import { ServiceTeacher } from './services/service.teacher';
+import { CardstudentComponent } from './components/cardstudent/cardstudent.component';
+import { UpdateroundComponent } from './components/updateround/updateround.component';
+import { CreateroundComponent } from './components/createround/createround.component';
 
 
 @NgModule({
@@ -48,7 +54,11 @@ import { StudentsComponent } from './components/students/students.component';
     CreateTalkComponent,
     CoursesComponent,
     CoursewithstudentComponent,
-    StudentsComponent,
+    CardroundComponent,
+    CardcourseComponent,
+    CardstudentComponent,
+    UpdateroundComponent,
+    CreateroundComponent
 
   ],
   imports: [
@@ -56,9 +66,18 @@ import { StudentsComponent } from './components/students/students.component';
     AppRoutingModule,
     FormsModule,
     MatCardModule, 
-    MatButtonModule
+    MatButtonModule,
+    MatSlideToggleModule
   ],
-  providers: [provideHttpClient(),ServiceUser, ServiceRound,ServiceTalks,DatePipe,{ provide: LOCALE_ID, useValue: 'es-ES' },ServicePostFiles],
+  providers: [
+    provideHttpClient(),
+    ServiceUser, 
+    ServiceRound,
+    ServiceTalks,
+    DatePipe,
+    { provide: LOCALE_ID, useValue: 'es-ES' },
+    ServicePostFiles,
+    ServiceTeacher],
   bootstrap: [AppComponent],
   
 })

@@ -1,61 +1,187 @@
+
 /* Configuración de la tarjeta */
 .card-container {
-  width: 100%;
-  height: 90vh;
-  perspective: 1000px;
+  height: auto;
+    width: auto;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Evita el desbordamiento */
+  }
+  
+  .card {
+    width: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    position: relative;
+  }
+  
+  .card-container.flipped .card {
+    transform: rotateY(180deg);
+  }
+  
+  /* Cara frontal y trasera */
+  .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-sizing: border-box; /* Asegura que padding no aumente el tamaño */
+  }
+  
+
+/* Configuración de la cara frontal */
+.card-front {
+  background: #ffffff;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.card {
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
-  position: relative;
-}
-
-.card-container.flipped .card {
-  transform: rotateY(180deg);
-}
-
-/* Cara frontal y trasera */
-.card-front, .card-back {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  backface-visibility: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  flex-direction: column; /* Coloca el contenido y el botón en columnas */
+  justify-content: space-between; /* Distribuye el espacio verticalmente */
+  align-items: stretch; /* Asegura que el ancho sea consistente */
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  box-sizing: border-box;
+  gap: 10px; /* Espacio entre el contenido y el botón */
+}
+.round_container {
+  display:flex;             /* Usa flexbox para distribuir los elementos */
+  flex-wrap:wrap; 
+  justify-content:space-around;
+  justify-items: start; /* Alinea los elementos al inicio de cada fila */
+}
+  
+  .card-back {
+    background: #f8f9fa;
+    transform: rotateY(180deg);
+  }
+  
+  /* Botón deslizante */
+  .slide-button {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .slide-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: left 0.3s ease-in-out;
+  }
+  
+  .slide-button:hover::after {
+    left: 0;
+  }
+  
+  .slide-button:hover {
+    transform: scale(1.05);
+    background-color: #0056b3;
+  }
+  
+  /* Posicionamiento del contenido */
+  h1 {
+    margin-top: 40px;
+  }
+  
+  textarea {
+    margin-top: 20px;
+  }
+
+
+/* Contenedor del botón */
+.button-container {
+  display: flex;
+  justify-content: center; /* Centra el botón horizontalmente */
+  align-items: center; /* Centra el botón verticalmente */
+  padding-top: 10px;
 }
 
-.card-front {
-  background: #ffffff;
+.scroll-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  display: block;
+  scrollbar-width: thin; /* Para navegadores compatibles */
+  scrollbar-color: #4CAF50 #F0F0F0; /* Color del scrollbar y fondo */
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
 }
 
-.card-back {
-  background: #f8f9fa;
-  transform: rotateY(180deg);
+/* Personalización del scrollbar para navegadores basados en Webkit */
+.scroll-container::-webkit-scrollbar {
+  width: 8px;
 }
 
-/* Botón */
-button {
-  padding: 10px 20px;
-  font-size: 16px;
+.scroll-container::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: #4CAF50;
+  border-radius: 8px;
+  border: 2px solid #f0f0f0;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background-color: #45A049;
+}
+
+/* Contenedor del botón "+" */
+.top-right-button {
+  position:absolute;
+  top: 40px;
+  right: 70px;
+}
+
+/* Botón "+" */
+.plus-button {
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
   color: white;
-  background-color: #007bff;
+  background-color: #0056b3;
   border: none;
-  border-radius: 5px;
+  border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-button:hover {
-  background-color: #0056b3;
+.plus-button:hover {
+  background-color: #218838;
+  transform: scale(1.1);
 }
+
+
+
+
+  
+  
+  

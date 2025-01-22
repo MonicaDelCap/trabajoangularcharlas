@@ -2,15 +2,32 @@
     <div class="card">
       <!-- Cara frontal -->
       <div class="card-front">
-        <h1>Contenido Frontal</h1>
-        <p>Aquí puedes mostrar contenido.</p>
-        <button (click)="flipCard()">Voltear</button>
+        <div class="top-right-button">
+          <button class="plus-button" routerLink="/createround">+</button>
+        </div>
+        <div class="button-container">
+          <button class="slide-button" (click)="flipCard()">Deslizar para Voltear</button>
+        </div>
+        <div class="round_container">
+          @for(round of rounds; track $index){
+            <app-cardround [round]="round"></app-cardround>
+          }
+        </div>
       </div>
       <!-- Cara trasera -->
       <div class="card-back">
-        <h1>Contenido Trasero</h1>
-        <textarea rows="10" placeholder="Escribe algo aquí..."></textarea>
-        <button (click)="flipCard()">Volver</button>
+        <div class="button-container">
+          <button class="slide-button" (click)="flipCard()">Deslizar para Voltear</button>
+        </div>
+        <div class="scroll-container">
+          
+            @for(student of students; track $index){
+              <app-cardstudent [student]="student"></app-cardstudent>
+            }
+      
+         
+        </div>
+        
       </div>
     </div>
   </div>

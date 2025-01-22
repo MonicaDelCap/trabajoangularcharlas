@@ -8,8 +8,9 @@ import { CharlasComponent } from './components/charlas/charlas.component';
 import { CharlaComponent } from './components/charla/charla.component';
 import { CreateTalkComponent } from './components/create-talk/create-talk.component';
 import { CoursesComponent } from './components/courses/courses.component';
-import { StudentsComponent } from './components/students/students.component';
 import { CoursewithstudentComponent } from './components/coursewithstudent/coursewithstudent.component';
+import { UpdateroundComponent } from './components/updateround/updateround.component';
+import { CreateroundComponent } from './components/createround/createround.component';
 
 const routes: Routes = [
   {
@@ -37,7 +38,13 @@ const routes: Routes = [
     path:"courses", component:CoursesComponent
   },
   {
-    path:"studentslist" , component:CoursewithstudentComponent
+    path:"studentslist/:idCourse" , component:CoursewithstudentComponent
+  },
+  {
+    path: "updateround/:idround", component:UpdateroundComponent
+  },
+  {
+    path:"createround", component:CreateroundComponent
   }
 ];
 

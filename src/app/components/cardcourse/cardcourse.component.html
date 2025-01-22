@@ -1,0 +1,11 @@
+<div 
+  class="course-item p-4 bg-light rounded shadow flex items-center justify-center"
+  [routerLink]="course.activo ? ['/studentslist/', course.idCurso] : null"
+  [class.disabled]="!course.activo">
+  <li style="list-style-type: none">
+    <button class="btn btn-danger" *ngIf="isActive == 'Activo'" (click)="desactivatedCourse(); $event.stopPropagation()">Desactivar</button>
+    <h1>{{ course.nombre }}</h1>
+    <b>{{ course.idCurso }} </b>
+    <ul>{{ isActive }}</ul>
+  </li>
+</div>

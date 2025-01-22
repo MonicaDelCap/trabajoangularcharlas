@@ -1,14 +1,19 @@
 <body class="d-flex">
-    <div class="main-content  flex-grow-1 p-4">
+    <div class="main-content flex-grow-1 p-4">
         <header class="flex items-center justify-center">
             <h1 class="text-primary">CURSOS TAJAMAR</h1>
         </header>
         <div class="course-list flex justify-content-center grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="course-item p-4 bg-light rounded shadow flex items-center justify-center" [routerLink]="'/studentslist'"> 3213 MASTER
-                DESARROLLO
-              </div>
+            <!-- Recorremos los cursos -->
+            <div *ngFor="let course of coursesName">
+                <app-cardcourse [course]="course"></app-cardcourse>
+            </div>
         </div>
-        <button class="add-button mt-4 btn btn-primary rounded-circle">+</button>
-
+        <!-- Botón Deshabilitado según la lógica -->
+        <button 
+            class="add-button mt-4 btn btn-primary rounded-circle"
+            [disabled]="hasActiveCourses()">
+            +
+        </button>
     </div>
 </body>

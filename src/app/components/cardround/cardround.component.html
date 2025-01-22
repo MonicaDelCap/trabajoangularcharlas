@@ -1,0 +1,19 @@
+<div class="ronda-card">
+    <div class="ronda-header">
+      <h3 class="ronda-title">Ronda {{round.idRonda}}</h3>
+      <p>Tiempo: {{round.duracion}}</p>
+      <div class="ronda-actions">
+        <button class="icon-button edit-button" title="Editar" [routerLink]="['/updateround/',round.idRonda]">
+          🖉
+        </button>
+        <button class="icon-button delete-button" title="Borrar" (click)="deleteRound()">
+          🗑
+        </button>
+      </div>
+    </div>
+    <p class="ronda-date">Fecha presentacion: {{dateExp}}</p>
+    <div class="ronda-footer">
+      <button class="view-talks-button" [routerLink]="['/studentround/', round.idRonda]">Ver Charlas</button>
+    </div>
+  </div>
+  

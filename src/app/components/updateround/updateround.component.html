@@ -1,0 +1,34 @@
+<div class="form-container">
+    <form #updateForm="ngForm">
+        <div class="form-group">
+            <label for="fechaPresentacion">Fecha de Presentación</label>
+            <input type="datetime-local" id="fechaPresentacion" name="fechapresentacion" #fechapresentacion class="form-control"
+                required />
+        </div>
+
+        <div class="form-group">
+            <label for="fechaCierre">Fecha de Cierre</label>
+            <input type="datetime-local" id="fechaCierre" name="fechaCierre" #fechaCierre class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="duracion">Duración (en minutos)</label>
+            <input type="number" id="duracion" name="duracion" #duracion class="form-control" required min="1" />
+        </div>
+
+        <div class="form-group">
+            <label for="descripcionModulo">Descripción del Módulo</label>
+            <input type="text" id="descripcionModulo" name="descripcionModulo" #descripcionModulo class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="fechaLimiteVotacion">Fecha Límite de Votación</label>
+            <input type="datetime-local" id="fechaLimiteVotacion" name="fechaLimiteVotacion" #fechaLimiteVotacion class="form-control"
+                required />
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="updateForm.invalid" (click)="updateRound()">
+            Actualizar
+        </button>
+    </form>
+</div>
