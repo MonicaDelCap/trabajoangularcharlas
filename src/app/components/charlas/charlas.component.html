@@ -13,9 +13,14 @@
 
     <div class="charlas-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         <div 
-            class="charla-card max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-2"
+            class="charla-card max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-2 relative"
             *ngFor="let charla of filteredCharlas"
         >
+            <!-- Icono de la corona, visible solo si el estado es aprobado -->
+            <div *ngIf="charla.idEstadoCharla === 2" class="absolute top-0 right-0 mt-2 mr-2 text-yellow-500">
+                <i class="fas fa-crown text-3xl"></i>
+            </div>
+
             <a 
                 [routerLink]="['/talk', charla.idCharla]" 
                 class="charla-card-content flex flex-col"
@@ -39,7 +44,18 @@
                 </div>
                 <div class="charla-info p-4">
                     <h2 class="text-xl font-semibold text-gray-800 truncate">{{ charla.titulo }}</h2>
-                    <p class="fecha-propuesta text-sm text-gray-500 mt-2">{{ charla.fechaPropuesta | date:'short' }}</p>
+                    <div class="flex items-center justify-between text-sm text-gray-500 mt-2">
+                        <p>{{ charla.fechaPropuesta | date:'short' }}</p>
+                        <span 
+                            class="px-2 py-1 text-xs font-medium rounded-full"
+                            [ngClass]="{
+                                'bg-gray-200 text-gray-800': charla.idEstadoCharla === 1,
+                                'bg-green-200 text-green-800': charla.idEstadoCharla === 2
+                            }"
+                        >
+                            {{ charla.idEstadoCharla === 1 ? 'Propuesto' : charla.idEstadoCharla === 2 ? 'Aprobado' : '' }}
+                        </span>
+                    </div>
                 </div>
             </a>
         </div>
