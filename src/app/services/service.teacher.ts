@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
 import axios from "axios";
 import { environment } from "../../environments/environment";
+import { Round } from "../models/round";
+import { Course } from "../models/course";
 
 @Injectable()
 export class ServiceTeacher {
@@ -19,6 +21,27 @@ export class ServiceTeacher {
         let request = "api/Cursos/UpdateEstadoCurso/" + id + "/" + booleano;
         return new Promise(function(resolve){
             axios.put(environment.urlCharlas + request, null,{headers:header})
+            .then(r => resolve(r.data))
+        })
+    }
+    updateDateCourse(course:Course): Promise<any>{
+        let header = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+        };        let request = "api/Cursos";
+        return new Promise(function(resolve){
+            axios.put(environment.urlCharlas + request, JSON.stringify(course),{headers:header})
+            .then(r => resolve(r.data))
+        })
+    }
+
+    createCourse(course:Course): Promise<any>{
+        let header = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+        };        let request = "api/Profesor/CreateCurso";
+        return new Promise(function(resolve){
+            axios.post(environment.urlCharlas + request, JSON.stringify(course),{headers:header})
             .then(r => resolve(r.data))
         })
     }

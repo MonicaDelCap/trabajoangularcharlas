@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .course-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+
+  .course-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .course-header h1 {
+    font-size: 1.8em;
+    color: #333;
+    margin: 0;
+  }
+
+  .course-info {
+    margin-bottom: 20px;
+  }
+
+  .course-info p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #555;
+  }
+
+  .course-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn-deactivate {
+    background-color: #ccc;
+    color: #fff;
+  }
+
+  .btn-deactivate:hover {
+    background-color: #aaa;
+  }
+
+  .btn-delete {
+    background-color: #e74c3c;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-delete:hover {
+    background-color: #c0392b;
+  }
+
+  .btn-delete i {
+    margin-right: 5px;
+  }

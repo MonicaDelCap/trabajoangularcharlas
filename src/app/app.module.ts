@@ -39,6 +39,8 @@ import { CardstudentComponent } from './components/cardstudent/cardstudent.compo
 import { UpdateroundComponent } from './components/updateround/updateround.component';
 import { CreateroundComponent } from './components/createround/createround.component';
 import { UpdatecourseComponent } from './components/updatecourse/updatecourse.component';
+import { CoursedetailsComponent } from './components/coursedetails/coursedetails.component';
+import { CreatecourseComponent } from './components/createcourse/createcourse.component';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import { UpdatecourseComponent } from './components/updatecourse/updatecourse.co
     CardstudentComponent,
     UpdateroundComponent,
     CreateroundComponent,
-    UpdatecourseComponent
+    UpdatecourseComponent,
+    CoursedetailsComponent,
+    CreatecourseComponent
 
   ],
   imports: [

@@ -1,8 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ServiceTeacher } from '../../services/service.teacher';
 import { StudentsCoursesTeacher } from '../../models/studentscourseteacher';
 import { Course } from '../../models/course';
+import { Round } from '../../models/round';
 
 @Component({
   selector: 'app-updatecourse',
@@ -20,7 +21,8 @@ export class UpdatecourseComponent implements OnInit {
   @ViewChild("nombre") nombre!:ElementRef;
   constructor(
     private _active: ActivatedRoute,
-    private _serviceTeacher:ServiceTeacher
+    private _serviceTeacher:ServiceTeacher,
+    private _router:Router
   ) { }
 
   ngOnInit(): void {
@@ -44,6 +46,16 @@ export class UpdatecourseComponent implements OnInit {
          
       }
     }
+  }
+
+  updateCourse():void{
+    this.courseNow.nombre = this.nombre.nativeElement.value;
+    this.courseNow.fechaInicio = this.fechaInicio.nativeElement.value;
+    this.courseNow.fechaFin = this.fechaFin.nativeElement.value;
+    console.log(this.courseNow)
+    this._serviceTeacher.updateDateCourse(this.courseNow).then(r => {
+      this._router.navigate(["/courses"])
+    })
   }
 
 

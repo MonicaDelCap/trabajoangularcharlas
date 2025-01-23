@@ -1,0 +1,18 @@
+<body>
+  <div class="course-container">
+    <div class="course-header">
+      <h1>Información del Curso</h1>
+    </div>
+    <div class="course-info">
+      <p><strong>ID del Curso:</strong> {{courseNow.idCurso}}</p>
+      <p><strong>Nombre: </strong> {{courseNow.nombre}}</p>
+      <p><strong>Fecha de Inicio: </strong>{{courseNow.fechaInicio}}</p>
+      <p><strong>Fecha de Fin: </strong> {{courseNow.fechaFin}}</p>
+      <p style="color: greenyellow;"><strong>Estado: </strong> Activo</p>
+    </div>
+    <div class="course-actions">
+      <button class="btn btn-deactivate" (click)="desactivatedCourse()">Desactivar</button>
+      <button class="btn btn-delete" (click)="deleteCourse()"> Eliminar </button>
+    </div>
+  </div>
+</body>

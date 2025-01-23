@@ -10,7 +10,7 @@
     </p>
     <div class="button-group" *ngIf="course.activo">
       <button class="btn btn-primary" [routerLink]="['/updatecourse/' , course.idCurso]" >Editar</button>
-      <button class="btn btn-danger">Eliminar</button>
+      <button class="btn btn-secondary" [routerLink]="['/coursedetails/' , course.idCurso]">Informacion</button>
     </div>
   </li>
 </div>
