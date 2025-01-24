@@ -14,6 +14,7 @@ import { CreateroundComponent } from './components/createround/createround.compo
 import { UpdatecourseComponent } from './components/updatecourse/updatecourse.component';
 import { CoursedetailsComponent } from './components/coursedetails/coursedetails.component';
 import { CreatecourseComponent } from './components/createcourse/createcourse.component';
+import { DetailstudenteacherComponent } from './components/detailstudenteacher/detailstudenteacher.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,9 @@ const routes: Routes = [
   },
   {
     path:"createcourse", component:CreatecourseComponent
+  },
+  {
+    path:"detailsstudent", component:DetailstudenteacherComponent
   }
 ];
 

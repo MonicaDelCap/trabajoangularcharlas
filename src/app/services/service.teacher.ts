@@ -46,4 +46,13 @@ export class ServiceTeacher {
         })
     }
 
+    getStudentById(id:number): Promise<any>{
+        let header = {"Authorization": `Bearer ${localStorage.getItem('authToken')}`};
+        let request = "api/Profesor/DatosAlumno/" + id;
+        return new Promise(function(resolve){
+            axios.get(environment.urlCharlas + request, {headers:header})
+            .then(r => resolve(r.data))
+        })
+    }
+
 }

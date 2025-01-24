@@ -1,0 +1,124 @@
+.container {
+  width: auto;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  background-color: #fff;
+}
+
+.container2 {
+  margin-top: 40px;
+
+}
+
+.image-section {
+  float: left;
+  width: 25%;
+  
+}
+
+.image-placeholder {
+  margin-left: 20px;
+  width: 60%;
+  height: 140px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.info-section {
+  float: left;
+  width: 50%;
+  margin-left: 20px;
+}
+
+.input-field {
+  display: block;
+  width: 90%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.stats-section {
+  clear: both;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+
+
+
+.box {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #000;
+}
+
+.number-circle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #b3e5fc;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.scroll-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  display: block;
+  scrollbar-width: thin;
+  /* Para navegadores compatibles */
+  scrollbar-color: #4CAF50 #F0F0F0;
+  /* Color del scrollbar y fondo */
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Personalización del scrollbar para navegadores basados en Webkit */
+.scroll-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: #4CAF50;
+  border-radius: 8px;
+  border: 2px solid #f0f0f0;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background-color: #45A049;
+}
+
+.round_container {
+  display: flex;
+  /* Usa flexbox para distribuir los elementos */
+  flex-wrap: wrap;
+  justify-content: space-around;
+  justify-items: start;
+  /* Alinea los elementos al inicio de cada fila */
+}
