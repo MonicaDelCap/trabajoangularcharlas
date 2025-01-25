@@ -44,6 +44,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CharlaCardComponent } from './components/charla-card/charla-card.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.component';
+import { AdmingestionalumnosComponent } from './components/admingestionalumnos/admingestionalumnos.component';
+import { ServiceAdmin } from './services/service.admin';
 
 
 @NgModule({
@@ -61,6 +63,7 @@ import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.co
     TeacherprofileComponent,
     CharlaCardComponent,
     MenubaradminComponent,
+    AdmingestionalumnosComponent,
 
   ],
   imports: [
@@ -78,7 +81,7 @@ import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.co
 
     MatExpansionModule
   ],
-  providers: [provideHttpClient(),ServiceUser, ServiceRound,ServiceTalks,DatePipe,{ provide: LOCALE_ID, useValue: 'es-ES' },ServicePostFiles,ServiceTeacher],
+  providers: [provideHttpClient(),ServiceUser, ServiceRound,ServiceTalks,DatePipe,{ provide: LOCALE_ID, useValue: 'es-ES' },ServicePostFiles,ServiceTeacher,ServiceAdmin],
   bootstrap: [AppComponent],
   
 })
