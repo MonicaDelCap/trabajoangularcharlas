@@ -43,6 +43,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CharlaCardComponent } from './components/charla-card/charla-card.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     CreateTalkComponent,
     TeacherprofileComponent,
     CharlaCardComponent,
+    MenubaradminComponent,
 
   ],
   imports: [
