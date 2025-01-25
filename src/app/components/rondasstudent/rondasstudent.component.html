@@ -7,12 +7,10 @@
             Añadir charla
         </button>
     </div>
-            
-            <div class="charlas-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-               
-                <app-charla-card *ngFor="let talk of talks" [charla]="talk"></app-charla-card>
-            </div>
-        
+    <div class="charlas-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+        <app-charla-card *ngFor="let talk of talks" [charla]="talk"></app-charla-card>
+    </div>
 </div>
 
 

@@ -46,6 +46,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CharlaCardComponent } from './components/charla-card/charla-card.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TeacherRondaComponent } from './components/teacher-ronda/teacher-ronda.component';
+import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.component';
 
 
 @NgModule({
@@ -63,7 +64,7 @@ import { TeacherRondaComponent } from './components/teacher-ronda/teacher-ronda.
     TeacherprofileComponent,
     CharlaCardComponent,
     TeacherRondaComponent,
-
+    MenubaradminComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,9 @@
     }@else if(idRole== 2){
         <app-menubarstudent [isLeftSidebarCollapsed] = "isLeftSidebarCollapsed()"
         (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)"></app-menubarstudent>
+    }@else if(idRole == 3){
+        <app-menubaradmin [isLeftSidebarCollapsed] = "isLeftSidebarCollapsed()"
+        (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)"></app-menubaradmin> 
     }
     
 }
