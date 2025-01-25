@@ -31,4 +31,43 @@ export class ServiceTeacher{
             .then(r => resolve(r.data))
         })
     }
+    getCharlasRonda(idRonda: number): Promise<any> {
+        let header = { "Authorization": `Bearer ${localStorage.getItem('authToken')}` };
+        let request = `api/Charlas/CharlasRonda/${idRonda}`;
+        return new Promise(function(resolve) {
+            axios.get(environment.urlCharlas + request, { headers: header })
+                .then(r => resolve(r.data))
+                .catch(error => {
+                    console.error("Error fetching charlas for ronda:", error);
+                    resolve([]);
+                });
+        });
+    }
+    getVotosCharla(idCharla: number): Promise<any> {
+        let header = { "Authorization": `Bearer ${localStorage.getItem('authToken')}` };
+        let request = `api/Votos/VotosCharla/${idCharla}`;
+        return new Promise(function(resolve) {
+            axios.get(environment.urlCharlas + request, { headers: header })
+                .then(r => resolve(r.data))
+                .catch(error => {
+                    console.error("Error fetching votes for charla:", error);
+                    resolve([]);
+                });
+        });
+    }
+    updateCharla(charlaData: any): Promise<any> {
+        let header = { "Authorization": `Bearer ${localStorage.getItem('authToken')}` };
+        let request = `api/Charlas`;
+        
+        return new Promise(function(resolve, reject) {
+            axios.put(environment.urlCharlas + request, charlaData, { headers: header })
+                .then(response => {
+                    resolve(response.data);
+                })
+                .catch(error => {
+                    console.error("Error updating charla:", error);
+                    reject(error);
+                });
+        });
+    }
 }

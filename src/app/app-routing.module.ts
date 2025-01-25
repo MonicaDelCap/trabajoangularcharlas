@@ -8,6 +8,7 @@ import { CharlasComponent } from './components/charlas/charlas.component';
 import { CharlaComponent } from './components/charla/charla.component';
 import { CreateTalkComponent } from './components/create-talk/create-talk.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
+import { TeacherRondaComponent } from './components/teacher-ronda/teacher-ronda.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,9 @@ const routes: Routes = [
   },
   {
     path: "teacherProfile", component:TeacherprofileComponent
+  },
+  {
+    path: "teacher/ronda/:idRonda", component:TeacherRondaComponent
   }
 ];
 

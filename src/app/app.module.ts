@@ -39,10 +39,13 @@ import { CalendarModule,DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CharlaCardComponent } from './components/charla-card/charla-card.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { TeacherRondaComponent } from './components/teacher-ronda/teacher-ronda.component';
 
 
 @NgModule({
@@ -59,6 +62,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     CreateTalkComponent,
     TeacherprofileComponent,
     CharlaCardComponent,
+    TeacherRondaComponent,
 
   ],
   imports: [
@@ -73,8 +77,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
       provide:DateAdapter,
       useFactory: adapterFactory
     }),
-
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule,
+    MatIconModule
   ],
   providers: [provideHttpClient(),ServiceUser, ServiceRound,ServiceTalks,DatePipe,{ provide: LOCALE_ID, useValue: 'es-ES' },ServicePostFiles,ServiceTeacher],
   bootstrap: [AppComponent],

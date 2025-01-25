@@ -17,6 +17,7 @@ export class Charla{
         public titulo:string,
         public usuario:string,
         public comentarios: Comentario[] = [],
-        public recursos: Recurso[] = []
+        public recursos: Recurso[] = [],
+        public votos: number = 0
     ){}
 }
