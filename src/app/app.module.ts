@@ -29,6 +29,9 @@ import { ServicePostFiles } from './services/service.postfiles';
 import { CharlasComponent } from './components/charlas/charlas.component';
 import { CharlaComponent } from './components/charla/charla.component';
 import { CreateTalkComponent } from './components/create-talk/create-talk.component';
+import { PerfiladminComponent } from './components/perfiladmin/perfiladmin.component';
+import { ServiceAdmin } from './services/service.admin';
+import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.component';
 
 
 @NgModule({
@@ -43,6 +46,8 @@ import { CreateTalkComponent } from './components/create-talk/create-talk.compon
     CharlasComponent,
     CharlaComponent,
     CreateTalkComponent,
+    PerfiladminComponent,
+    MenubaradminComponent,
 
   ],
   imports: [
@@ -52,7 +57,7 @@ import { CreateTalkComponent } from './components/create-talk/create-talk.compon
     MatCardModule, 
     MatButtonModule
   ],
-  providers: [provideHttpClient(),ServiceUser, ServiceRound,ServiceTalks,DatePipe,{ provide: LOCALE_ID, useValue: 'es-ES' },ServicePostFiles],
+  providers: [provideHttpClient(),ServiceUser, ServiceRound,ServiceTalks,DatePipe,{ provide: LOCALE_ID, useValue: 'es-ES' },ServicePostFiles,ServiceAdmin],
   bootstrap: [AppComponent],
   
 })

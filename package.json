@@ -22,6 +22,7 @@
     "@angular/router": "^18.2.0",
     "axios": "^1.7.9",
     "rxjs": "~7.8.0",
+    "tailwind": "^4.0.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
   },
