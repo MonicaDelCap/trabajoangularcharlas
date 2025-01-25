@@ -20,7 +20,7 @@
       <div class="scroll-container">
         <div class="round_container">
             @if(studentInfo.charlasTotales != 0){
-                <app-cardround *ngFor="let talk of studentInfo.charlas">RONDA 1</app-cardround>
+                <app-cardroundteacher *ngFor="let talk of studentInfo.charlas">RONDA 1</app-cardroundteacher>
             }@else{
                 <h1>NO HAY CHARLAS PRENSENTADAS</h1>
             }

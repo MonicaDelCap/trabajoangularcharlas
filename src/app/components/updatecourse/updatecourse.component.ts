@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ServiceTeacher } from '../../services/service.teacher';
+import { ServiceTeacherM } from '../../services/service.teacher';
 import { StudentsCoursesTeacher } from '../../models/studentscourseteacher';
 import { Course } from '../../models/course';
 import { Round } from '../../models/round';
@@ -21,7 +21,7 @@ export class UpdatecourseComponent implements OnInit {
   @ViewChild("nombre") nombre!:ElementRef;
   constructor(
     private _active: ActivatedRoute,
-    private _serviceTeacher:ServiceTeacher,
+    private _serviceTeacher:ServiceTeacherM,
     private _router:Router
   ) { }
 

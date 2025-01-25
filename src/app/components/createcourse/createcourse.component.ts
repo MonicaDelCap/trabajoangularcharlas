@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ServiceTeacher } from '../../services/service.teacher';
+import { ServiceTeacherM } from '../../services/service.teacher';
 import { Course } from '../../models/course';
 
 @Component({
@@ -19,7 +19,7 @@ export class CreatecourseComponent {
 
   constructor(
     private _active: ActivatedRoute,
-    private _serviceTeacher: ServiceTeacher,
+    private _serviceTeacher: ServiceTeacherM,
     private _router: Router
   ) {
     this.newCourse = new Course(0, "", "", "", true);

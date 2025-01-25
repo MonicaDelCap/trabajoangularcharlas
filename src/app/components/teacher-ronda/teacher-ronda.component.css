@@ -1,5 +1,5 @@
 .scrollable-content {
-    max-height: calc(4 * 8rem);
+    max-height: calc(4 * 6.5rem);
     /* Puedes ajustar este valor según tus necesidades */
     overflow-y: auto;
 }

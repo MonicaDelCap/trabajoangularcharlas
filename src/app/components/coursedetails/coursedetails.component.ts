@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { StudentsCoursesTeacher } from '../../models/studentscourseteacher';
 import { Course } from '../../models/course';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ServiceTeacher } from '../../services/service.teacher';
+import { ServiceTeacherM } from '../../services/service.teacher';
 import { DatePipe } from '@angular/common';
 import Swal from 'sweetalert2';
 @Component({
@@ -17,7 +17,7 @@ export class CoursedetailsComponent {
 
   constructor(
     private _active: ActivatedRoute,
-    private _serviceTeacher: ServiceTeacher,
+    private _serviceTeacher: ServiceTeacherM,
     private _router:Router,
     private datepipe: DatePipe
   ) { }

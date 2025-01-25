@@ -33,7 +33,6 @@ import { CreateTalkComponent } from './components/create-talk/create-talk.compon
 import { CoursesComponent } from './components/courses/courses.component';
 import { CoursewithstudentComponent } from './components/coursewithstudent/coursewithstudent.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { CardroundComponent } from './components/cardround/cardround.component';
 import { CardcourseComponent } from './components/cardcourse/cardcourse.component';
 import { CardstudentComponent } from './components/cardstudent/cardstudent.component';
 import { UpdateroundComponent } from './components/updateround/updateround.component';
@@ -47,6 +46,7 @@ import { DetailstudenteacherComponent } from './components/detailstudenteacher/d
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 
 import { ServiceTeacher } from './services/serivece.teacher';
+import { ServiceTeacherM } from './services/service.teacher';
 import { CalendarModule,DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
@@ -59,6 +59,7 @@ import { CharlaCardComponent } from './components/charla-card/charla-card.compon
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TeacherRondaComponent } from './components/teacher-ronda/teacher-ronda.component';
 import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.component';
+import { CardroundteacherComponent } from './components/cardroundteacher/cardroundteacher.component';
 
 
 @NgModule({
@@ -75,7 +76,6 @@ import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.co
     CreateTalkComponent,
     CoursesComponent,
     CoursewithstudentComponent,
-    CardroundComponent,
     CardcourseComponent,
     CardstudentComponent,
     UpdateroundComponent,
@@ -87,7 +87,8 @@ import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.co
     TeacherprofileComponent,
     CharlaCardComponent,
     TeacherRondaComponent,
-    MenubaradminComponent
+    MenubaradminComponent,
+    CardroundteacherComponent
   ],
   imports: [
     BrowserModule,
@@ -114,7 +115,7 @@ import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.co
     DatePipe,
     { provide: LOCALE_ID, useValue: 'es-ES' },
     ServicePostFiles,
-    ServiceTeacher,ServiceTeacher],
+    ServiceTeacher,ServiceTeacherM],
   bootstrap: [AppComponent],
   
 })

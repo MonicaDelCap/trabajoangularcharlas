@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Course } from '../../models/course';
-import { ServiceTeacher } from '../../services/service.teacher';
+import { ServiceTeacherM } from '../../services/service.teacher';
 import { StudentsCoursesTeacher } from '../../models/studentscourseteacher';
 import { Student } from '../../models/student';
 import { ServiceRound } from '../../services/service.round';
@@ -24,7 +24,7 @@ export class CoursewithstudentComponent implements OnInit {
   public rounds !: Array<Round>
 
   constructor(
-    private _serviceTeacher: ServiceTeacher,
+    private _serviceTeacher: ServiceTeacherM,
     private _active:ActivatedRoute,
     private _serviceRound:ServiceRound
   ) { 

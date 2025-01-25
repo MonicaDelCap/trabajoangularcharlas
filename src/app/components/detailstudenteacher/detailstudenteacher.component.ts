@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentsInfoTeacher } from '../../models/studentinfoteacher';
-import { ServiceTeacher } from '../../services/service.teacher';
+import { ServiceTeacherM } from '../../services/service.teacher';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { StudentsInfoDetailsTeacher } from '../../models/studentsinfodetailsteacher';
 
@@ -14,7 +14,7 @@ export class DetailstudenteacherComponent implements OnInit {
   studentInfo !: StudentsInfoDetailsTeacher;
   idStudent !: number;
   constructor(
-    private _serviceTeacher: ServiceTeacher,
+    private _serviceTeacher: ServiceTeacherM,
     private _active: ActivatedRoute,
     private _router:Router
   ) { }

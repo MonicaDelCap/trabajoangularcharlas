@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Charla } from '../../models/charla';
 import { ServiceTeacher } from '../../services/serivece.teacher';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -21,7 +21,8 @@ export class TeacherRondaComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private _serviceTeacher: ServiceTeacher,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private _router:Router
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -64,6 +65,7 @@ export class TeacherRondaComponent implements OnInit {
   confirmarAccion(): void {
     if (this.mensajePopup === '¿Está seguro de que desea guardar los cambios?') {
       this.guardarCambios();
+      this._router.navigate(["/courses"])
     } else if (this.mensajePopup === '¿Está seguro de que desea cancelar los cambios?') {
       this.cancelarCambios();
     }
@@ -102,7 +104,7 @@ export class TeacherRondaComponent implements OnInit {
 
   // Cancelar cambios
   cancelarCambios(): void {
-    window.location.reload();
+    this._router.navigate(["/courses"])
   }
 
   onDragStart(event: DragEvent, charla: Charla): void {

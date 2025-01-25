@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceTeacher } from '../../services/service.teacher';
+import { ServiceTeacherM } from '../../services/service.teacher';
 import { StudentsCoursesTeacher } from '../../models/studentscourseteacher';
 import { Course } from '../../models/course';
 
@@ -12,7 +12,7 @@ export class CoursesComponent implements OnInit {
 
   public courses!:Array<StudentsCoursesTeacher>
   public coursesName!: Array<Course>
-  constructor(private _serviceTeacher:ServiceTeacher){}
+  constructor(private _serviceTeacher:ServiceTeacherM){}
 
   ngOnInit(): void {
       this.coursesName = new Array<Course>

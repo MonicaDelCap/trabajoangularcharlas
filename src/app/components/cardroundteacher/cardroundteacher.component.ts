@@ -5,11 +5,11 @@ import { ServiceRound } from '../../services/service.round';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-cardround',
-  templateUrl: './cardround.component.html',
-  styleUrl: './cardround.component.css'
+  selector: 'app-cardroundteacher',
+  templateUrl: './cardroundteacher.component.html',
+  styleUrl: './cardroundteacher.component.css'
 })
-export class CardroundComponent implements OnInit{
+export class CardroundteacherComponent implements OnInit{
   @Input() round!: Round;
   public dateExp !: string;
 
@@ -31,3 +31,4 @@ export class CardroundComponent implements OnInit{
     .then(r => this._router.navigate(["/courses"]) )
   }
 }
+

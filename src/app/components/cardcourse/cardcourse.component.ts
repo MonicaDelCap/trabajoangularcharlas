@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Course } from '../../models/course';
-import { ServiceTeacher } from '../../services/service.teacher';
+import { ServiceTeacherM } from '../../services/service.teacher';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
 @Component({
@@ -13,7 +13,7 @@ export class CardcourseComponent implements OnInit {
   isActive!: string;
 
   constructor(
-    private _serviceTeacher:ServiceTeacher,
+    private _serviceTeacher:ServiceTeacherM,
     private _router:Router
   ){}
 

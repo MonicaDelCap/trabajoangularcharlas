@@ -5,7 +5,7 @@ import { Round } from "../models/round";
 import { Course } from "../models/course";
 
 @Injectable()
-export class ServiceTeacher {
+export class ServiceTeacherM {
 
     getCourses(): Promise<any>{
         let header = {"Authorization": `Bearer ${localStorage.getItem('authToken')}`};
