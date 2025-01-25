@@ -1,5 +1,7 @@
 <body>
   <div class="course-container">
+    <i class="arrow-icon fa fa-arrow-left" routerLink="/courses"></i>
+
     <div class="course-header">
       <h1>Información del Curso</h1>
     </div>
@@ -11,8 +13,7 @@
       <p style="color: greenyellow;"><strong>Estado: </strong> Activo</p>
     </div>
     <div class="course-actions">
-      <button class="btn btn-deactivate" (click)="desactivatedCourse()">Desactivar</button>
-      <button class="btn btn-delete" (click)="deleteCourse()"> Eliminar </button>
+      <button class="btn btn-deactivate" (click)="desactivatedCourse()"> Desactivar </button>
     </div>
   </div>
 </body>

@@ -48,7 +48,6 @@ export class CoursedetailsComponent {
   }
 
   desactivatedCourse(): void {
-
     Swal.fire({
       title: "Vas a desactivar el curso ¿Estas seguro?",
       text: "Esta accion no es revertible",
@@ -69,9 +68,6 @@ export class CoursedetailsComponent {
           this._serviceTeacher.updateCourse(this.courseNow.idCurso, false)
             .then(r => this._router.navigate(["/courses"]));
         }, 2000);
-
-
-
       }
     });
 
@@ -99,9 +95,6 @@ export class CoursedetailsComponent {
           this._serviceTeacher.updateCourse(this.courseNow.idCurso, false)
             .then(r => console.log(r));
         }, 2000);
-
-
-
       }
     });
 

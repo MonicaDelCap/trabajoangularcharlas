@@ -1,16 +1,19 @@
-<div 
-  class="course-item p-4 bg-light rounded shadow flex items-center justify-center"
-  [routerLink]="course.activo ? ['/studentslist/', course.idCurso] : null"
-  [class.disabled]="!course.activo">
-  <li style="list-style-type: none; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-    <h1>{{ course.nombre }}</h1>
-    <b>Código: {{ course.idCurso }}</b>
-    <p [ngStyle]="{ color: course.activo ? 'green' : 'red' }">
-      Estado: {{ course.activo ? 'Activo' : 'Inactivo' }}
-    </p>
-    <div class="button-group" *ngIf="course.activo">
-      <button class="btn btn-primary" [routerLink]="['/updatecourse/' , course.idCurso]" >Editar</button>
-      <button class="btn btn-secondary" [routerLink]="['/coursedetails/' , course.idCurso]">Informacion</button>
-    </div>
-  </li>
-</div>
+  <div 
+    class="course-item"
+    [routerLink]="course.activo ? ['/studentslist/', course.idCurso] : null"
+    [class.disabled]="!course.activo">
+    
+      <h1>{{ course.nombre }}</h1>
+      <b>Código: {{ course.idCurso }}</b>
+      <p [ngStyle]="{ color: course.activo ? 'green' : 'red' }">
+        Estado: {{ course.activo ? 'Activo' : 'Inactivo' }}
+      </p>
+      <div class="button-group" *ngIf="course.activo">
+        <button class="btn btn-primary" [routerLink]="['/updatecourse/', course.idCurso]">Editar</button>
+        <button class="btn btn-secondary" [routerLink]="['/coursedetails/', course.idCurso]">Información</button>
+      </div>
+      
+    
+  </div>
+  <!-- Repite los elementos `.course-item` con datos diferentes -->
+  

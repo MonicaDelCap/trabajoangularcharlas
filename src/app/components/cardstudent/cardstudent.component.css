@@ -13,6 +13,9 @@
     max-width: 100%; /* Garantiza que no exceda el contenedor */
     margin: 10px 0;
   }
+  .list-item-card:hover{
+    transform: scale(0.99);
+  }
   
   .card-image {
     width: 50px;

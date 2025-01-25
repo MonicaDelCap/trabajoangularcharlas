@@ -7,6 +7,7 @@ export class Student {
         public email: string,
         public idRole: number,
         public role: string,
+        public idCurso:number,
         public curso: number,
         public fechaInicioCurso: string,
         public fechaFinCurso: string,

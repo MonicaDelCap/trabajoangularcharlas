@@ -1,75 +1,132 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
 
+.course-container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #ffffff;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.course-container:hover {
+  transform: translateY(-5px);
+}
+
+.course-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
+}
+
+.course-header h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.course-info {
+  margin-bottom: 20px;
+}
+
+.course-info p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+.course-info p strong {
+  color: #2c3e50;
+}
+
+.course-info p[style*="color: greenyellow"] {
+  color: #27ae60 !important;
+  font-weight: bold;
+}
+
+.course-actions {
+  display: flex;
+  justify-content:end;
+  gap: 10px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn-deactivate {
+  background-color: #95a5a6;
+  color: #ffffff;
+}
+
+.btn-deactivate:hover {
+  background-color: #7f8c8d;
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+.btn-delete i {
+  font-size: 1.2rem;
+}
+
+.arrow-icon {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.arrow-icon:hover {
+  color: #3498db;
+}
+
+@media (max-width: 768px) {
   .course-container {
-    max-width: 600px;
-    margin: 20px auto;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
-
-  .course-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .course-header h1 {
-    font-size: 1.8em;
-    color: #333;
-    margin: 0;
-  }
-
-  .course-info {
-    margin-bottom: 20px;
-  }
-
-  .course-info p {
-    margin: 5px 0;
-    font-size: 1em;
-    color: #555;
-  }
-
-  .course-actions {
-    display: flex;
-    justify-content: space-between;
+    padding: 15px;
   }
 
   .btn {
     padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 0.9rem;
   }
 
-  .btn-deactivate {
-    background-color: #ccc;
-    color: #fff;
+  .course-header h1 {
+    font-size: 1.6rem;
   }
-
-  .btn-deactivate:hover {
-    background-color: #aaa;
-  }
-
-  .btn-delete {
-    background-color: #e74c3c;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .btn-delete:hover {
-    background-color: #c0392b;
-  }
-
-  .btn-delete i {
-    margin-right: 5px;
-  }
+}
