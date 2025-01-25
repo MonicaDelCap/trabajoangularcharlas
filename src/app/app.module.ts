@@ -59,6 +59,8 @@ import { CharlaCardComponent } from './components/charla-card/charla-card.compon
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TeacherRondaComponent } from './components/teacher-ronda/teacher-ronda.component';
 import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.component';
+import { AdmingestionalumnosComponent } from './components/admingestionalumnos/admingestionalumnos.component';
+import { ServiceAdmin } from './services/service.admin';
 import { CardroundteacherComponent } from './components/cardroundteacher/cardroundteacher.component';
 
 
@@ -88,6 +90,7 @@ import { CardroundteacherComponent } from './components/cardroundteacher/cardrou
     CharlaCardComponent,
     TeacherRondaComponent,
     MenubaradminComponent,
+    AdmingestionalumnosComponent,
     CardroundteacherComponent
   ],
   imports: [
@@ -115,7 +118,7 @@ import { CardroundteacherComponent } from './components/cardroundteacher/cardrou
     DatePipe,
     { provide: LOCALE_ID, useValue: 'es-ES' },
     ServicePostFiles,
-    ServiceTeacher,ServiceTeacherM],
+    ServiceTeacher,ServiceTeacherM,ServiceAdmin],
   bootstrap: [AppComponent],
   
 })

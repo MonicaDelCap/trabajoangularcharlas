@@ -17,9 +17,9 @@ export class MenubaradminComponent  {
       label: 'Perfil',
     },
     {
-      routeLink: 'talks',
+      routeLink: 'gestionusuarios',
       icon: 'fal fa-comments',
-      label: 'Charlas',
+      label: 'Gestion Alumnos',
     },
   ];
 

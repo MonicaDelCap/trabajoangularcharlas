@@ -16,6 +16,7 @@ import { CoursedetailsComponent } from './components/coursedetails/coursedetails
 import { CreatecourseComponent } from './components/createcourse/createcourse.component';
 import { DetailstudenteacherComponent } from './components/detailstudenteacher/detailstudenteacher.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
+import { AdmingestionalumnosComponent } from './components/admingestionalumnos/admingestionalumnos.component';
 import { TeacherRondaComponent } from './components/teacher-ronda/teacher-ronda.component';
 
 const routes: Routes = [
@@ -66,6 +67,9 @@ const routes: Routes = [
   },
   {
     path: "teacherProfile", component:TeacherprofileComponent
+  },
+  {
+    path:"gestionusuarios", component:AdmingestionalumnosComponent
   },
   {
     path: "teacher/ronda/:idRonda", component:TeacherRondaComponent

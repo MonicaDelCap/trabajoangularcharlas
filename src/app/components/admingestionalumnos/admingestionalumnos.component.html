@@ -1,0 +1,114 @@
+<div class="container mx-auto p-4">
+  <div class="mb-4 pb-4 text-center">
+    <h1>GESTIÓN DE USUARIOS</h1>
+  </div>
+  <div class="mb-4">
+    <div
+      class="bg-blue-500 text-white text-center p-4 rounded hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 transition duration-300"
+      (click)="togglePanel('alumnos')">
+      ALUMNOS
+    </div>
+
+    <div *ngIf="showAlumnos" class="mt-4">
+      <input type="text" placeholder="Buscar por email" [(ngModel)]="searchTerm" (input)="filterAlumnos()"
+        class="mb-4 p-2 border border-gray-300 rounded w-full" />
+      <div class="overflow-hidden">
+        <!-- Eliminé 'overflow-x-auto' para evitar el scroll horizontal -->
+        <table class="w-full bg-white border border-gray-300 shadow-md rounded-lg">
+          <!-- Usé 'w-full' en la tabla para que ocupe el ancho completo -->
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="py-2 px-4 border border-gray-300 text-left">Email</th>
+              <th class="py-2 px-4 border border-gray-300 text-left">Estado</th>
+              <th class="py-2 px-4 border border-gray-300 text-left">Editar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let alumno of paginatedAlumnos" class="hover:bg-gray-100 transition duration-300">
+              <td class="py-2 px-4 border border-gray-300">{{ alumno.email }}</td>
+              <td class="py-2 px-4 border border-gray-300">
+                <span [ngClass]="alumno.estadoUsuario ? 'text-green-500' : 'text-red-500'">
+                  {{ alumno.estadoUsuario ? 'Activo' : 'Desactivado' }}
+                </span>
+              </td>
+              <td class="py-2 px-4 border border-gray-300 text-center">
+                <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+                  (click)="selectAlumno(alumno)">Editar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      @if(isEditing){
+      @if(selectedAlumno){
+      <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-2xl shadow-xl w-full max-w-md relative">
+          <button class="absolute top-4 right-4 text-gray-500 hover:text-gray-700" (click)="changeEditing()">
+            ✕
+          </button>
+          <h1 class="text-xl font-semibold mb-4">Datos del Alumno</h1>
+          <p class="mb-2"><span class="font-medium">Nombre:</span> {{ selectedAlumno.nombre }}</p>
+          <p class="mb-2"><span class="font-medium">Email:</span> {{ selectedAlumno.email }}</p>
+          <div class="flex gap-4">
+            <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+              (click)="changeStatus()">
+              Cambiar Estado
+            </button>
+            <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition duration-300"
+              (click)="deleteUser()">
+              Eliminar Usuario
+            </button>
+          </div>
+
+
+        </div>
+      </div>
+      }
+      }
+
+
+      <div class="flex justify-between mt-4">
+        <button (click)="previousPage()" [disabled]="currentPage === 1">
+          <i class="fas fa-chevron-left"></i>
+          Anterior
+
+        </button>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+          Siguiente
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-4 m-4"></div>
+  <hr class="bg-black h-1 my-4 w-full border-none">
+  <div class="p-4 m-4"></div>
+  <div>
+    <div
+      class="bg-blue-500 text-white text-center p-4 rounded hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 transition duration-300"
+      (click)="togglePanel('profesores')">
+      PROFESORES
+    </div>
+    <div *ngIf="showProfesores" class="mt-4">
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="py-2 px-4">ID</th>
+              <th class="py-2 px-4">Nombre</th>
+              <th class="py-2 px-4">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let profesor of profesores" class="hover:bg-gray-100 transition duration-300">
+              <td class="py-2 px-4 border border-gray-300">{{ profesor.idUsuario }}</td>
+              <td class="py-2 px-4 border border-gray-300">{{ profesor.nombre }}</td>
+              <td class="py-2 px-4 border border-gray-300">{{ profesor.email }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
