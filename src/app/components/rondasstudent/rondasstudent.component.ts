@@ -41,6 +41,7 @@ export class RondasstudentComponent implements OnInit{
       this.idRonda = params['id']
       this._serviceTalks.getTalks(this.idRonda).then(r => {
         this.talks = r;
+        console.log(this.talks)
         this.didUAddTalk = this.searchTalkInRound();
         console.log(this.didUAddTalk)
       })
@@ -62,11 +63,13 @@ export class RondasstudentComponent implements OnInit{
   searchTalkInRound():boolean{
     for(let talk of this.talks){
       if(talk.idUsuario == environment.idUsuario){
+        console.log(talk.idUsuario);
         return true;
       }
     }
     return false;
   }
+
 
 
 }

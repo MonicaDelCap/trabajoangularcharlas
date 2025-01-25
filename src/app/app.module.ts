@@ -30,6 +30,18 @@ import { ServicePostFiles } from './services/service.postfiles';
 import { CharlasComponent } from './components/charlas/charlas.component';
 import { CharlaComponent } from './components/charla/charla.component';
 import { CreateTalkComponent } from './components/create-talk/create-talk.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { CoursewithstudentComponent } from './components/coursewithstudent/coursewithstudent.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CardroundComponent } from './components/cardround/cardround.component';
+import { CardcourseComponent } from './components/cardcourse/cardcourse.component';
+import { CardstudentComponent } from './components/cardstudent/cardstudent.component';
+import { UpdateroundComponent } from './components/updateround/updateround.component';
+import { CreateroundComponent } from './components/createround/createround.component';
+import { UpdatecourseComponent } from './components/updatecourse/updatecourse.component';
+import { CoursedetailsComponent } from './components/coursedetails/coursedetails.component';
+import { CreatecourseComponent } from './components/createcourse/createcourse.component';
+import { DetailstudenteacherComponent } from './components/detailstudenteacher/detailstudenteacher.component';
 
 
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
@@ -61,6 +73,17 @@ import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.co
     CharlasComponent,
     CharlaComponent,
     CreateTalkComponent,
+    CoursesComponent,
+    CoursewithstudentComponent,
+    CardroundComponent,
+    CardcourseComponent,
+    CardstudentComponent,
+    UpdateroundComponent,
+    CreateroundComponent,
+    UpdatecourseComponent,
+    CoursedetailsComponent,
+    CreatecourseComponent,
+    DetailstudenteacherComponent,
     TeacherprofileComponent,
     CharlaCardComponent,
     TeacherRondaComponent,
@@ -72,6 +95,7 @@ import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.co
     FormsModule,
     MatCardModule, 
     MatButtonModule,
+    MatSlideToggleModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
     CalendarModule.forRoot({
@@ -82,7 +106,15 @@ import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.co
     MatDialogModule,
     MatIconModule
   ],
-  providers: [provideHttpClient(),ServiceUser, ServiceRound,ServiceTalks,DatePipe,{ provide: LOCALE_ID, useValue: 'es-ES' },ServicePostFiles,ServiceTeacher],
+  providers: [
+    provideHttpClient(),
+    ServiceUser, 
+    ServiceRound,
+    ServiceTalks,
+    DatePipe,
+    { provide: LOCALE_ID, useValue: 'es-ES' },
+    ServicePostFiles,
+    ServiceTeacher,ServiceTeacher],
   bootstrap: [AppComponent],
   
 })

@@ -7,6 +7,14 @@ import { LoginComponent } from './components/login/login.component';
 import { CharlasComponent } from './components/charlas/charlas.component';
 import { CharlaComponent } from './components/charla/charla.component';
 import { CreateTalkComponent } from './components/create-talk/create-talk.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { CoursewithstudentComponent } from './components/coursewithstudent/coursewithstudent.component';
+import { UpdateroundComponent } from './components/updateround/updateround.component';
+import { CreateroundComponent } from './components/createround/createround.component';
+import { UpdatecourseComponent } from './components/updatecourse/updatecourse.component';
+import { CoursedetailsComponent } from './components/coursedetails/coursedetails.component';
+import { CreatecourseComponent } from './components/createcourse/createcourse.component';
+import { DetailstudenteacherComponent } from './components/detailstudenteacher/detailstudenteacher.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 import { TeacherRondaComponent } from './components/teacher-ronda/teacher-ronda.component';
 
@@ -31,6 +39,30 @@ const routes: Routes = [
   },
   {
     path: 'createtalk/:id', component:CreateTalkComponent
+  },
+  {
+    path:"courses", component:CoursesComponent
+  },
+  {
+    path:"studentslist/:idCourse" , component:CoursewithstudentComponent
+  },
+  {
+    path: "updateround/:idround", component:UpdateroundComponent
+  },
+  {
+    path:"createround", component:CreateroundComponent
+  },
+  {
+    path:"updatecourse/:id", component:UpdatecourseComponent
+  },
+  {
+    path:"coursedetails/:id", component:CoursedetailsComponent
+  },
+  {
+    path:"createcourse", component:CreatecourseComponent
+  },
+  {
+    path:"detailsstudent/:id", component:DetailstudenteacherComponent
   },
   {
     path: "teacherProfile", component:TeacherprofileComponent

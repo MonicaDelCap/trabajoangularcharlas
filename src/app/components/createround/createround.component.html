@@ -1,0 +1,49 @@
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Crear ronda</h3>
+        </div>
+        <div class="card-body">
+            <form #moduleForm="ngForm">
+                <!-- Fecha de Presentación -->
+                <div class="mb-3">
+                    <label for="fechaPresentacion" class="form-label">Fecha de Presentación</label>
+                    <input type="datetime-local" id="fechaPresentacion" class="form-control" name="fechaPresentacion"
+                    #fechaPresentacion required>
+                </div>
+
+                <!-- Fecha de Cierre -->
+                <div class="mb-3">
+                    <label for="fechaCierre" class="form-label">Fecha de Cierre</label>
+                    <input type="datetime-local" id="fechaCierre" class="form-control" name="fechaCierre" #fechaCierre required>
+                </div>
+
+                <!-- Duración -->
+                <div class="mb-3">
+                    <label for="duracion" class="form-label">Duración (en minutos)</label>
+                    <input type="number" id="duracion" class="form-control" name="duracion" #duracion min="0" required>
+                </div>
+
+                <!-- Descripción del Módulo -->
+                <div class="mb-3">
+                    <label for="descripcionModulo" class="form-label">Descripción del Módulo</label>
+                    <textarea id="descripcionModulo" class="form-control" name="descripcionModulo" #descripcionModulo rows="3"
+                        required></textarea>
+                </div>
+
+                <!-- Fecha Límite de Votación -->
+                <div class="mb-3">
+                    <label for="fechaLimiteVotacion" class="form-label">Fecha Límite de Votación</label>
+                    <input type="datetime-local" id="fechaLimiteVotacion" class="form-control"
+                        name="fechaLimiteVotacion" #fechaLimiteVotacion required>
+                </div>
+
+                <!-- Botones -->
+                <div class="d-flex justify-content-end gap-2">
+                    <button type="reset" style="color: blue;" class="btn btn-secondary">Limpiar</button>
+                    <button class="btn btn-primary" (click)="createRound()">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

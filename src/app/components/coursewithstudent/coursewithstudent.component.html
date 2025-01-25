@@ -1,0 +1,34 @@
+<div class="card-container" [class.flipped]="isFlipped">
+    <div class="card">
+      <!-- Cara frontal -->
+      <div class="card-front">
+        <div class="top-right-button">
+          <button class="plus-button" routerLink="/createround">+</button>
+        </div>
+        <div class="button-container">
+          <button class="slide-button" (click)="flipCard()">Deslizar para Voltear</button>
+        </div>
+        <div class="round_container">
+          @for(round of rounds; track $index){
+            <app-cardround [round]="round"></app-cardround>
+          }
+        </div>
+      </div>
+      <!-- Cara trasera -->
+      <div class="card-back">
+        <div class="button-container">
+          <button class="slide-button" (click)="flipCard()">Deslizar para Voltear</button>
+        </div>
+        <div class="scroll-container">
+          
+            @for(student of students; track $index){
+              <app-cardstudent [student]="student"></app-cardstudent>
+            }
+      
+         
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  

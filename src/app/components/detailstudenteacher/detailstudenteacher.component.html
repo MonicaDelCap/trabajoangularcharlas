@@ -1,0 +1,31 @@
+<div class="container">
+    <i class="arrow-icon fa fa-arrow-left" [routerLink]="['/studentslist/', studentInfo.usuario.idCurso] "></i> 
+    
+    <button class="disable-button" (click)="updateStatus()">{{ studentInfo.usuario.estadoUsuario ? 'Desactivar' : 'Activar' }}</button>
+    <div class="container2">
+      <div class="image-section">
+        <div class="image-placeholder">
+          <img src="{{studentInfo.usuario.imagen}}" alt="Usuario" />
+        </div>
+      </div>
+      <div class="info-section">
+        <h1 class="info-title">{{studentInfo.usuario.usuario}}</h1>
+        <h2 class="info-subtitle">{{studentInfo.usuario.email}}</h2>
+        <h3 class="info-course">Curso: {{studentInfo.usuario.curso}}</h3>
+      </div>
+      <div class="stats-section">
+        <p><strong>Charlas aceptadas:</strong> {{studentInfo.charlasAceptadas}}</p>
+        <p><strong>Charlas presentadas:</strong> {{studentInfo.charlasPropuestas}}</p>
+      </div>
+      <div class="scroll-container">
+        <div class="round_container">
+            @if(studentInfo.charlasTotales != 0){
+                <app-cardround *ngFor="let talk of studentInfo.charlas">RONDA 1</app-cardround>
+            }@else{
+                <h1>NO HAY CHARLAS PRENSENTADAS</h1>
+            }
+        </div>
+      </div>
+    </div>
+  </div>
+  
