@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import axios from "axios";
 import { environment } from "../../environments/environment";
+import { User } from "../models/user";
 
 @Injectable()
 export class ServiceAdmin{
@@ -30,6 +31,15 @@ export class ServiceAdmin{
         return new Promise(function(resolve){
             axios.delete(environment.urlCharlas + request,{headers:header})
             .then(r => resolve(r.data))
+        })
+    }
+
+    updateUsuario(user:User):Promise<any>{
+        let header = {"Authorization": `Bearer ${localStorage.getItem('authToken')}`};
+        let request = "api/Usuarios";
+        return new Promise(function(resolve){
+            axios.put(environment.urlCharlas + request,user,{headers:header})
+            .then(r => resolve(r.data));
         })
     }
 

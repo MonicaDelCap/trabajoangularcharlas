@@ -47,26 +47,73 @@
             ✕
           </button>
           <h1 class="text-xl font-semibold mb-4">Datos del Alumno</h1>
-          <p class="mb-2"><span class="font-medium">Nombre:</span> {{ selectedAlumno.nombre }}</p>
-          <p class="mb-2"><span class="font-medium">Email:</span> {{ selectedAlumno.email }}</p>
-          <div class="flex gap-4">
-            <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
-              (click)="changeStatus()">
-              Cambiar Estado
-            </button>
-            <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition duration-300"
-              (click)="deleteUser()">
-              Eliminar Usuario
-            </button>
-          </div>
-
-
+          <form #alumnoForm="ngForm" (ngSubmit)="updateUsuario()">
+            <div class="mb-2">
+              <label class="font-medium">ID Usuario:</label>
+              <input type="text" class="w-full p-2 border rounded" [value]="selectedAlumno.idUsuario" disabled>
+            </div>
+            <div class="mb-2">
+              <label class="font-medium">Nombre:</label>
+              <input type="text" class="w-full p-2 border rounded" [(ngModel)]="selectedAlumno.nombre" name="nombre"
+                #nombre="ngModel">
+            </div>
+            <div class="mb-2">
+              <label class="font-medium">Apellidos:</label>
+              <input type="text" class="w-full p-2 border rounded" [(ngModel)]="selectedAlumno.apellidos"
+                name="apellidos" #apellidos="ngModel">
+            </div>
+            <div class="mb-2">
+              <label class="font-medium">Email:</label>
+              <input type="email" class="w-full p-2 border rounded" [(ngModel)]="selectedAlumno.email" name="email"
+                #email="ngModel">
+            </div>
+            <div class="mb-2">
+              <label class="font-medium">Estado Usuario:</label>
+              <input type="text"  class="w-full p-2 border rounded" [(ngModel)]="selectedAlumno.estadoUsuario" name="estadoUsuario"
+                #estadoUsuario="ngModel">
+            </div>
+            <div class="mb-2">
+              <label class="font-medium">Imagen:</label>
+              <input type="text" class="w-full p-2 border rounded" [(ngModel)]="selectedAlumno.imagen" name="imagen"
+                #imagen="ngModel">
+            </div>
+            <div class="mb-2">
+              <label class="font-medium">Password:</label>
+              <div class="relative">
+                <input [type]="showPassword ? 'text' : 'password'" class="w-full p-2 border rounded"
+                  [(ngModel)]="selectedAlumno.password" name="password" #password="ngModel">
+                <button type="button" class="absolute inset-y-0 right-0 px-3 text-gray-500 hover:text-gray-700"
+                  (click)="togglePasswordVisibility()">
+                  {{ showPassword ? '🙈' : '👁️' }}
+                </button>
+              </div>
+            </div>
+            <div class="mb-2">
+              <label class="font-medium">ID Role:</label>
+              <input type="number" class="w-full p-2 border rounded" [(ngModel)]="selectedAlumno.idRole" name="idRole"
+                min="1" max="3" #idRole="ngModel">
+            </div>
+            <div class="flex gap-4">
+              <button type="submit"
+                class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition duration-300">
+                Actualizar
+              </button>
+              <button type="button"
+                class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+                (click)="changeStatus()">
+                Cambiar Estado
+              </button>
+              <button type="button"
+                class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition duration-300"
+                (click)="deleteUser()">
+                Eliminar Usuario
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       }
       }
-
-
       <div class="flex justify-between mt-4">
         <button (click)="previousPage()" [disabled]="currentPage === 1">
           <i class="fas fa-chevron-left"></i>
@@ -91,24 +138,120 @@
       PROFESORES
     </div>
     <div *ngIf="showProfesores" class="mt-4">
+      <input type="text" placeholder="Buscar por email" [(ngModel)]="searchTerm" (input)="filterProfesores()"
+        class="mb-4 p-2 border border-gray-300 rounded w-full" />
       <div class="overflow-x-auto">
         <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
           <thead class="bg-gray-200">
             <tr>
-              <th class="py-2 px-4">ID</th>
-              <th class="py-2 px-4">Nombre</th>
-              <th class="py-2 px-4">Email</th>
+              <th class="py-2 px-4 border border-gray-300 text-left">Email</th>
+              <th class="py-2 px-4 border border-gray-300 text-left">Estado</th>
+              <th class="py-2 px-4 border border-gray-300 text-left">Editar</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let profesor of profesores" class="hover:bg-gray-100 transition duration-300">
-              <td class="py-2 px-4 border border-gray-300">{{ profesor.idUsuario }}</td>
-              <td class="py-2 px-4 border border-gray-300">{{ profesor.nombre }}</td>
               <td class="py-2 px-4 border border-gray-300">{{ profesor.email }}</td>
+              <td class="py-2 px-4 border border-gray-300">
+                <span [ngClass]="profesor.estadoUsuario ? 'text-green-500' : 'text-red-500'">
+                  {{ profesor.estadoUsuario ? 'Activo' : 'Desactivado' }}
+                </span>
+              </td>
+              <td class="py-2 px-4 border border-gray-300 text-center">
+                <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+                  (click)="selectProfesor(profesor)">Editar</button>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
+      @if(isEditingProfe){
+        @if(selectedProfesor){
+        <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div class="bg-white p-6 rounded-2xl shadow-xl w-full max-w-md relative">
+            <button class="absolute top-4 right-4 text-gray-500 hover:text-gray-700" (click)="changeEditingProfe()">
+              ✕
+            </button>
+            <h1 class="text-xl font-semibold mb-4">Datos del Alumno</h1>
+            <form #alumnoForm="ngForm" (ngSubmit)="updateUsuario()">
+              <div class="mb-2">
+                <label class="font-medium">ID Usuario:</label>
+                <input type="text" class="w-full p-2 border rounded" [value]="selectedProfesor.idUsuario" disabled>
+              </div>
+              <div class="mb-2">
+                <label class="font-medium">Nombre:</label>
+                <input type="text" class="w-full p-2 border rounded" [(ngModel)]="selectedProfesor.nombre" name="nombre"
+                  #nombre="ngModel">
+              </div>
+              <div class="mb-2">
+                <label class="font-medium">Apellidos:</label>
+                <input type="text" class="w-full p-2 border rounded" [(ngModel)]="selectedProfesor.apellidos"
+                  name="apellidos" #apellidos="ngModel">
+              </div>
+              <div class="mb-2">
+                <label class="font-medium">Email:</label>
+                <input type="email" class="w-full p-2 border rounded" [(ngModel)]="selectedProfesor.email" name="email"
+                  #email="ngModel">
+              </div>
+              <div class="mb-2">
+                <label class="font-medium">Estado Usuario:</label>
+                <input type="text" class="w-full p-2 border rounded" [(ngModel)]="selectedProfesor.estadoUsuario" name="estadoUsuario"
+                  #estadoUsuario="ngModel">
+              </div>
+              <div class="mb-2">
+                <label class="font-medium">Imagen:</label>
+                <input type="text" class="w-full p-2 border rounded" [(ngModel)]="selectedProfesor.imagen" name="imagen"
+                  #imagen="ngModel">
+              </div>
+              <div class="mb-2">
+                <label class="font-medium">Password:</label>
+                <div class="relative">
+                  <input [type]="showPassword ? 'text' : 'password'" class="w-full p-2 border rounded"
+                    [(ngModel)]="selectedProfesor.password" name="password" #password="ngModel">
+                  <button type="button" class="absolute inset-y-0 right-0 px-3 text-gray-500 hover:text-gray-700"
+                    (click)="togglePasswordVisibility()">
+                    {{ showPassword ? '🙈' : '👁️' }}
+                  </button>
+                </div>
+              </div>
+              <div class="mb-2">
+                <label class="font-medium">ID Role:</label>
+                <input type="number" class="w-full p-2 border rounded" [(ngModel)]="selectedProfesor.idRole" name="idRole"
+                  min="1" max="3" #idRole="ngModel">
+              </div>
+              <div class="flex gap-4">
+                <button type="submit"
+                  class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition duration-300"
+                  (click)="updateProfesor()">
+                  Actualizar
+                </button>
+                <button type="button"
+                  class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+                  (click)="changeStatusProfesor()">
+                  Cambiar Estado
+                </button>
+                <button type="button"
+                  class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition duration-300"
+                  (click)="deleteUser()">
+                  Eliminar Usuario
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        }
+        }
+        <div class="flex justify-between mt-4">
+          <button (click)="previousPage()" [disabled]="currentPage === 1">
+            <i class="fas fa-chevron-left"></i>
+            Anterior
+  
+          </button>
+          <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+            Siguiente
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
     </div>
   </div>
 </div>
