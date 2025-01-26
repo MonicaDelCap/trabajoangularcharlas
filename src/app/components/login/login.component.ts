@@ -134,12 +134,14 @@ export class LoginComponent implements OnInit{
     let nameInput = this.nameBox.nativeElement;
     nameInput.style.border = '2px solid red'; // Cambia el borde
     nameInput.style.color = 'black'; // Cambia el texto
+    nameInput.placeholder = "Formato incorrecto"
   }
 
   changeInputSurnameColorRegister():void{
     this.changeAllInputColorRegisterInit();
     let surnameBox = this.surnameBox.nativeElement;
     surnameBox.style.border = '2px solid red'; // Cambia el borde
+    surnameBox.placeholder = "Formato incorrecto"
     surnameBox.style.color = 'black'; // Cambia el texto
   }
 
@@ -148,10 +150,11 @@ export class LoginComponent implements OnInit{
     let passwordInput = this.passwordBoxRegister.nativeElement;
     passwordInput.style.border = '2px solid red'; // Cambia el borde
     passwordInput.style.color = 'black'; // Cambia el texto
-    
+    passwordInput.placeholder = 'Las contraseñas no coinciden'; // Cambia el texto
     let passwordInputRepeat = this.passwordBoxRegisterRepeat.nativeElement;
     passwordInputRepeat.style.border = '2px solid red'; // Cambia el borde
     passwordInputRepeat.style.color = 'black'; // Cambia el texto
+    passwordInputRepeat.placeholder = 'Las contraseñas no coinciden'; // Cambia el texto
   }
 
   changeInputEmailColorRegister():void{

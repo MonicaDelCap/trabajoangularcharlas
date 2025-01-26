@@ -45,7 +45,6 @@ export class RondasstudentComponent implements OnInit{
         this.didUAddTalk = this.searchTalkInRound();
         console.log(this.didUAddTalk)
       })
-
     })
 
   }
