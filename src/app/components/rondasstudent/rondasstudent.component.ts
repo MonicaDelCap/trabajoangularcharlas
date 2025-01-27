@@ -17,6 +17,7 @@ export class RondasstudentComponent implements OnInit{
   inicio!: Date;
   final!:  Date;
   idRonda!: number;
+  round !: Round;
   talks: Charla[] = []; // Todas las charlas
   
   didUAddTalk!: boolean;
@@ -41,9 +42,8 @@ export class RondasstudentComponent implements OnInit{
       this.idRonda = params['id']
       this._serviceTalks.getTalks(this.idRonda).then(r => {
         this.talks = r;
-        console.log(this.talks)
         this.didUAddTalk = this.searchTalkInRound();
-        console.log(this.didUAddTalk)
+        this._serviceRound.getRoundById(this.idRonda).then( r => this.round = r)
       })
     })
 

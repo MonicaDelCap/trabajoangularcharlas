@@ -1,7 +1,8 @@
 <div class="container">
     <div class="card-body">
-        <h5 class="card-title">Ronda {{idRonda}}</h5>
-        <p class="card-text">Ronda {{idRonda}}</p>
+        <h5 class="card-title">Modulo: {{round.descripcionModulo}}</h5>
+        <p class="card-text">Fecha limite para añadir charla: {{round.fechaCierre}}</p>
+        <p class="card-text">Fecha limite para votar: {{round.fechaLimiteVotacion}}</p>
         <button class="button" [routerLink]="['/createtalk/', idRonda]" *ngIf="true" [disabled]="didUAddTalk"
             [ngClass]="{ 'disabled-button': didUAddTalk }">
             Añadir charla
