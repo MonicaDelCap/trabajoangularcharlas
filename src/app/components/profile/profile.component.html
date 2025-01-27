@@ -128,20 +128,8 @@
                 @if(charlas.length){
                 <div class="charlas-list custom-scrollbar overflow-y-auto p-2" style="max-height: 400px;">
                     <div *ngFor="let charla of charlas"
-                        class="charla-pendiente-card p-4 bg-gray-100 rounded-lg shadow-sm mb-4 flex items-center">
-                        <img [src]="charla.imagenCharla" alt="Imagen de charla"
-                            class="charla-pendiente-image w-16 h-16 rounded-full object-cover mr-4" />
-                        <div class="charla-pendiente-content">
-                            <h3 class="charla-pendiente-title text-lg font-semibold text-gray-800">
-                                {{ charla.titulo }}
-                            </h3>
-                            <p class="charla-pendiente-fecha text-gray-600">
-                                Ronda: {{ charla.idRonda }}
-                            </p>
-                            <p class="charla-pendiente-status text-gray-600">
-                                Estado: {{ charla.estadoCharla }}
-                            </p>
-                        </div>
+                        class="charla-pendiente-card w-100 bg-grey-100 rounded-lg shadow-sm mb-4  items-center">
+                       <app-charla-card [charla]="charla"></app-charla-card>
                     </div>
                 </div>
                 }
