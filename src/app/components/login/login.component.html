@@ -22,6 +22,12 @@
       <input type="password" name="passwordBoxRegister" #passwordBoxRegister placeholder="Contraseña">
       <input type="password" name="passwordBoxRegisterRepeat" #passwordBoxRegisterRepeat placeholder="Repita Contraseña">
       <input type="text" name="coursecode" #coursecode placeholder="Codigo curso">
+      <div class="checkboxdiv">
+        <label>
+          <input type="checkbox" class="checkbox" name="isTeacher" #isTeacher/>
+          Soy profesor
+        </label>
+      </div> 
       <button (click)="registerUser()">Registrate</button>
       <a href="#" *ngIf="pantallaSeleccionada === 'register'" (click)="cambiarPantalla('signin')">¿Ya tienes cuenta?
         Inicia sesion</a>

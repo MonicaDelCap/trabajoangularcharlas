@@ -23,6 +23,19 @@ export class ServiceUser {
         })
 
     }
+
+    registerTeacher(user:User, teacherCode:string): Promise<any> {
+        let request = "api/Profesor/NewProfesor/" + teacherCode;
+        let header = { "Content-Type": "application/json" };
+        let json = JSON.stringify(user);
+        console.log(json);
+        return new Promise(function (resolve, reject) {
+            axios.post(environment.urlCharlas2 + request, json, { headers: header })
+                .then(r => resolve(r.data))
+                .catch(r => reject(r.code))
+        })
+
+    }
     getToken(login: Login): Promise<any> {
         let json = JSON.stringify(login);
         let header = { "Content-Type": "application/json" };

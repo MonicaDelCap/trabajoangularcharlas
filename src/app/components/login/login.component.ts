@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit{
   @ViewChild("passwordBoxRegister") passwordBoxRegister!: ElementRef;
   @ViewChild("passwordBoxRegisterRepeat") passwordBoxRegisterRepeat!: ElementRef;
   @ViewChild("coursecode") coursecode!: ElementRef;
+  @ViewChild("isTeacher") isTeacher!: ElementRef;
 
   constructor(private _router: Router, private _service:ServiceUser){
     this.login  = new Login("", "");
@@ -65,6 +66,7 @@ export class LoginComponent implements OnInit{
   }
 
   registerUser():void{
+    console.log()
     
     if(this.checkPassword()){
       this.user.nombre = this.nameBox.nativeElement.value;
@@ -77,16 +79,31 @@ export class LoginComponent implements OnInit{
           this.user.password = this.passwordBoxRegister.nativeElement.value;
           let courseCode = this.coursecode.nativeElement.value;
       
-          this._service.register(this.user,courseCode)
-          .then( response =>{
-            this.cambiarPantalla("signin")
-          }).catch( e => {
-            if(e == "ERR_BAD_RESPONSE"){
-              this.changeInputEmailColorRegister();
-            }else if(e == "ERR_BAD_REQUEST"){
-              this.changeInputCodeColorRegister();
-            } 
-          })
+          if(this.isTeacher.nativeElement.checked){
+            console.log("profe ")
+            this.user.idRole = 1;
+            this._service.registerTeacher(this.user,courseCode)
+            .then( response =>{
+              this.cambiarPantalla("signin")
+            }).catch( e => {
+              if(e == "ERR_BAD_RESPONSE"){
+                this.changeInputEmailColorRegister();
+              }else if(e == "ERR_BAD_REQUEST"){
+                this.changeInputCodeColorRegister();
+              } 
+            })
+          }else{
+            this._service.register(this.user,courseCode)
+            .then( response =>{
+              this.cambiarPantalla("signin")
+            }).catch( e => {
+              if(e == "ERR_BAD_RESPONSE"){
+                this.changeInputEmailColorRegister();
+              }else if(e == "ERR_BAD_REQUEST"){
+                this.changeInputCodeColorRegister();
+              } 
+            })
+          }
         }else{
           this.changeInputSurnameColorRegister();
         }
