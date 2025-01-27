@@ -45,7 +45,7 @@ export class ProfileComponent implements OnInit {
   loadUser(): void {
     this._service.getProfile().then(response => {
       this.user = response.usuario;
-    })
+    }).catch(r => console.log(r.error))
 
   }
 

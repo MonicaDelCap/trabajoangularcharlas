@@ -47,7 +47,8 @@
           <i class="fal fa-arrow-down" [class]="'arrow'"></i>
         </span>
         <ul class="dropdown-menu dropdown-menu-end">
-          <li *ngFor="let round of roundsArray">
+          <li>
+            @for(round of roundsArray; track $index){
             <button
               class="dropdown-item"
               type="button"
@@ -55,6 +56,7 @@
             >
               Ronda {{ round.idRonda }}
             </button>
+          }
           </li>
         </ul>
         }

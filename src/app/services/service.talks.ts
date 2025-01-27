@@ -64,7 +64,6 @@ export class ServiceTalks{
     }
 
     createPostFileTalk(fileModel: FileModel, id: number): Promise<any> {
-        console.log(JSON.stringify(fileModel))
         let header = {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('authToken')}`
@@ -76,6 +75,8 @@ export class ServiceTalks{
             .catch(r => reject(r));
         })
     }
+
+    
       
 
 

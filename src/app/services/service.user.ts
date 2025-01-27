@@ -50,7 +50,7 @@ export class ServiceUser {
     getProfile(): Promise<any> {
         let header = { "Authorization": `Bearer ${localStorage.getItem('authToken')}` };
         let request = "api/Usuarios/Perfil";
-        return new Promise(function (resolve) {
+        return new Promise(function (resolve,reject) {
             axios.get(environment.urlCharlas + request, { headers: header }).then(r => resolve(r.data))
         })
     }
@@ -169,6 +169,7 @@ export class ServiceUser {
 
     updateCharla(charla: Partial<Charla>): Promise<void> {
         const request = `api/Charlas`;
+        console.log(charla)
         const header = { Authorization: `Bearer ${localStorage.getItem('authToken')}` };
 
         return axios.put(environment.urlCharlas + request, charla, { headers: header })
