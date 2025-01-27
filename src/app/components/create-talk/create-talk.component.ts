@@ -83,11 +83,11 @@ export class CreateTalkComponent implements OnInit {
     this.newTalk.titulo = this.titleTalk.nativeElement.value;
     this.newTalk.descripcion = this.description.nativeElement.value;
     this.newTalk.tiempo = this.convertTimeInMinutes(this.duration.nativeElement.value);
-    
-    this.subirFichero();
+
 
     if (this.checkDuration(this.round.duracion, this.newTalk.tiempo)) {
-      
+      this.subirFichero();
+
       this.newTalk.idUsuario = environment.idUsuario;
       this.newTalk.idRonda = this.idRonda;
 
@@ -97,7 +97,7 @@ export class CreateTalkComponent implements OnInit {
           console.log("antes de crearPost");
           console.log(this.imagenServer);
 
-          this._serviceTalks.createPostFileTalk(this.imagenServer, this.newTalkCreate.idCharla).then( r => {
+          this._serviceTalks.createPostFileTalk(this.imagenServer, this.newTalkCreate.idCharla).then(r => {
             console.log("entra")
             this._router.navigate(["/studentround/", this.round.idRonda])
             for (let input of this.inputs) {
@@ -105,7 +105,7 @@ export class CreateTalkComponent implements OnInit {
               this._serviceTalks.createResourceForTalk(this.newResource).then(r => console.log(r))
             }
           })
-          .catch(r => console.log(r));
+            .catch(r => console.log(r));
         })
     } else {
       this.changeDurationColor();
@@ -149,23 +149,26 @@ export class CreateTalkComponent implements OnInit {
     let file = this.fileupload.nativeElement.files[0];
     let fileName = path[2];
 
+    if (fileName != null) {
+      // Leer el archivo como Base64
+      let reader = new FileReader();
 
-    // Leer el archivo como Base64
-    let reader = new FileReader();
-    
-    reader.readAsArrayBuffer(file);
-    reader.onloadend = () => {
-      let buffer: ArrayBuffer;
-      buffer = reader.result as ArrayBuffer;
-      var base64: string;
-      base64 = btoa(
-        new Uint8Array(buffer)
-          .reduce((data, byte) => data + String.fromCharCode(byte), '')
-      );
+      reader.readAsArrayBuffer(file);
+      reader.onloadend = () => {
+        let buffer: ArrayBuffer;
+        buffer = reader.result as ArrayBuffer;
+        var base64: string;
+        base64 = btoa(
+          new Uint8Array(buffer)
+            .reduce((data, byte) => data + String.fromCharCode(byte), '')
+        );
 
-      this.imagenServer = new FileModel(fileName, base64);
-      console.log(this.imagenServer);
-    };
+        this.imagenServer = new FileModel(fileName, base64);
+        console.log(this.imagenServer);
+      };
+    }
+
+
   }
 }
 
