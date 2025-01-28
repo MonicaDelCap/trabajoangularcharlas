@@ -24,6 +24,8 @@ export class DetailstudenteacherComponent implements OnInit {
       this.idStudent = params["id"]
       this._serviceTeacher.getStudentById(this.idStudent).then(r => {
         this.studentInfo = r
+      console.log("usuario")
+
       })
     })
   }
