@@ -1,4 +1,10 @@
 <div class="form-container">
+    <!-- Flecha de Volver Atrás dentro del formulario -->
+    <a [routerLink]="['/courses' ]" class="back-button" title="Volver atrás">
+        ← 
+    </a>
+    <b class="textoronda">Editar Ronda {{idRound}}</b>
+
     <form #updateForm="ngForm">
         <div class="form-group">
             <label for="fechaPresentacion">Fecha de Presentación</label>
@@ -31,4 +37,19 @@
             Actualizar
         </button>
     </form>
+</div>
+
+<!-- Partículas -->
+<div class="particles-container">
+    <!-- Partículas -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
 </div>

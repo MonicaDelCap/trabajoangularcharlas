@@ -1,87 +1,106 @@
-/* General styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-  }
-  
-  .ronda-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 350px;
-    padding: 16px;
-    margin: 16px auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-left: auto;
-  }
-  
-  .ronda-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-  
-  .ronda-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .ronda-actions {
-    display: flex;
-    gap: 8px;
-  }
-  
-  .icon-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 4px;
-    transition: transform 0.2s ease;
-  }
-  
-  .icon-button:hover {
-    transform: scale(1.2);
-  }
-  
-  .edit-button {
-    color: #4caf50; /* Green */
-  }
-  
-  .delete-button {
-    color: #f44336; /* Red */
-  }
-  
-  .ronda-date {
-    font-size: 14px;
-    color: #555;
-    margin: 0 0 16px 0;
-  }
-  
-  .ronda-footer {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .view-talks-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 16px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .view-talks-button:hover {
-    background-color: #0056b3;
-  }
-  
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+  line-height: 1.6;
+  color: #333;
+}
+
+.ronda-card {
+  background-color: #ffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  width: 350px;
+  padding: 20px;
+  margin: 16px auto;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ronda-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.ronda-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ronda-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.ronda-duration {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+
+.ronda-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 6px;
+  border-radius: 50%;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.icon-button:hover {
+  transform: scale(1.15);
+  background-color: #f0f0f0;
+}
+
+.edit-button {
+  color: #28a745; /* Green */
+}
+
+.delete-button {
+  color: #dc3545; /* Red */
+}
+
+.ronda-date {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ronda-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.view-talks-button {
+  background-color: #F9CD87;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 123, 255, 0.3);
+}
+
+.view-talks-button:hover {
+  background-color: #F29A0E;
+  transform: translateY(-3px);
+}

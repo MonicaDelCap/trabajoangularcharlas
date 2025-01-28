@@ -1,105 +1,108 @@
-<div class="grid grid-cols-2 gap-3">
-    <!-- Charlas Propuestas -->
-    <mat-card class="p-4 shadow-md border border-gray-200">
-        <h2 class="text-xl font-semibold mb-4">Charlas Propuestas</h2>
-        <mat-card-content class="scrollable-content" (dragover)="onDragOver($event)"
-            (drop)="onDrop($event, 'propuestas')">
-            <div *ngFor="let charla of charlasPropuestas"
-                class="draggable-item flex items-center p-4 bg-gray-100 shadow-md rounded-lg mb-4" draggable="true"
-                (dragstart)="onDragStart($event, charla)">
-                <img [src]="charla.imagenCharla" alt="Imagen Charla" class="w-16 h-16 object-cover rounded-full mr-4" />
-                <div class="flex justify-between w-full">
-                    <div>
-                        <h3 class="text-lg font-bold">{{ charla.titulo }}</h3>
-                        <div class="flex items-center space-x-2">
+<body>
+    <div class="grid grid-cols-2 gap-3">
+        <!-- Charlas Propuestas -->
+        <mat-card class="p-4 shadow-md border border-gray-200">
+            <h2 class="text-xl font-semibold mb-4">Charlas Propuestas</h2>
+            <mat-card-content class="scrollable-content" (dragover)="onDragOver($event)"
+                (drop)="onDrop($event, 'propuestas')">
+                <div *ngFor="let charla of charlasPropuestas"
+                    class="draggable-item flex items-center p-4 bg-gray-100 shadow-md rounded-lg mb-4" draggable="true"
+                    (dragstart)="onDragStart($event, charla)">
+                    <img [src]="charla.imagenCharla" alt="Imagen Charla" class="w-16 h-16 object-cover rounded-full mr-4" />
+                    <div class="flex justify-between w-full">
+                        <div>
+                            <h3 class="text-lg font-bold">{{ charla.titulo }}</h3>
                             <div class="flex items-center space-x-2">
-                                <span class="px-2 py-1 text-xs font-medium rounded-full" [ngClass]="{
-                                    'bg-gray-200 text-gray-800': charla.idEstadoCharla === 1,
-                                    'bg-green-200 text-green-800': charla.idEstadoCharla === 2
-                                }">
-                                    {{ charla.idEstadoCharla === 1 ? 'Propuesta' : charla.idEstadoCharla === 2 ?
-                                    'Aceptada' : '' }}
-                                </span>
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-200 text-blue-800">
-                                    Votos: {{charla.votos}}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </mat-card-content>
-    </mat-card>
-
-    <!-- Charlas Aceptadas -->
-    <mat-card class="p-4 shadow-md border border-gray-200">
-        <h2 class="text-xl font-semibold mb-4">Charlas Aceptadas</h2>
-        <mat-card-content class="scrollable-content" (dragover)="onDragOver($event)"
-            (drop)="onDrop($event, 'aceptadas')">
-            <div
-                class="draggable-item flex items-center p-6 bg-gray-50 shadow-md rounded-lg mb-6 text-center cursor-pointer border-dashed border-2 border-blue-300">
-                <i class="fas fa-plus text-4xl text-gray-500"></i>
-                <p class="text-gray-600 ml-4">Arrastra aquí una charla para poder aceptarla</p>
-            </div>
-            <div *ngFor="let charla of charlasAceptadas"
-                class="relative draggable-item flex items-center p-4 bg-gray-100 shadow-md rounded-lg mb-4"
-                draggable="true" (dragstart)="onDragStart($event, charla)">
-
-                <div *ngIf="charla.idEstadoCharla === 2" class="absolute top-0 right-0 mt-2 mr-2 text-yellow-500">
-                    <i class="fas fa-crown text-3xl"></i>
-                </div>
-
-                <img [src]="charla.imagenCharla" alt="Imagen Charla" class="w-16 h-16 object-cover rounded-full mr-4" />
-                <div class="flex justify-between w-full">
-                    <div>
-                        <h3 class="text-lg font-bold">{{ charla.titulo }}</h3>
-                        <div class="flex items-center space-x-2">
-                            <div class="flex items-center space-x-2">
-                                <span class="px-2 py-1 text-xs font-medium rounded-full" [ngClass]="{
-                                    'bg-gray-200 text-gray-800': charla.idEstadoCharla === 1,
-                                    'bg-green-200 text-green-800': charla.idEstadoCharla === 2
-                                }">
-                                    {{ charla.idEstadoCharla === 1 ? 'Propuesta' : charla.idEstadoCharla === 2 ?
-                                    'Aceptada' : '' }}
-                                </span>
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-200 text-blue-800">
-                                    Votos: {{charla.votos}}
-                                </span>
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 py-1 text-xs font-medium rounded-full" [ngClass]="{
+                                        'bg-gray-200 text-gray-800': charla.idEstadoCharla === 1,
+                                        'bg-green-200 text-green-800': charla.idEstadoCharla === 2
+                                    }">
+                                        {{ charla.idEstadoCharla === 1 ? 'Propuesta' : charla.idEstadoCharla === 2 ?
+                                        'Aceptada' : '' }}
+                                    </span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-200 text-blue-800">
+                                        Votos: {{charla.votos}}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </mat-card-content>
+        </mat-card>
+    
+        <!-- Charlas Aceptadas -->
+        <mat-card class="p-4 shadow-md border border-gray-200">
+            <h2 class="text-xl font-semibold mb-4">Charlas Aceptadas</h2>
+            <mat-card-content class="scrollable-content" (dragover)="onDragOver($event)"
+                (drop)="onDrop($event, 'aceptadas')">
+                <div
+                    class="draggable-item flex items-center p-6 bg-gray-50 shadow-md rounded-lg mb-6 text-center cursor-pointer border-dashed border-2 border-blue-300">
+                    <i class="fas fa-plus text-4xl text-gray-500"></i>
+                    <p class="text-gray-600 ml-4">Arrastra aquí una charla para poder aceptarla</p>
+                </div>
+                <div *ngFor="let charla of charlasAceptadas"
+                    class="relative draggable-item flex items-center p-4 bg-gray-100 shadow-md rounded-lg mb-4"
+                    draggable="true" (dragstart)="onDragStart($event, charla)">
+    
+                    <div *ngIf="charla.idEstadoCharla === 2" class="absolute top-0 right-0 mt-2 mr-2 text-yellow-500">
+                        <i class="fas fa-crown text-3xl"></i>
+                    </div>
+    
+                    <img [src]="charla.imagenCharla" alt="Imagen Charla" class="w-16 h-16 object-cover rounded-full mr-4" />
+                    <div class="flex justify-between w-full">
+                        <div>
+                            <h3 class="text-lg font-bold">{{ charla.titulo }}</h3>
+                            <div class="flex items-center space-x-2">
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 py-1 text-xs font-medium rounded-full" [ngClass]="{
+                                        'bg-gray-200 text-gray-800': charla.idEstadoCharla === 1,
+                                        'bg-green-200 text-green-800': charla.idEstadoCharla === 2
+                                    }">
+                                        {{ charla.idEstadoCharla === 1 ? 'Propuesta' : charla.idEstadoCharla === 2 ?
+                                        'Aceptada' : '' }}
+                                    </span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-200 text-blue-800">
+                                        Votos: {{charla.votos}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <!-- Botones para guardar y cancelar -->
+    <div class="grid grid-cols-2 gap-4 mt-4">
+        <!-- Cancelar cambios -->
+        <button mat-raised-button color="warn" (click)="abrirConfirmacionCancelar()" class=" button-cancel p-4 shadow-md border-gray-200">
+            Cancelar cambios
+        </button>
+    
+        <!-- Guardar cambios -->
+        <button mat-raised-button color="primary" (click)="abrirConfirmacionGuardar()" class="p-4 shadow-md border-gray-200">
+            Guardar cambios
+        </button>
+    </div>
+    
+    <!-- Popup de confirmación -->
+    <div *ngIf="mostrarPopup" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+            <h3 class="text-xl font-semibold mb-4">{{ mensajePopup }}</h3>
+            <div class="flex justify-between">
+                <button (click)="confirmarAccion()" class="bg-blue-500 text-white px-4 py-2 rounded-md">Confirmar</button>
+                <button (click)="cerrarPopup()" class="bg-red-500 text-white px-4 py-2 rounded-md">Cancelar</button>
             </div>
-        </mat-card-content>
-    </mat-card>
-</div>
-<!-- Botones para guardar y cancelar -->
-<div class="grid grid-cols-2 gap-4 mt-4">
-    <!-- Cancelar cambios -->
-    <button mat-raised-button color="warn" (click)="abrirConfirmacionCancelar()" class="p-4 shadow-md border-gray-200">
-        Cancelar cambios
-    </button>
-
-    <!-- Guardar cambios -->
-    <button mat-raised-button color="primary" (click)="abrirConfirmacionGuardar()" class="p-4 shadow-md border-gray-200">
-        Guardar cambios
-    </button>
-</div>
-
-<!-- Popup de confirmación -->
-<div *ngIf="mostrarPopup" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50">
-    <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
-        <h3 class="text-xl font-semibold mb-4">{{ mensajePopup }}</h3>
-        <div class="flex justify-between">
-            <button (click)="confirmarAccion()" class="bg-blue-500 text-white px-4 py-2 rounded-md">Confirmar</button>
-            <button (click)="cerrarPopup()" class="bg-red-500 text-white px-4 py-2 rounded-md">Cancelar</button>
         </div>
     </div>
-</div>
+    
+</body>
 
 <div class="particles-container">
     <!-- Partículas -->

@@ -1,4 +1,8 @@
+<div class="items-center justify-center flex pb-7">
+  <h1>Curso {{isCourse.curso.nombre}}</h1>
+</div>
 <div class="card-container" [class.flipped]="isFlipped">
+
     <div class="card">
       <!-- Cara frontal -->
       <div class="card-front">
@@ -6,7 +10,7 @@
           <button class="plus-button" routerLink="/createround">+</button>
         </div>
         <div class="button-container">
-          <button class="slide-button" (click)="flipCard()">Deslizar para Voltear</button>
+          <button class="slide-button" (click)="flipCard()">Ver Alumnos</button>
         </div>
         <div class="round_container">
           @for(round of rounds; track $index){
@@ -17,7 +21,7 @@
       <!-- Cara trasera -->
       <div class="card-back">
         <div class="button-container">
-          <button class="slide-button" (click)="flipCard()">Deslizar para Voltear</button>
+          <button class="slide-button" (click)="flipCard()">Ver Rondas</button>
         </div>
         <div class="scroll-container">
           
@@ -31,4 +35,18 @@
       </div>
     </div>
   </div>
+
+  <div class="particles-container">
+    <!-- Partículas -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+</div>
   

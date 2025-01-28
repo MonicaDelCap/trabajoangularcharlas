@@ -8,12 +8,15 @@
     justify-content: center;
     align-items: center;
     overflow: hidden; /* Evita el desbordamiento */
+    
   }
   
   .card {
     width: 100%;
     transform-style: preserve-3d;
     transition: transform 0.6s;
+    background: linear-gradient(to top, #CDB4DB 5%, #E4DEE6 95%); 
+
     position: relative;
   }
   
@@ -32,22 +35,17 @@
     justify-content: flex-start;
     align-items: center;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
     box-sizing: border-box; /* Asegura que padding no aumente el tamaño */
   }
   
 
 /* Configuración de la cara frontal */
 .card-front {
-  background: #ffffff;
   display: flex;
   flex-direction: column; /* Coloca el contenido y el botón en columnas */
   justify-content: space-between; /* Distribuye el espacio verticalmente */
   align-items: stretch; /* Asegura que el ancho sea consistente */
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
   box-sizing: border-box;
   gap: 10px; /* Espacio entre el contenido y el botón */
 }
@@ -59,7 +57,7 @@
 }
   
   .card-back {
-    background: #f8f9fa;
+    background: linear-gradient(to top, #CDB4DB 5%, #E4DEE6 95%); 
     transform: rotateY(180deg);
   }
   
@@ -71,7 +69,7 @@
     padding: 10px 20px;
     font-size: 16px;
     color: white;
-    background-color: #007bff;
+    background-color: #9C27B0;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -125,7 +123,7 @@
   scrollbar-width: thin; /* Para navegadores compatibles */
   scrollbar-color: #4CAF50 #F0F0F0; /* Color del scrollbar y fondo */
   padding: 10px;
-  background-color: #f9f9f9;
+  background: linear-gradient(to top, #CDB4DB 5%, #E4DEE6 95%); 
   border: 1px solid #ddd;
   border-radius: 8px;
 }
@@ -163,7 +161,7 @@
   height: 40px;
   font-size: 24px;
   color: white;
-  background-color: #0056b3;
+  background-color: #F9CD87;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -175,8 +173,111 @@
 }
 
 .plus-button:hover {
-  background-color: #218838;
+  background-color: #F29A0E;
   transform: scale(1.1);
+}
+
+/* Contenedor para las partículas */
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(to top, #CDB4DB 5%, #ffffff 95%); /* Azul claro en 30%, blanco arriba */
+  z-index: -1; /* En el fondo */
+}
+
+.particle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.8); /* Por defecto blanco */
+  border-radius: 50%; /* Forma circular */
+  animation: float 5s infinite ease-in-out;
+  
+}
+
+/* Animación para las partículas */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-100px) translateX(50px);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-200px) translateX(-50px);
+    opacity: 0;
+  }
+}
+
+
+
+
+/* Colores llamativos para las partículas */
+.particle:nth-child(1) {
+  top: 10%;
+  left: 20%;
+  background-color: #ff6f61; /* Rosa coral */
+  animation-duration: 4s;
+}
+.particle:nth-child(2) {
+  top: 50%;
+  left: 70%;
+  background-color: #ffeb3b; /* Amarillo brillante */
+  animation-duration: 6s;
+}
+.particle:nth-child(3) {
+  top: 80%;
+  left: 30%;
+  background-color: #4caf50; /* Verde pastel */
+  animation-duration: 5s;
+}
+.particle:nth-child(4) {
+  top: 25%;
+  left: 80%;
+  background-color: #2196f3; /* Azul vibrante */
+  animation-duration: 7s;
+}
+.particle:nth-child(5) {
+  top: 60%;
+  left: 50%;
+  background-color: #f50057; /* Rosa intenso */
+  animation-duration: 3s;
+}
+.particle:nth-child(6) {
+  top: 15%;
+  left: 40%;
+  background-color: #9c27b0; /* Morado vibrante */
+  animation-duration: 8s;
+}
+.particle:nth-child(7) {
+  top: 70%;
+  left: 10%;
+  background-color: #03a9f4; /* Azul claro */
+  animation-duration: 4s;
+}
+.particle:nth-child(8) {
+  top: 30%;
+  left: 90%;
+  background-color: #ff9800; /* Naranja vibrante */
+  animation-duration: 5s;
+}
+.particle:nth-child(9) {
+  top: 85%;
+  left: 60%;
+  background-color: #8bc34a; /* Verde lima */
+  animation-duration: 6s;
+}
+.particle:nth-child(10) {
+  top: 40%;
+  left: 25%;
+  background-color: #e91e63; /* Rosa oscuro */
+  animation-duration: 5s;
 }
 
 
