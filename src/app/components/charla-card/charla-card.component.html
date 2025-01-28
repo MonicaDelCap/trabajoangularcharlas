@@ -6,9 +6,9 @@
 
     <a [routerLink]="['/talk', charla.idCharla]" class="charla-card-content flex flex-col">
         <div class="charla-image">
-            <img *ngIf="charla.imagenCharla; else noImage" [src]="charla.imagenCharla" [alt]="charla.titulo" class="w-full h-40 object-fill rounded-t-lg" onerror="this.src='https://www.tajamar.es/wp-content/uploads/2018/11/logotipo-positivo.jpg'" />
+            <img *ngIf="charla.imagenCharla ; else noImage" [src]="charla.imagenCharla" [alt]="charla.titulo" class="w-full h-20 object-fill rounded-t-lg" onerror="this.src='https://www.tajamar.es/wp-content/uploads/2018/11/logotipo-positivo.jpg'" />
             <ng-template #noImage>
-                <img src="https://www.tajamar.es/wp-content/uploads/2018/11/logotipo-positivo.jpg" alt="Charla sin imagen" class="w-full h-40 object-fill rounded-t-lg" />
+                <img src="https://www.tajamar.es/wp-content/uploads/2018/11/logotipo-positivo.jpg" alt="Charla sin imagen" class="w-full h-20 object-fill rounded-t-lg" />
             </ng-template>
         </div>
         <div class="charla-info p-4">
