@@ -53,6 +53,7 @@ export class ProfileComponent implements OnInit {
     this._serviceTalks.getCharlaAlumno().subscribe(response => {
       this.charlas = response.data.map((item: any) => {
         const charla = item.charla;
+
         return new Charla(
           charla.descripcion,
           charla.estadoCharla,
@@ -69,8 +70,9 @@ export class ProfileComponent implements OnInit {
           charla.usuario
         );
       });
+      this.checkCharla();
     })
-    this.checkCharla();
+
   }
 
   loadRondas(): void {
@@ -81,9 +83,12 @@ export class ProfileComponent implements OnInit {
   }
 
   checkCharla(): void {
-    for (let i = 0; i < this.charlas.length; i++) {
-      if (this.charlas[i].idEstadoCharla != 1) {
-        this.acceptedCharlas.push(this.charlas[i])
+    console.log("entra")
+    console.log(this.charlas)
+    for (let charla of this.charlas) {
+      if (charla.idEstadoCharla != 1) {
+        console.log(charla.idEstadoCharla)
+        this.acceptedCharlas.push(charla)
       }
     }
   }
@@ -123,5 +128,5 @@ export class ProfileComponent implements OnInit {
     };
   }
 
- 
+
 }

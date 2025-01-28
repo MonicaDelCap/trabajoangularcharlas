@@ -147,7 +147,7 @@
             <div *ngIf="acceptedCharlas.length">
                 <div *ngFor="let charla of acceptedCharlas"
                     class="charla-card p-4 bg-gray-100 rounded-lg shadow-sm mb-4 flex items-center">
-                    <img [src]="charla.imagenCharla" alt="{{ charla.titulo }}"
+                    <img [src]="charla.imagenCharla" alt="{{ charla.titulo }}" onerror="this.src='https://www.tajamar.es/wp-content/uploads/2018/11/logotipo-positivo.jpg'"
                         class="charla-image w-16 h-16 rounded-full object-cover mr-4" />
                     <div class="charla-content">
                         <h3 class="charla-title text-lg font-semibold text-gray-800">
