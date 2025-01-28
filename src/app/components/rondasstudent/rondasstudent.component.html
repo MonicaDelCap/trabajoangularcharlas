@@ -1,8 +1,15 @@
 <div class="container">
     <div class="card-body">
         <h5 class="card-title">Modulo: {{round.descripcionModulo}}</h5>
-        <p class="card-text">Fecha limite para añadir charla: {{round.fechaCierre}}</p>
-        <p class="card-text">Fecha limite para votar: {{round.fechaLimiteVotacion}}</p>
+        <p class="card-text">Ronda {{round.idRonda}}</p>
+        <p class="card-text">{{fechaLimiteAniadirCharla}}</p>
+        <p class="card-text" style="color: red;" *ngIf="diferenciaDiasVotacion <= 0">
+            Se acabó el límite de tiempo para votar
+        </p>
+        <p class="card-text" *ngIf="diferenciaDiasVotacion > 0" [ngStyle]="diferenciaDiasVotacion === 1 ? {'color': 'red'} : {'color':'blue'}">
+            Te queda{{ diferenciaDiasVotacion === 1 ? '' : 'n' }} {{ diferenciaDiasVotacion }} {{ diferenciaDiasVotacion === 1 ? 'día' : 'días'
+            }} para votar
+        </p>
         <button class="button" [routerLink]="['/createtalk/', idRonda]" *ngIf="true" [disabled]="didUAddTalk"
             [ngClass]="{ 'disabled-button': didUAddTalk }">
             Añadir charla
