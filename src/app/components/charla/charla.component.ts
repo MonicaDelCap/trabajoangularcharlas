@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked, input } from '@angular/core';
 import { Charla } from '../../models/charla';
 import { ServiceUser } from '../../services/service.user';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -168,10 +168,12 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
 
       // Detectar si hay una nueva imagen seleccionada
       const hayNuevaImagen = this.fileupload.nativeElement.files.length > 0;
-
+    
       if (hayNuevaImagen) {
         console.log("imagen actualizada")
         await this.subirFichero(hayCambiosEnCharla);
+        this.snackBar.open("Imagen subida con éxito.", "Cerrar", { duration: 3000 });
+
       }
 
       if (hayCambiosEnCharla) {
@@ -180,18 +182,18 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
         console.log("charla editada" + this.charlaEditada)
         // Si hay cambios en la charla (excluyendo imagenCharla), actualizar la charla
         await this._service.updateCharla(this.charlaEditada)
-        
+
       }
 
 
 
 
 
-      if (hayNuevaImagen && !hayCambiosEnCharla) {
-        // Si hay una nueva imagen pero no hay cambios en la charla, subir solo la imagen
-        await this.subirFichero(false);
-        this.snackBar.open("Imagen subida con éxito.", "Cerrar", { duration: 3000 });
-      }
+      // if (hayNuevaImagen && !hayCambiosEnCharla) {
+      //   // Si hay una nueva imagen pero no hay cambios en la charla, subir solo la imagen
+      //   await this.subirFichero(false);
+      //   this.snackBar.open("Imagen subida con éxito.", "Cerrar", { duration: 3000 });
+      // }
 
       if (!hayCambiosEnCharla && !hayNuevaImagen) {
         // Si no hay cambios ni en la charla ni en la imagen
@@ -199,7 +201,7 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
       }
 
       // this.modalEditarAbierto = false;
-      location.reload();
+      // location.reload();
     } catch (error) {
       console.error("Error al guardar cambios:", error);
       this.snackBar.open("Error al guardar cambios. Inténtalo de nuevo.", "Cerrar", { duration: 3000 });
@@ -216,6 +218,7 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
         // Verifica que reader.result no sea null y que sea una cadena antes de asignarlo
         if (typeof reader.result === 'string') {
           this.charlaEditada.imagenCharla = reader.result;
+          console.log(this.charlaEditada.imagenCharla)
         } else {
           console.error('El resultado de la lectura no es una cadena');
         }
@@ -247,7 +250,7 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
         this.imagenServer = new FileModel(fileName, base64);
         console.log(this.imagenServer);
         this._serviceTalks.createPostFileTalk(this.imagenServer, this.idCharla).then(r => {
-          
+
         })
       };
     } else {
