@@ -61,6 +61,7 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
         if (id) {
           this._service.getCharlaById(id).then((charla) => {
             this.charla = charla;
+            console.log(charla)
             this.charlaEditada = { ...charla };
             this.esPropietario = charla.idUsuario === this.idUsuario; // Verificar si es propietario
             this.checkVoteStatus();
@@ -157,6 +158,7 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
 
   async guardarCambios(): Promise<void> {
     try {
+
       // Detectar si hay cambios en los campos de la charla (excluyendo imagenCharla)
       const hayCambiosEnCharla = Object.keys(this.charlaEditada).some(key => {
         // Ignorar el campo de imagenCharla en la comparación
@@ -173,9 +175,12 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
       }
 
       if (hayCambiosEnCharla) {
-        this.charlaEditada.imagenCharla = "";
+        console.log("charla actualizada")
+        this.charlaEditada.imagenCharla = this.charla?.imagenCharla;
+        console.log("charla editada" + this.charlaEditada)
         // Si hay cambios en la charla (excluyendo imagenCharla), actualizar la charla
         await this._service.updateCharla(this.charlaEditada)
+        
       }
 
 
@@ -193,7 +198,8 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
         this.snackBar.open("No se detectaron cambios para guardar.", "Cerrar", { duration: 3000 });
       }
 
-      this.modalEditarAbierto = false;
+      // this.modalEditarAbierto = false;
+      location.reload();
     } catch (error) {
       console.error("Error al guardar cambios:", error);
       this.snackBar.open("Error al guardar cambios. Inténtalo de nuevo.", "Cerrar", { duration: 3000 });
