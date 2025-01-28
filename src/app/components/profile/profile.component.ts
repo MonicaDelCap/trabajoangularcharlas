@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
   public charlas: Array<Charla> = [];
   public rondas: Array<Round> = [];
   public acceptedCharlas: Array<Charla> = [];
+  public presentCharlas:Array<Charla> = [];
   public isEditing = false;
 
 
@@ -89,6 +90,8 @@ export class ProfileComponent implements OnInit {
       if (charla.idEstadoCharla != 1) {
         console.log(charla.idEstadoCharla)
         this.acceptedCharlas.push(charla)
+      }else{
+        this.presentCharlas.push(charla)
       }
     }
   }

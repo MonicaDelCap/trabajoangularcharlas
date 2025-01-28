@@ -75,6 +75,21 @@
   }
 }
 
+.contenedor {
+  width: 100%; /* El contenedor ocupa todo el ancho disponible */
+  height: 100%; /* El contenedor ocupa toda la altura disponible */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+app-charla-card {
+  padding: 5%;
+  width: 80%; /* El componente ocupa el ancho completo del contenedor */
+  height: 100%; /* El componente ocupa la altura completa del contenedor */
+}
+
+
 /* Colores llamativos para las partículas */
 .particle:nth-child(1) {
   top: 10%;
