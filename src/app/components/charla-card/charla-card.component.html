@@ -4,7 +4,7 @@
         <i class="fas fa-crown text-3xl"></i>
     </div>
 
-    <a [routerLink]="['/talk', charla.idCharla]" class="charla-card-content flex flex-col">
+    <a [routerLink]="['/talk', charla.idCharla, state]" class="charla-card-content flex flex-col">
         <div class="charla-image">
             <img *ngIf="charla.imagenCharla ; else noImage" [src]="charla.imagenCharla" [alt]="charla.titulo" class="w-full h-40 object-fill rounded-t-lg" onerror="this.src='https://www.tajamar.es/wp-content/uploads/2018/11/logotipo-positivo.jpg'" />
             <ng-template #noImage>

@@ -38,7 +38,8 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
   public alreadyVotedInRound: boolean = false;
   public votedCharlaTitle: string | null = null;
   public isDropdownOpen: boolean = false;
-  public role!: number ;
+  public role!: number;
+  public state: string = ""
 
   imagenPredef: string | ArrayBuffer | null = '';
 
@@ -47,24 +48,29 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
   // Agrega la referencia a la lista de comentarios
   @ViewChild('comentariosContainer') comentariosContainer: ElementRef | undefined;
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
     private _service: ServiceUser,
     private snackBar: MatSnackBar,
     private _serviceTalks: ServiceTalks,
-    private _router: Router) { }
+    private _router: Router,
+    private _active: ActivatedRoute) { }
 
   async ngOnInit(): Promise<void> {
     // Obtener id del usuario autenticado
-    this.role =  environment.idUsuario;
+    this.role = environment.idUsuario;
     console.log(this.role)
     this._service.getProfile()
       .then(profile => {
         this.idUsuario = profile.usuario.idUsuario;
         this.usuario = profile.usuario.nombre;
         const id = this.route.snapshot.paramMap.get('id');
+
         if (id) {
           this._service.getCharlaById(id).then((charla) => {
             this.charla = charla;
+      console.log(this.charla.idUsuario)
+
             console.log(charla)
             this.charlaEditada = { ...charla };
             this.esPropietario = charla.idUsuario === this.idUsuario; // Verificar si es propietario
@@ -78,6 +84,7 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
 
     this.route.params.subscribe((params: Params) => {
       this.idCharla = params["id"];
+      this.state = params["state"];
     })
 
 
@@ -172,7 +179,7 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
 
       // Detectar si hay una nueva imagen seleccionada
       const hayNuevaImagen = this.fileupload.nativeElement.files.length > 0;
-    
+
       if (hayNuevaImagen) {
         console.log("imagen actualizada")
         await this.subirFichero(hayCambiosEnCharla);

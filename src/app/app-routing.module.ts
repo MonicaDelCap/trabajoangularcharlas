@@ -40,6 +40,9 @@ const routes: Routes = [
   { 
     path: 'talk/:id', component: CharlaComponent 
   },
+  { 
+    path: 'talk/:id/:state', component: CharlaComponent 
+  },
   {
     path: 'createtalk/:id', component:CreateTalkComponent
   },

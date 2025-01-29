@@ -30,7 +30,7 @@
 
         <!-- Botones de navegación -->
         <div class="flex justify-between items-center mt-6">
-            <a [routerLink]="role == 2 ? ['/talks'] : null "
+            <a [routerLink]="role == 2 ? ['/talks'] : ['/detailsstudent/', charla.idUsuario,state] "
                 class="inline-flex items-center px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-xl shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-300">
                 ← Volver a las charlas
             </a>
