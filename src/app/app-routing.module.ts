@@ -18,6 +18,7 @@ import { DetailstudenteacherComponent } from './components/detailstudenteacher/d
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 import { AdmingestionalumnosComponent } from './components/admingestionalumnos/admingestionalumnos.component';
 import { TeacherRondaComponent } from './components/teacher-ronda/teacher-ronda.component';
+import { PerfiladminComponent } from './components/perfiladmin/perfiladmin.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,9 @@ const routes: Routes = [
   },
   {
     path: "teacher/ronda/:idRonda", component:TeacherRondaComponent
+  },
+  {
+    path:'adminprofile',component:PerfiladminComponent
   }
 ];
 

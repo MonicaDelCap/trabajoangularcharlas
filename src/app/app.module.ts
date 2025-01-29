@@ -62,6 +62,9 @@ import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.co
 import { AdmingestionalumnosComponent } from './components/admingestionalumnos/admingestionalumnos.component';
 import { ServiceAdmin } from './services/service.admin';
 import { CardroundteacherComponent } from './components/cardroundteacher/cardroundteacher.component';
+import { PerfiladminComponent } from './components/perfiladmin/perfiladmin.component';
+import { ServiceAdmin } from './services/service.admin';
+import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.component';
 
 
 @NgModule({
@@ -91,7 +94,9 @@ import { CardroundteacherComponent } from './components/cardroundteacher/cardrou
     TeacherRondaComponent,
     MenubaradminComponent,
     AdmingestionalumnosComponent,
-    CardroundteacherComponent
+    CardroundteacherComponent    PerfiladminComponent,
+    MenubaradminComponent,
+
   ],
   imports: [
     BrowserModule,
