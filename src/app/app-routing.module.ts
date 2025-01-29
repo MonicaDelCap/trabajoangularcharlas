@@ -72,7 +72,7 @@ const routes: Routes = [
     path:"gestionusuarios", component:AdmingestionalumnosComponent
   },
   {
-    path: "teacher/ronda/:idRonda", component:TeacherRondaComponent
+    path: "teacher/ronda/:idRonda/:idCurso", component:TeacherRondaComponent
   }
 ];
 

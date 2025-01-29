@@ -3,6 +3,7 @@ import { Charla } from '../../models/charla';
 import { ServiceTeacher } from '../../services/serivece.teacher';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Student } from '../../models/student';
 
 @Component({
   selector: 'app-teacher-ronda',
@@ -11,12 +12,16 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 })
 export class TeacherRondaComponent implements OnInit {
   idRonda!: number;
+  idCurso!: number;
   charlasPropuestas: Charla[] = [];
   charlasAceptadas: Charla[] = [];
   draggedCharla: Charla | null = null;
   // Variables para el popup
   mostrarPopup: boolean = false;
   mensajePopup: string = '';
+
+  votosPropuestos: number = 0; // Total de votos de las charlas propuestas
+  totalVotos: number = 0; // Total de votos posibles
 
   constructor(
     private route: ActivatedRoute,
@@ -27,9 +32,24 @@ export class TeacherRondaComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.idRonda = Number(this.route.snapshot.paramMap.get('idRonda'));
+    this.idCurso = Number(this.route.snapshot.paramMap.get('idCurso'));
     this.cargarCharlas();
+    this.cargarAlumnos();
   }
+  async cargarAlumnos(): Promise<void> {
+    const alumnosPorCurso: any[] = await this._serviceTeacher.getAlumnos();
+    
+    // Buscamos el curso que coincide con el idCurso de la ruta
+    const curso = alumnosPorCurso.find(curso => curso.curso.idCurso === this.idCurso);
+    console.log(curso)
 
+    // Si encontramos el curso, asignamos el número de alumnos
+    if (curso) {
+        this.totalVotos = curso.numeroAlumnos;  // Correctamente asignamos el número de alumnos
+    } else {
+        console.error("Curso no encontrado");
+    }
+  }
   async cargarCharlas(): Promise<void> {
     try {
       const charlas: Charla[] = await this._serviceTeacher.getCharlasRonda(this.idRonda);
@@ -40,13 +60,19 @@ export class TeacherRondaComponent implements OnInit {
       for (const charla of this.charlasPropuestas) {
         const charlaConVotos = await this._serviceTeacher.getVotosCharla(charla.idCharla);
         charla.votos = charlaConVotos.votos ?? 0;
+        this.votosPropuestos += charla.votos; 
       }
+      
+      this.charlasPropuestas.sort((a, b) => b.votos - a.votos);
 
       // Procesar votos para charlas aceptadas
       for (const charla of this.charlasAceptadas) {
         const charlaConVotos = await this._serviceTeacher.getVotosCharla(charla.idCharla);
         charla.votos = charlaConVotos.votos ?? 0;
+        this.votosPropuestos += charla.votos; 
       }
+      
+      this.charlasAceptadas.sort((a, b) => b.votos - a.votos);
     } catch (error) {
       console.error("Error al obtener las charlas de la ronda:", error);
     }
