@@ -64,6 +64,9 @@ import { ServiceAdmin } from './services/service.admin';
 import { CardroundteacherComponent } from './components/cardroundteacher/cardroundteacher.component';
 
 
+
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -108,7 +111,8 @@ import { CardroundteacherComponent } from './components/cardroundteacher/cardrou
     }),
     MatExpansionModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    FullCalendarModule
   ],
   providers: [
     provideHttpClient(),
