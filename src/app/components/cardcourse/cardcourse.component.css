@@ -12,6 +12,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     gap: 20px;
+    height: 20px;
     flex-direction: column; /* Alinea los contenidos verticalmente */
     justify-content:center; /* Acomoda el espacio entre elementos internos */
     min-height: 250px; /* Asegura que todos tengan la misma altura mínima */
