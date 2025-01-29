@@ -12,7 +12,7 @@ export class MenubaradminComponent  {
   changeIsLeftSidebarCollapsed = output<boolean>();
   itemsStudent = [
     {
-      routeLink: 'profile',
+      routeLink: 'adminprofile',
       icon: 'fal fa-user',
       label: 'Perfil',
     },

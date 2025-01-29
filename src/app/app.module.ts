@@ -58,9 +58,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CharlaCardComponent } from './components/charla-card/charla-card.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TeacherRondaComponent } from './components/teacher-ronda/teacher-ronda.component';
-import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.component';
 import { AdmingestionalumnosComponent } from './components/admingestionalumnos/admingestionalumnos.component';
-import { ServiceAdmin } from './services/service.admin';
 import { CardroundteacherComponent } from './components/cardroundteacher/cardroundteacher.component';
 import { PerfiladminComponent } from './components/perfiladmin/perfiladmin.component';
 import { ServiceAdmin } from './services/service.admin';
@@ -94,7 +92,8 @@ import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.co
     TeacherRondaComponent,
     MenubaradminComponent,
     AdmingestionalumnosComponent,
-    CardroundteacherComponent    PerfiladminComponent,
+    CardroundteacherComponent,
+    PerfiladminComponent,
     MenubaradminComponent,
 
   ],
