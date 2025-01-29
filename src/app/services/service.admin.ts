@@ -136,5 +136,12 @@ export class ServiceAdmin {
         })
     }
 
+    updatePassword(newPassword:string):Observable<any>{
+        let body={"newPassword":newPassword};
+        let header={"Authorization": `Bearer ${localStorage.getItem('authToken')}`};
+        let request = "api/Usuarios/UpdatePasswordUsuario";
+        return this._htpp.put(environment.urlCharlas+request,body,{headers:header});
+    }
+
 
 }
