@@ -38,6 +38,7 @@ export class CoursewithstudentComponent implements OnInit {
       this._serviceTeacher.getCourses().then(r => {
         this.courses = r;
         this.selectCourse();
+        console.log(this.students)
         this._serviceRound.getRounds().then( r => this.rounds = r)
       })
     })
@@ -50,7 +51,6 @@ export class CoursewithstudentComponent implements OnInit {
 
   selectCourse():boolean{
     for(let course of this.courses){
-      console.log(course)
 
       if(course.curso != null && course.curso.idCurso == this.idCourse){
         this.isCourse = course
