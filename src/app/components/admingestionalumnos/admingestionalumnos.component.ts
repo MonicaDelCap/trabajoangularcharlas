@@ -215,6 +215,7 @@ export class AdmingestionalumnosComponent implements OnInit {
           this.alumnos[index] = { ...updatedAlumno };
           this.updatePaginatedAlumnos();
           this.changeEditing();
+          this.loadUsers();
         }
       }).catch(error => {
         console.error("Error al actualizar el usuario:", error);
@@ -243,6 +244,7 @@ export class AdmingestionalumnosComponent implements OnInit {
           this.profesores[index] = { ...updatedProfesor };
           this.updatePaginatedProfesor();
           this.changeEditingProfe();
+          this.loadUsers();
         }
       }).catch(error => {
         console.error("Error al actualizar el usuario:", error);
