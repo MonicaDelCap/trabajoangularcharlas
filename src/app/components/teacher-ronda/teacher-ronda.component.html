@@ -1,14 +1,13 @@
 <body>
-    <i class="arrow-icon fa fa-arrow-left" routerLink="/courses"></i>
-    <mat-card class="p-6 shadow-md border border-gray-200 max-w-md mx-auto">
+    <i class="arrow-icon fa fa-arrow-left ml-10 mt-10" routerLink="/courses"></i>
         <h1
-            class="text-3xl font-extrabold mb-4 text-center text-gradient bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-500 shadow-lg">
-            Ronda: <span class="font-extrabold">{{ idRonda }}</span>
+            class="text-3xl font-extrabold text-center ">
+            Ronda <span class="font-extrabold">{{ idRonda }}</span>
         </h1>
-    </mat-card>
+        <p class="text-center mb-0">Curso {{charlasPropuestas[0].idCurso}}</p>
     <br>
     <br>
-    <div class="grid grid-cols-2 gap-3">
+    <div class="grid grid-cols-2 gap-2 ">
         <!-- Charlas Propuestas -->
         <mat-card class="p-4 shadow-md border border-gray-200">
             <div class="flex items-center justify-between mb-4">

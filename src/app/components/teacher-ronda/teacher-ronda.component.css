@@ -1,7 +1,10 @@
 body {
-    height: max-content;
+    height: auto;
     margin: 10px;
     padding: 20px;
+    background-color: #f5d39d;
+    border-radius: 3%;
+    padding-bottom: 3%;
 
 }
 

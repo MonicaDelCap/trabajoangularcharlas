@@ -77,6 +77,9 @@ const routes: Routes = [
     path: "teacher/ronda/:idRonda/:idCurso", component:TeacherRondaComponent
   },
   {
+    path: "teacher/ronda/:idRonda", component:TeacherRondaComponent
+  },
+  {
     path:'adminprofile',component:PerfiladminComponent
   },
   {
