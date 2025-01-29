@@ -2,28 +2,26 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ServiceUser } from '../../services/service.user';
 import { User } from '../../models/user';
 import { Charla } from '../../models/charla';
-import { ServiceTalks } from '../../services/service.talks';
-import { ServiceRound } from '../../services/service.round';
 import { ServicePostFiles } from '../../services/service.postfiles';
 import { Round } from '../../models/round';
 import { FileModel } from '../../models/filemodel';
 import { ServiceTeacher } from '../../services/serivece.teacher';
-import { CalendarEvent, CalendarView } from 'angular-calendar';
-import { startOfMonth, addDays, endOfMonth, subMonths, addMonths } from 'date-fns';
+import { CalendarOptions } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-teacherprofile',
   templateUrl: './teacherprofile.component.html',
-  styleUrl: './teacherprofile.component.css'
+  styleUrls: ['./teacherprofile.component.css']
 })
 export class TeacherprofileComponent implements OnInit {
   @ViewChild("cajafile") cajaFileRef!: ElementRef;
 
-  view: CalendarView = CalendarView.Month;  // Vista inicial (puede ser mes, semana, día)
-  viewDate: Date = new Date();  // Fecha activa del calendario
-  events: CalendarEvent[] = [];  // Lista de eventos que se mostrarán
   activeDayIsOpen: boolean = true;
-  showAlumnos: boolean = false;  // Controla la visibilidad de la tabla de alumnos
+  showAlumnos: boolean = false;
 
   public fileContent: string;
   public user !: User;
@@ -36,11 +34,23 @@ export class TeacherprofileComponent implements OnInit {
   public currentPage: number = 1;
   public itemsPerPage: number = 10;
   public totalPages: number = 1;
-  public selectedCurso: string = '';  // Propiedad para almacenar el valor seleccionado
+  public selectedCurso: string = '';
+
+  public calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+    plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    },
+    events: []
+  };
 
   constructor(private _service: ServiceUser,
     private _serviceFile: ServicePostFiles,
-    private _serviceTeacher: ServiceTeacher
+    private _serviceTeacher: ServiceTeacher,
+    private router: Router
   ) {
     this.fileContent = "";
   }
@@ -55,39 +65,28 @@ export class TeacherprofileComponent implements OnInit {
   loadUser(): void {
     this._service.getProfile().then(response => {
       this.user = response.usuario;
-    })
+    });
   }
+
   loadCursos(): void {
     this._serviceTeacher.getCursos().then(response => {
-      this.cursos = response
-    })
+      this.cursos = response;
+    });
   }
+
   loadRondas(): void {
     this._serviceTeacher.getRondas().then(response => {
       this.rondas = response;
       this.updateCalendarEvents();
-    })
+    });
   }
+
   loadAlumnos(): void {
     this._serviceTeacher.getAlumnos().then(response => {
       this.alumnos = response[0].alumnos;
       this.totalPages = Math.ceil(this.alumnos.length / this.itemsPerPage);
       this.updatePaginatedAlumnos();
-    })
-  }
-  updateCalendarEvents(): void {
-    this.events = this.rondas.flatMap(ronda => [
-      {
-        title: 'Presentación: ' + ronda.descripcionModulo,
-        start: new Date(ronda.fechaPresentacion),
-        color: { primary: '#1e90ff', secondary: '#D1E8FF' } // Color para la fecha de presentación
-      },
-      {
-        title: 'Cierre de votación: ' + ronda.descripcionModulo,
-        start: new Date(ronda.fechaCierre),
-        color: { primary: '#ff5722', secondary: '#FFCDD2' } // Color para la fecha de cierre
-      }
-    ]);
+    });
   }
 
   updatePaginatedAlumnos(): void {
@@ -110,36 +109,70 @@ export class TeacherprofileComponent implements OnInit {
     }
   }
 
-  previousMonth(): void {
-    this.viewDate = subMonths(this.viewDate, 1);
-    this.updateCalendarEvents();
-  }
-
-  nextMonth(): void {
-    this.viewDate = addMonths(this.viewDate, 1);
-    this.updateCalendarEvents();
-  }
-
   toggleAlumnos(): void {
     this.showAlumnos = !this.showAlumnos;
   }
 
-  onCursoChange(): void {
-    // Aquí puedes realizar la acción condicional basada en el valor seleccionado
-    if (this.selectedCurso === 'curso1') {
-      // Acción para curso1
-      console.log('Curso 1 seleccionado');
-    } else if (this.selectedCurso === 'curso2') {
-      // Acción para curso2
-      console.log('Curso 2 seleccionado');
-    } else {
-      // Acción para otros cursos
-      console.log('Otro curso seleccionado');
-    }
-  }
-
   editProfile(): void {
     this.isEditing = !this.isEditing;
+  }
+
+  updateCalendarEvents(): void {
+    const colores = ['#7C4DFF', '#90CAF9', '#C5E1A5', '#FFB74D', '#FF7043'];
+  
+    this.calendarOptions = {
+      ...this.calendarOptions,
+      events: this.rondas.map((ronda, index) => {
+        const color = colores[index % colores.length]; // Asigna un color cíclico basado en el índice
+        const fechaCierre = new Date(ronda.fechaCierre);
+      
+        // Añadimos un día al cierre
+        fechaCierre.setDate(fechaCierre.getDate() + 1);  
+  
+        return [
+          {
+            title: "Ronda " + ronda.idRonda + " - " + ronda.descripcionModulo,
+            start: this.formatDate(ronda.fechaLimiteVotacion),  
+            end: this.formatDate(fechaCierre.toISOString()),           
+            allDay: true,                                      
+            description: 'Repeating Event',
+            backgroundColor: color, // Color de fondo para el evento
+            url: `/teacher/ronda/${ronda.idRonda}`
+          }, 
+          {
+            title: "Fin de votación - Ronda " + ronda.idRonda,
+            start: this.formatDate(ronda.fechaLimiteVotacion),  // Fecha de fin de votación
+            allDay: true,                                      // Evento de día completo
+            description: 'Evento de fin de votación',          // Descripción para el evento
+            backgroundColor: color, // Color de fondo para el evento
+            url: `/teacher/ronda/${ronda.idRonda}`
+          },
+          {
+            title: "Cierre - Ronda " + ronda.idRonda,
+            start: this.formatDate(ronda.fechaCierre),         // Fecha de cierre
+            allDay: true,                                      // Evento de día completo
+            description: 'Evento de cierre',                   // Descripción para el evento
+            backgroundColor: color, // Color de fondo para el evento
+            url: `/teacher/ronda/${ronda.idRonda}`
+          }
+        ];
+      }).flat()  // Aplanar el array para que todos los eventos estén en un solo array
+    };
+  }
+  
+  formatDate(date: string): string {
+    const formattedDate = new Date(date);
+    return formattedDate.toISOString();
+  }
+
+  onCursoChange(): void {
+    if (this.selectedCurso === 'curso1') {
+      console.log('Curso 1 seleccionado');
+    } else if (this.selectedCurso === 'curso2') {
+      console.log('Curso 2 seleccionado');
+    } else {
+      console.log('Otro curso seleccionado');
+    }
   }
 
   subirFichero(event: any): void {

@@ -66,6 +66,9 @@ import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.co
 import { CourseswithstudentdisableComponent } from './components/courseswithstudentdisable/courseswithstudentdisable.component';
 
 
+
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,7 +117,8 @@ import { CourseswithstudentdisableComponent } from './components/courseswithstud
     }),
     MatExpansionModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    FullCalendarModule
   ],
   providers: [
     provideHttpClient(),

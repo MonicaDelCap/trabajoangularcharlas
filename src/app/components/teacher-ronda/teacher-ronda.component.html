@@ -1,8 +1,23 @@
 <body>
+    <i class="arrow-icon fa fa-arrow-left" routerLink="/courses"></i>
+    <mat-card class="p-6 shadow-md border border-gray-200 max-w-md mx-auto">
+        <h1
+            class="text-3xl font-extrabold mb-4 text-center text-gradient bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-500 shadow-lg">
+            Ronda: <span class="font-extrabold">{{ idRonda }}</span>
+        </h1>
+    </mat-card>
+    <br>
+    <br>
     <div class="grid grid-cols-2 gap-3">
         <!-- Charlas Propuestas -->
         <mat-card class="p-4 shadow-md border border-gray-200">
-            <h2 class="text-xl font-semibold mb-4">Charlas Propuestas</h2>
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold">Charlas Propuestas</h2>
+                <div class="flex items-center space-x-2 bg-blue-200 text-blue-800 px-4 py-2 rounded-full">
+                    <span class="font-bold">Votos Totales</span>
+                    <span class="font-semibold text-xl">{{ votosPropuestos }} / {{ totalVotos }}</span>
+                </div>
+            </div>
             <mat-card-content class="scrollable-content" (dragover)="onDragOver($event)"
                 (drop)="onDrop($event, 'propuestas')">
                 <div *ngFor="let charla of charlasPropuestas"
@@ -33,7 +48,7 @@
                 </div>
             </mat-card-content>
         </mat-card>
-    
+
         <!-- Charlas Aceptadas -->
         <mat-card class="p-4 shadow-md border border-gray-200">
             <h2 class="text-xl font-semibold mb-4">Charlas Aceptadas</h2>
@@ -47,7 +62,7 @@
                 <div *ngFor="let charla of charlasAceptadas"
                     class="relative draggable-item flex items-center p-4 bg-gray-100 shadow-md rounded-lg mb-4"
                     draggable="true" (dragstart)="onDragStart($event, charla)">
-    
+
                     <div *ngIf="charla.idEstadoCharla === 2" class="absolute top-0 right-0 mt-2 mr-2 text-yellow-500">
                         <i class="fas fa-crown text-3xl"></i>
                     </div>
@@ -81,27 +96,30 @@
     <!-- Botones para guardar y cancelar -->
     <div class="grid grid-cols-2 gap-4 mt-4">
         <!-- Cancelar cambios -->
-        <button mat-raised-button color="warn" (click)="abrirConfirmacionCancelar()" class=" button-cancel p-4 shadow-md border-gray-200">
+        <button mat-raised-button color="warn" (click)="abrirConfirmacionCancelar()"
+            class=" button-cancel p-4 shadow-md border-gray-200">
             Cancelar cambios
         </button>
-    
+
         <!-- Guardar cambios -->
-        <button mat-raised-button color="primary" (click)="abrirConfirmacionGuardar()" class="p-4 shadow-md border-gray-200">
+        <button mat-raised-button color="primary" (click)="abrirConfirmacionGuardar()"
+            class="p-4 shadow-md border-gray-200">
             Guardar cambios
         </button>
     </div>
-    
+
     <!-- Popup de confirmación -->
     <div *ngIf="mostrarPopup" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50">
         <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
             <h3 class="text-xl font-semibold mb-4">{{ mensajePopup }}</h3>
             <div class="flex justify-between">
-                <button (click)="confirmarAccion()" class="bg-blue-500 text-white px-4 py-2 rounded-md">Confirmar</button>
+                <button (click)="confirmarAccion()"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-md">Confirmar</button>
                 <button (click)="cerrarPopup()" class="bg-red-500 text-white px-4 py-2 rounded-md">Cancelar</button>
             </div>
         </div>
     </div>
-    
+
 </body>
 
 <div class="particles-container">
