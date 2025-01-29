@@ -35,13 +35,14 @@ export class TeacherRondaComponent implements OnInit {
     this.idCurso = Number(this.route.snapshot.paramMap.get('idCurso'));
     this.cargarCharlas();
     this.cargarAlumnos();
+    
   }
   async cargarAlumnos(): Promise<void> {
     const alumnosPorCurso: any[] = await this._serviceTeacher.getAlumnos();
-    
+    this.idCurso = this.charlasPropuestas[0].idCurso
     // Buscamos el curso que coincide con el idCurso de la ruta
     const curso = alumnosPorCurso.find(curso => curso.curso.idCurso === this.idCurso);
-    console.log(curso)
+    this.idCurso = this.charlasPropuestas[0].idCurso
 
     // Si encontramos el curso, asignamos el número de alumnos
     if (curso) {
