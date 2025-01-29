@@ -22,7 +22,7 @@
       <div class="scroll-container">
         <div class="round_container">
             @if(studentInfo.charlasTotales != 0){
-              @for(talk of studentInfo.charlas; track $index){
+              @for(talk of charlascast; track $index){
                 <app-charla-card [charla]="talk" [state]="state">RONDA 1</app-charla-card>
 
               }

@@ -8,6 +8,6 @@ import { TalksByCourse } from '../../models/talks';
   styleUrl: './charla-card.component.css'
 })
 export class CharlaCardComponent {
-  @Input() charla!: TalksByCourse; 
+  @Input() charla!: Charla; 
   @Input() state!: string;
 }
