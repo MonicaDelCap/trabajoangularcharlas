@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Charla } from '../../models/charla';
+import { TalksByCourse } from '../../models/talks';
 
 @Component({
   selector: 'app-charla-card',
@@ -7,6 +8,6 @@ import { Charla } from '../../models/charla';
   styleUrl: './charla-card.component.css'
 })
 export class CharlaCardComponent {
-  @Input() charla!: Charla; 
-  
+  @Input() charla!: TalksByCourse; 
+  @Input() state!: string;
 }

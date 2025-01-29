@@ -1,0 +1,5 @@
+<div class="scroll-container">
+    @for(student of students; track $index){
+    <app-cardstudent [student]="student" [state]="disable"></app-cardstudent>
+    }
+</div>

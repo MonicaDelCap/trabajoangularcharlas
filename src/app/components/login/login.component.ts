@@ -3,6 +3,7 @@ import { Login } from '../../models/login';
 import { Router } from '@angular/router';
 import { ServiceUser } from '../../services/service.user';
 import { User } from '../../models/user';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -52,11 +53,13 @@ export class LoginComponent implements OnInit{
       this._service.getProfile().then(r => {
         let role = r.usuario.idRole;
         if (role == 1) {
+          environment.idUsuario = role;
           this._router.navigate(["/teacherProfile"]);
         } else if (role == 2) {
+          environment.idUsuario = role;
           this._router.navigate(["/profile"]);
         }else if(role == 3){
-          console.log("admin")
+          environment.idUsuario = role;
           this._router.navigate(["/adminprofile"]);
         }
       })

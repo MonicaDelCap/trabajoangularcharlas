@@ -19,6 +19,7 @@ import { TeacherprofileComponent } from './components/teacherprofile/teacherprof
 import { AdmingestionalumnosComponent } from './components/admingestionalumnos/admingestionalumnos.component';
 import { TeacherRondaComponent } from './components/teacher-ronda/teacher-ronda.component';
 import { PerfiladminComponent } from './components/perfiladmin/perfiladmin.component';
+import { CourseswithstudentdisableComponent } from './components/courseswithstudentdisable/courseswithstudentdisable.component';
 
 const routes: Routes = [
   {
@@ -64,7 +65,7 @@ const routes: Routes = [
     path:"createcourse", component:CreatecourseComponent
   },
   {
-    path:"detailsstudent/:id", component:DetailstudenteacherComponent
+    path:"detailsstudent/:id/:state", component:DetailstudenteacherComponent
   },
   {
     path: "teacherProfile", component:TeacherprofileComponent
@@ -77,6 +78,9 @@ const routes: Routes = [
   },
   {
     path:'adminprofile',component:PerfiladminComponent
+  },
+  {
+    path: 'studentslistdisable/:id', component:CourseswithstudentdisableComponent
   }
 ];
 

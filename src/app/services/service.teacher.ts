@@ -68,4 +68,22 @@ export class ServiceTeacherM {
         })
     }
 
+    getStudentsCourseDisable(): Promise<any>{
+        let header = {"Authorization": `Bearer ${localStorage.getItem('authToken')}`};
+        let request = "api/Profesor/AlumnosCursoHistorialProfesor";
+        return new Promise(function(resolve){
+            axios.get(environment.urlCharlas + request, {headers:header})
+            .then(r => resolve(r.data))
+        })
+    }
+
+    getStudentByIdDisable(id:number): Promise<any>{
+        let header = {"Authorization": `Bearer ${localStorage.getItem('authToken')}`};
+        let request = "api/Profesor/DatosAlumnoHistorial/" + id;
+        return new Promise(function(resolve){
+            axios.get(environment.urlCharlas + request, {headers:header})
+            .then(r => resolve(r.data))
+        })
+    }
+
 }

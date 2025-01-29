@@ -3,7 +3,7 @@
     text-decoration: none;
 }
 
-.particles-container {
+.particles-container1 {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,6 +11,19 @@
     height: 100%;
     overflow: hidden;
     background: linear-gradient(to top, #87ceeb 20%, #ffffff 80%);
+    /* Azul claro en 30%, blanco arriba */
+    z-index: -1;
+    /* En el fondo */
+}
+
+.particles-container2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(to top, #CDB4DB 5%, #ffffff 95%); /* Azul claro en 30%, blanco arriba */
     /* Azul claro en 30%, blanco arriba */
     z-index: -1;
     /* En el fondo */

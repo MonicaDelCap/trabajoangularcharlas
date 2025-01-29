@@ -13,6 +13,7 @@ export class DetailstudenteacherComponent implements OnInit {
 
   studentInfo !: StudentsInfoDetailsTeacher;
   idStudent !: number;
+  state !: string;
   constructor(
     private _serviceTeacher: ServiceTeacherM,
     private _active: ActivatedRoute,
@@ -22,11 +23,19 @@ export class DetailstudenteacherComponent implements OnInit {
   ngOnInit(): void {
     this._active.params.subscribe((params: Params) => {
       this.idStudent = params["id"]
-      this._serviceTeacher.getStudentById(this.idStudent).then(r => {
-        this.studentInfo = r
-      console.log("usuario")
-
-      })
+      this.state = params["state"];
+      console.log(this.state)
+      if(this.state == "disable"){
+        this._serviceTeacher.getStudentByIdDisable(this.idStudent).then(r => {
+          this.studentInfo = r
+        })
+      }else{
+        this._serviceTeacher.getStudentById(this.idStudent).then(r => {
+          this.studentInfo = r
+          console.log("activo")
+        })
+      }
+      
     })
   }
 

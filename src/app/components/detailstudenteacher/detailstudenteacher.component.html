@@ -1,5 +1,7 @@
 <div class="container">
-    <i class="arrow-icon fa fa-arrow-left" [routerLink]="['/studentslist/', studentInfo.usuario.idCurso] "></i> 
+  <i class="arrow-icon fa fa-arrow-left" 
+  [routerLink]="state === 'enable' ? ['/studentslist/', studentInfo.usuario.idCurso] :  ['/studentslistdisable/', studentInfo.usuario.idCurso]">
+</i> 
     
     <button class="disable-button" (click)="updateStatus()">{{ studentInfo.usuario.estadoUsuario ? 'Desactivar' : 'Activar' }}</button>
     <div class="container2">
@@ -20,7 +22,10 @@
       <div class="scroll-container">
         <div class="round_container">
             @if(studentInfo.charlasTotales != 0){
-                <app-cardroundteacher *ngFor="let talk of studentInfo.charlas">RONDA 1</app-cardroundteacher>
+              @for(talk of studentInfo.charlas; track $index){
+                <app-charla-card [charla]="talk" [state]="state">RONDA 1</app-charla-card>
+
+              }
             }@else{
                 <h3 style="color: gray">NO HAY CHARLAS PRENSENTADAS</h3>
             }

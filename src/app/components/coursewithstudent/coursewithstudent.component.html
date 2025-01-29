@@ -26,7 +26,7 @@
         <div class="scroll-container">
           
             @for(student of students; track $index){
-              <app-cardstudent [student]="student"></app-cardstudent>
+              <app-cardstudent [student]="student" [state]="enable"></app-cardstudent>
             }
       
          

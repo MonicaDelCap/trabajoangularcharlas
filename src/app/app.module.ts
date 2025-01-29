@@ -63,6 +63,7 @@ import { CardroundteacherComponent } from './components/cardroundteacher/cardrou
 import { PerfiladminComponent } from './components/perfiladmin/perfiladmin.component';
 import { ServiceAdmin } from './services/service.admin';
 import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.component';
+import { CourseswithstudentdisableComponent } from './components/courseswithstudentdisable/courseswithstudentdisable.component';
 
 
 @NgModule({
@@ -95,6 +96,7 @@ import { MenubaradminComponent } from './components/menubaradmin/menubaradmin.co
     CardroundteacherComponent,
     PerfiladminComponent,
     MenubaradminComponent,
+    CourseswithstudentdisableComponent,
 
   ],
   imports: [

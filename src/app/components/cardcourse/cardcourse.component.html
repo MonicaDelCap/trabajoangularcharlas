@@ -1,7 +1,7 @@
   <div 
     class="course-item"
-    [routerLink]="course.activo ? ['/studentslist/', course.idCurso] : null"
-    [class.disabled]="!course.activo">
+    [routerLink]="course.activo ? ['/studentslist/', course.idCurso] :  ['/studentslistdisable/', course.idCurso]"
+    >
     
       <h1>{{ course.nombre }}</h1>
       <b>Código: {{ course.idCurso }}</b>
@@ -15,5 +15,4 @@
       
     
   </div>
-  <!-- Repite los elementos `.course-item` con datos diferentes -->
   

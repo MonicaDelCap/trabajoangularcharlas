@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Recurso } from '../../models/recurso';
 import { FileModel } from '../../models/filemodel';
 import { ServiceTalks } from '../../services/service.talks';
+import { environment } from '../../../environments/environment';
 
 interface Voto {
   idVoto: number;
@@ -37,6 +38,7 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
   public alreadyVotedInRound: boolean = false;
   public votedCharlaTitle: string | null = null;
   public isDropdownOpen: boolean = false;
+  public role!: number ;
 
   imagenPredef: string | ArrayBuffer | null = '';
 
@@ -53,6 +55,8 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
 
   async ngOnInit(): Promise<void> {
     // Obtener id del usuario autenticado
+    this.role =  environment.idUsuario;
+    console.log(this.role)
     this._service.getProfile()
       .then(profile => {
         this.idUsuario = profile.usuario.idUsuario;

@@ -30,7 +30,7 @@
 
         <!-- Botones de navegación -->
         <div class="flex justify-between items-center mt-6">
-            <a routerLink="/talks"
+            <a [routerLink]="role == 2 ? ['/talks'] : null "
                 class="inline-flex items-center px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-xl shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-300">
                 ← Volver a las charlas
             </a>
@@ -159,7 +159,7 @@
     <p>{{ errorMessage }}</p>
 </div>
 
-<div class="particles-container">
+<div class="particles-container" [ngClass]="role === 2 ? 'particles-container1' : 'particles-container2'">
     <div class="particle"></div>
     <div class="particle"></div>
     <div class="particle"></div>

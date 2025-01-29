@@ -6,10 +6,15 @@ import { Student } from '../../models/student';
   templateUrl: './cardstudent.component.html',
   styleUrl: './cardstudent.component.css'
 })
-export class CardstudentComponent{
+export class CardstudentComponent implements OnInit{
 
   @Input() student!: Student
 
+  @Input() state!: string;
+
+  ngOnInit(): void {
+    console.log(this.state)
+  }
   
   
 }

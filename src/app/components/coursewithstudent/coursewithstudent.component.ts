@@ -22,6 +22,7 @@ export class CoursewithstudentComponent implements OnInit {
   public isCourse!: StudentsCoursesTeacher
   public students!: Array<Student>
   public rounds !: Array<Round>
+  public enable: string = "enable";
 
   constructor(
     private _serviceTeacher: ServiceTeacherM,
