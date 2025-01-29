@@ -8,7 +8,7 @@
                 <div *ngFor="let charla of charlasPropuestas"
                     class="draggable-item flex items-center p-4 bg-gray-100 shadow-md rounded-lg mb-4" draggable="true"
                     (dragstart)="onDragStart($event, charla)">
-                    <img [src]="charla.imagenCharla" alt="Imagen Charla" class="w-16 h-16 object-cover rounded-full mr-4" />
+                    <img [src]="charla.imagenCharla"  onerror="this.src='https://cdn-icons-png.freepik.com/512/3415/3415488.png'" alt="Imagen Charla" class="w-16 h-16 object-cover rounded-full mr-4" />
                     <div class="flex justify-between w-full">
                         <div>
                             <h3 class="text-lg font-bold">{{ charla.titulo }}</h3>
@@ -52,7 +52,7 @@
                         <i class="fas fa-crown text-3xl"></i>
                     </div>
     
-                    <img [src]="charla.imagenCharla" alt="Imagen Charla" class="w-16 h-16 object-cover rounded-full mr-4" />
+                    <img [src]="charla.imagenCharla" alt="Imagen Charla" onerror="this.src='https://cdn-icons-png.freepik.com/512/3415/3415488.png'" class="w-16 h-16 object-cover rounded-full mr-4" />
                     <div class="flex justify-between w-full">
                         <div>
                             <h3 class="text-lg font-bold">{{ charla.titulo }}</h3>

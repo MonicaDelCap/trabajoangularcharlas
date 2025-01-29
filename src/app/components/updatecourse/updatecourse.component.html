@@ -1,47 +1,48 @@
-<div class="form-container max-w-lg mx-auto mt-10 bg-white p-6 rounded-lg shadow-md">
-    <h1 class="text-2xl font-bold text-center mb-6 text-gray-700">Actualizar Curso</h1>
+<div class="body">
+   
+    <div class="form-container mx-auto mt-10 bg-white p-6 rounded-lg shadow-md">
+        <i class="arrow-icon fa fa-arrow-left" routerLink="/courses"></i>
+  
+        <h1 class="mb-4" class="form-title">ACTUALIZAR CURSO {{idCurso}} </h1>
     
-    <!-- Nombre del Curso -->
-    <div class="form-group mb-4">
-        <label for="nombreCurso" class="form-label text-gray-600 font-medium">Nombre Curso</label>
-        <input 
-            type="text" 
-            id="nombreCurso" 
-            class="form-control border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none" 
-            name="nombre" 
-            #nombre 
-            placeholder="Ingresa el nombre del curso" 
-            required>
-    </div>
-
-    <!-- Fecha de Inicio -->
-    <div class="form-group mb-4">
-        <label for="fechaInicio" class="form-label text-gray-600 font-medium">Fecha de Inicio</label>
-        <input 
-            type="datetime-local" 
-            id="fechaInicio" 
-            class="form-control border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none" 
-            name="fechaInicio" 
-            #fechaInicio 
-            required>
-    </div>
-
-    <!-- Fecha de Fin -->
-    <div class="form-group mb-4">
-        <label for="fechaFin" class="form-label text-gray-600 font-medium">Fecha de Fin</label>
-        <input 
-            type="datetime-local" 
-            id="fechaFin" 
-            class="form-control border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none" 
-            name="fechaFin" 
-            #fechaFin 
-            required>
-    </div>
-
-    <!-- Botón para actualizar -->
-    <button 
-        (click)="updateCourse()" 
-        class="w-full mt-6 px-4 py-2 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
-        Actualizar
-    </button>
+        <div class="mb-3">
+            <label for="fechaPresentacion" class="form-label">Nombre Curso</label>
+            <input type="text" id="fechaPresentacion" class="form-control" name="nombre"
+            #nombre required>
+        </div>
+    
+        <!-- Fecha de Cierre -->
+        <div class="mb-3">
+            <label for="fechaCierre" class="form-label">Fecha de Inicio</label>
+            <input type="datetime-local" id="fechaCierre" class="form-control" name="fechaInicio" #fechaInicio required>
+        </div>
+    
+    
+        <!-- Fecha Límite de Votación -->
+        <div class="mb-3">
+            <label class="form-label">Fecha de Fin</label>
+            <input type="datetime-local" class="form-control"
+                name="fechaFin" #fechaFin required>
+        </div>  
+        <!-- Botón para actualizar -->
+        <button  
+          class="btn-crear w-full mt-10 px-4 py-2 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+          Actualizar
+        </button>
+      </div>
 </div>
+<div class="particles-container">
+    <!-- Partículas -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+</div>
+
+  
