@@ -179,11 +179,8 @@ export class TeacherprofileComponent implements OnInit {
 
   onCursoChange(): void {
     if (this.selectedCurso === 'curso1') {
-      console.log('Curso 1 seleccionado');
     } else if (this.selectedCurso === 'curso2') {
-      console.log('Curso 2 seleccionado');
     } else {
-      console.log('Otro curso seleccionado');
     }
   }
 
@@ -191,7 +188,6 @@ export class TeacherprofileComponent implements OnInit {
     var file = this.cajaFileRef.nativeElement.files[0];
     var miPath = this.cajaFileRef.nativeElement.value.split("\\");
     var ficheroNombre = miPath[2];
-    console.log(ficheroNombre);
 
     var reader = new FileReader();
     reader.readAsArrayBuffer(file);
@@ -208,7 +204,6 @@ export class TeacherprofileComponent implements OnInit {
       var newFileModel =
         new FileModel(ficheroNombre, base64);
       this._serviceFile.postFileUser(newFileModel, this.user.idUsuario).subscribe(response => {
-        console.log(response.urlFile)
         const newImageUrl = response.urlFile + "?t=" + new Date().getTime();
         this.user.imagen = newImageUrl;
         this.editProfile();
@@ -219,27 +214,22 @@ export class TeacherprofileComponent implements OnInit {
     var cont=this.cajaPassRef.nativeElement.value;
     var file = this.cajaFileRef.nativeElement.files[0];
     if(!file && !cont ){
-      console.warn("nulo");
       alert("Accion invalida");
     }else if(!file && cont){
       //metodo para actualizar la contraseña
-      console.log("archivo NO contraseña SI");
       this.updatePassword(cont);
       this._router.navigate(["/"]);
     }else if(file &&!cont)
     {
       //metodo para actualizar foto de perfil
-      console.log("archivo si contraseña no");
       this.subirFichero();
     }else{
-      console.log("CONTRASEÑA SI Y ARCHIVO SI");
       this.editProfile();
       this.updatePassword(cont);
     }
   }
   updatePassword(cont:string):void{
     this._serviceAdmin.updatePassword(cont).subscribe(response=>{
-      console.log(response);
       this._router.navigate(["/"]);
     })
   }

@@ -54,7 +54,7 @@ export class ProfileComponent implements OnInit {
   loadUser(): void {
     this._service.getProfile().then(response => {
       this.user = response.usuario;
-    }).catch(r => console.log(r.error))
+    })
 
   }
 
@@ -86,17 +86,13 @@ export class ProfileComponent implements OnInit {
 
   loadRondas(): void {
     this._serviceRonda.getRounds().then((response) => {
-      //console.log(response)
       this.rondas = response
     })
   }
 
   checkCharla(): void {
-    console.log("entra")
-    console.log(this.charlas)
     for (let charla of this.charlas) {
       if (charla.idEstadoCharla != 1) {
-        console.log(charla.idEstadoCharla)
         this.acceptedCharlas.push(charla)
       } else {
         this.presentCharlas.push(charla)
@@ -113,7 +109,6 @@ export class ProfileComponent implements OnInit {
     var file = this.cajaFileRef.nativeElement.files[0];
     var miPath = this.cajaFileRef.nativeElement.value.split("\\");
     var ficheroNombre = miPath[2];
-    console.log(ficheroNombre);
 
     var reader = new FileReader();
     //reader.readAsDataURL(file);
@@ -131,7 +126,6 @@ export class ProfileComponent implements OnInit {
       var newFileModel =
         new FileModel(ficheroNombre, base64);
       this._serviceFile.postFileUser(newFileModel, this.user.idUsuario).subscribe(response => {
-        console.log(response.urlFile)
         const newImageUrl = response.urlFile + "?t=" + new Date().getTime();
         this.user.imagen = newImageUrl;
         this.editProfile();
@@ -143,26 +137,21 @@ export class ProfileComponent implements OnInit {
     var cont = this.cajaPassRef.nativeElement.value;
     var file = this.cajaFileRef.nativeElement.files[0];
     if (!file && !cont) {
-      console.warn("nulo");
       alert("Accion invalida");
     } else if (!file && cont) {
       //metodo para actualizar la contraseña
-      console.log("archivo NO contraseña SI");
       this.updatePassword(cont);
       this._router.navigate(["/"]);
     } else if (file && !cont) {
       //metodo para actualizar foto de perfil
-      console.log("archivo si contraseña no");
       this.subirFichero();
     } else {
-      console.log("CONTRASEÑA SI Y ARCHIVO SI");
       this.editProfile();
       this.updatePassword(cont);
     }
   }
   updatePassword(cont: string): void {
     this._serviceAdmin.updatePassword(cont).subscribe(response => {
-      console.log(response);
       this._router.navigate(["/"]);
     })
   }

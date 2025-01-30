@@ -76,7 +76,6 @@ export class RondasstudentComponent implements OnInit {
   searchTalkInRound(): boolean {
     for (let talk of this.talks) {
       if (talk.idUsuario == environment.idUsuario) {
-        console.log(talk.idUsuario);
         return true;
       }
     }

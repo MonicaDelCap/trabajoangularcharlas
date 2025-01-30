@@ -45,7 +45,6 @@ export class UpdatecourseadminComponent implements OnInit {
     this.courseNow.nombre = this.nombre.nativeElement.value;
     this.courseNow.fechaInicio = this.fechaInicio.nativeElement.value;
     this.courseNow.fechaFin = this.fechaFin.nativeElement.value;
-    console.log(this.courseNow)
     this._serviceTeacher.updateDateCourse(this.courseNow).then(r => {
       this._router.navigate(["/coursesadmin"])
     })

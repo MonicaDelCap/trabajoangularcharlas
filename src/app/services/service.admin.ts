@@ -37,7 +37,6 @@ export class ServiceAdmin {
     updateRolUsuario(idUser: number, newRole: number): Observable<any> {
         let request = 'api/admin/updaterolusuario/';
         let url = environment.urlCharlas2 + request + idUser + '/' + newRole;
-        console.log(url);
         const token = localStorage.getItem('authToken');
         let header = new HttpHeaders()
             .set("Content-Type", "application/json")
@@ -48,7 +47,6 @@ export class ServiceAdmin {
     updateEstadoProfesor(idUsuario: number, estado: boolean): Observable<any> {
         let request = "api/admin/updateEstadoProfesor/";
         let url = environment.urlCharlas2 + request + idUsuario + '/' + estado;
-        console.log(url);
         const token = localStorage.getItem('authToken');
         let header = new HttpHeaders()
             .set("Content-Type", "application/json")
@@ -59,7 +57,6 @@ export class ServiceAdmin {
     updateCursoUsuario(idUsuario: number, idCurso: number): Observable<any> {
         let request = "api/admin/updateCursoUsuario/";
         let url = environment.urlCharlas2 + request + idUsuario + '/' + idCurso;
-        console.log(url);
         const token = localStorage.getItem('authToken');
         let header = new HttpHeaders()
             .set("Content-Type", "application/json")

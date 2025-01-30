@@ -78,7 +78,6 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
         if (id) {
           this._service.getCharlaById(id).then((charla) => {
             this.charla = charla;
-            console.log(charla)
             
 
             this.charlaEditada = { ...charla };
@@ -88,7 +87,6 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
         }
       })
       .catch(error => {
-        console.error('Error al obtener el perfil:', error);
       });
 
     this.route.params.subscribe((params: Params) => {
@@ -127,7 +125,6 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
         }
       }
     } catch (error) {
-      console.error('Error al verificar el estado del voto:', error);
       this.snackBar.open('No se pudo verificar el estado del voto. Por favor, inténtalo más tarde.', 'Cerrar');
     }
   }
@@ -152,7 +149,6 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
         this.isVoted = true;
         this.snackBar.open('Tu voto fue registrado con éxito.', 'Cerrar', { duration: 3000 });
       } catch (error) {
-        console.error('Error al registrar el voto:', error);
         this.snackBar.open('No se pudo registrar tu voto. Inténtalo de nuevo.', 'Cerrar');
       }
     }
@@ -190,41 +186,24 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
       const hayNuevaImagen = this.fileupload.nativeElement.files.length > 0;
 
       if (hayNuevaImagen) {
-        console.log("imagen actualizada")
         await this.subirFichero(hayCambiosEnCharla);
         this.snackBar.open("Imagen subida con éxito.", "Cerrar", { duration: 3000 });
 
       }
 
       if (hayCambiosEnCharla) {
-        console.log("charla actualizada")
         this.charlaEditada.imagenCharla = this.charla?.imagenCharla;
-        console.log("charla editada" + this.charlaEditada)
         // Si hay cambios en la charla (excluyendo imagenCharla), actualizar la charla
         await this._service.updateCharla(this.charlaEditada)
 
       }
 
-
-
-
-
-      // if (hayNuevaImagen && !hayCambiosEnCharla) {
-      //   // Si hay una nueva imagen pero no hay cambios en la charla, subir solo la imagen
-      //   await this.subirFichero(false);
-      //   this.snackBar.open("Imagen subida con éxito.", "Cerrar", { duration: 3000 });
-      // }
-
       if (!hayCambiosEnCharla && !hayNuevaImagen) {
         // Si no hay cambios ni en la charla ni en la imagen
         this.snackBar.open("No se detectaron cambios para guardar.", "Cerrar", { duration: 3000 });
       }
-
-      // this.modalEditarAbierto = false;
-      // location.reload();
       this._router.navigate(["/talks"])
     } catch (error) {
-      console.error("Error al guardar cambios:", error);
       this.snackBar.open("Error al guardar cambios. Inténtalo de nuevo.", "Cerrar", { duration: 3000 });
     }
   }
@@ -239,9 +218,7 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
         // Verifica que reader.result no sea null y que sea una cadena antes de asignarlo
         if (typeof reader.result === 'string') {
           this.charlaEditada.imagenCharla = reader.result;
-          console.log(this.charlaEditada.imagenCharla)
         } else {
-          console.error('El resultado de la lectura no es una cadena');
         }
       };
       reader.readAsDataURL(file); // Esto generará una URL que se puede usar en src de la imagen
@@ -269,7 +246,6 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
         );
 
         this.imagenServer = new FileModel(fileName, base64);
-        console.log(this.imagenServer);
         this._serviceTalks.createPostFileTalk(this.imagenServer, this.idCharla).then(r => {
 
         })
@@ -296,7 +272,6 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
           this.charla!.comentarios.push(nuevoComentario);
           this.nuevoComentario = '';
         })
-        .catch(error => console.error('Error al agregar comentario:', error));
     }
   }
 
@@ -324,7 +299,6 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
       this.snackBar.open('Recurso agregado correctamente.', 'Cerrar', { duration: 3000 });
       this.cerrarModalAgregarRecurso();
     } catch (error) {
-      console.error('Error al agregar recurso:', error);
       this.snackBar.open('Error al agregar el recurso.', 'Cerrar', { duration: 3000 });
     }
   }
@@ -361,7 +335,6 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
           this.recursoEditando = null;  // Cerrar el modal de edición
         })
         .catch(error => {
-          console.error('Error al actualizar recurso en la API:', error);
           this.snackBar.open('Error al actualizar el recurso', 'Cerrar', { duration: 2000 });
         });
     }

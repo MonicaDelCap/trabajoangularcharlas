@@ -73,7 +73,6 @@ export class LoginComponent implements OnInit {
   }
 
   registerUser(): void {
-    console.log()
 
     if (this.checkPassword()) {
       this.user.nombre = this.nameBox.nativeElement.value;
@@ -87,7 +86,6 @@ export class LoginComponent implements OnInit {
           let courseCode = this.coursecode.nativeElement.value;
 
           if (this.isTeacher.nativeElement.checked) {
-            console.log("profe ")
             this.user.idRole = 1;
             this._service.registerTeacher(this.user, courseCode)
               .then(response => {
@@ -218,7 +216,6 @@ export class LoginComponent implements OnInit {
   }
 
   erroresRegister(e: string): void {
-    console.log(e)
     if (e == "ERR_BAD_RESPONSE") {
       this.changeInputEmailColorRegister();
     } else if (e == "ERR_BAD_REQUEST") {

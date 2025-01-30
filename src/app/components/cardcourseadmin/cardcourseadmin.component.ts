@@ -20,7 +20,6 @@ export class CardcourseadminComponent implements OnInit {
   ngOnInit(): void {
     this.course.nombre = this.course.nombre.toUpperCase();
     this.isActive = this.course.activo ? "Activo" : "Inactivo";
-    console.log("cardadministrador")
   }
 
  

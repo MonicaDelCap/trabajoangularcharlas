@@ -97,18 +97,16 @@ export class CreateTalkComponent implements OnInit {
       this._serviceTalks.createTalk(this.newTalk)
         .then(r => {
           this.newTalkCreate = r;
-          console.log("antes de crearPost");
-          console.log(this.imagenServer);
+          
 
           this._serviceTalks.createPostFileTalk(this.imagenServer, this.newTalkCreate.idCharla).then(r => {
-            console.log("entra")
             this._router.navigate(["/studentround/", this.round.idRonda])
             for (let input of this.inputs) {
               this.newResource = new Resource(0, this.newTalkCreate.idCharla, input.url, input.nombre, input.descripcion);
-              this._serviceTalks.createResourceForTalk(this.newResource).then(r => console.log(r))
+              this._serviceTalks.createResourceForTalk(this.newResource)
             }
           })
-            .catch(r => console.log(r));
+            
         })
     } else {
       this.changeDurationColor();
@@ -167,7 +165,6 @@ export class CreateTalkComponent implements OnInit {
         );
 
         this.imagenServer = new FileModel(fileName, base64);
-        console.log(this.imagenServer);
       };
     }
 

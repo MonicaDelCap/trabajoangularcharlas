@@ -15,7 +15,6 @@ export class ServiceUser {
         let request = "api/Usuarios/NewAlumno/" + courseCode;
         let header = { "Content-Type": "application/json" };
         let json = JSON.stringify(user);
-        console.log(json);
         return new Promise(function (resolve, reject) {
             axios.post(environment.urlCharlas2 + request, json, { headers: header })
                 .then(r => resolve(r.data))
@@ -28,7 +27,6 @@ export class ServiceUser {
         let request = "api/Profesor/NewProfesor/" + teacherCode;
         let header = { "Content-Type": "application/json" };
         let json = JSON.stringify(user);
-        console.log(json);
         return new Promise(function (resolve, reject) {
             axios.post(environment.urlCharlas2 + request, json, { headers: header })
                 .then(r => resolve(r.data))
@@ -162,20 +160,17 @@ export class ServiceUser {
             await axios.post(environment.urlCharlas + request, comentario, { headers: header });
             return console.log('Comentario agregado con éxito');
         } catch (error) {
-            console.error('Error al agregar comentario:', error);
             throw error;
         }
     }
 
     updateCharla(charla: Partial<Charla>): Promise<void> {
         const request = `api/Charlas`;
-        console.log(charla)
         const header = { Authorization: `Bearer ${localStorage.getItem('authToken')}` };
 
         return axios.put(environment.urlCharlas + request, charla, { headers: header })
             .then(() => console.log('Charla actualizada con éxito'))
             .catch(error => {
-                console.error('Error al actualizar charla:', error);
                 throw error;
             });
     }
@@ -189,16 +184,12 @@ export class ServiceUser {
             idUsuario: idUsuario,
             idRonda: idRonda
         };
-        console.log("idcharla: "+idCharla)
-        console.log("idcharla: "+idUsuario)
-        console.log("idRonda: "+idRonda)
-        
+     
 
         try {
             await axios.post(environment.urlCharlas + request, voto, { headers: header });
             return console.log('Voto registrado con éxito');
         } catch (error) {
-            console.error('Error al registrar el voto:', error);
             throw error;
         }
     }

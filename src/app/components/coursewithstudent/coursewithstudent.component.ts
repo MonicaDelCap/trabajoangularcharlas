@@ -41,10 +41,8 @@ export class CoursewithstudentComponent implements OnInit {
       this.idCourse = params["idCourse"];
       this._serviceTeacher.getCourses().then(r => {
         this.courses = r;
-        console.log(r)
 
         this.selectCourse();
-        console.log(this.students)
         this._serviceRound.getRounds().then(r => this.rounds = r)
       })
     })

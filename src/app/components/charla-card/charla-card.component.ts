@@ -7,11 +7,9 @@ import { TalksByCourse } from '../../models/talks';
   templateUrl: './charla-card.component.html',
   styleUrl: './charla-card.component.css'
 })
-export class CharlaCardComponent implements OnInit {
+export class CharlaCardComponent {
   @Input() charla!: Charla; 
   @Input() state!: string;
 
-  ngOnInit(): void {
-    console.log(this.charla.idCurso)
-  }
+ 
 }

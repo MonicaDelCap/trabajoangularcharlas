@@ -25,9 +25,7 @@ export class CharlasComponent implements OnInit {
     this._service.getCharlasCurso().then(charlas => {
       this.charlas = charlas;
       this.filteredCharlas = charlas;
-    }).catch(error => {
-      console.error('Error al obtener las charlas', error);
-    });
+    })
   }
 
   filterCharlas() {

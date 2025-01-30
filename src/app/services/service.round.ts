@@ -44,7 +44,6 @@ export class ServiceRound{
         return new Promise(function(resolve,reject){
             axios.delete(environment.urlCharlas + request,{headers:header})
             .then(r => resolve(r.data))
-            .catch(r => console.log(r.request))
         })
     }
 

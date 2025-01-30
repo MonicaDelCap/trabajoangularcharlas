@@ -51,7 +51,6 @@ export class TeacherRondaComponent implements OnInit {
     if (curso) {
         this.totalVotos = curso.numeroAlumnos;  // Correctamente asignamos el número de alumnos
     } else {
-        console.error("Curso no encontrado");
     }
   }
   async cargarCharlas(): Promise<void> {
@@ -78,7 +77,6 @@ export class TeacherRondaComponent implements OnInit {
       
       this.charlasAceptadas.sort((a, b) => b.votos - a.votos);
     } catch (error) {
-      console.error("Error al obtener las charlas de la ronda:", error);
     }
   }
 
@@ -125,10 +123,7 @@ export class TeacherRondaComponent implements OnInit {
 
     updatedCharlas.forEach(charla => {
       this._serviceTeacher.updateCharla(charla).then(response => {
-        console.log("Charla actualizada", response);
-      }).catch(error => {
-        console.error("Error actualizando charla", error);
-      });
+      })
     });
   }
 

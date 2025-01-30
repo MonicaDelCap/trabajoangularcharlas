@@ -30,7 +30,6 @@ export class CoursesComponent implements OnInit {
     this._serviceTeacher.getCourses().then(r => {
       this.courses = r;
       this.getCourses();
-      console.log(this.role)
     });
   }
 

@@ -36,7 +36,6 @@ export class CourseswithstudentdisableComponent implements OnInit {
         this.idCourse = params["id"];
         if(this.role == 2){
           this._serviceTeacher.getStudentsCourseDisable().then(r => {
-            console.log(this.courses)
             this.courses = r;
             this.selectCourse();
           })
@@ -63,7 +62,6 @@ export class CourseswithstudentdisableComponent implements OnInit {
   
     selectCourse():boolean{
       for(let course of this.courses){
-        console.log(course)
   
         if(course.curso != null && course.curso.idCurso == this.idCourse){
           this.isCourse = course

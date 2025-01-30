@@ -61,7 +61,6 @@ export class ServiceTeacherM {
             'Authorization': `Bearer ${localStorage.getItem('authToken')}`
         };        
         let request = "api/Profesor/UpdateEstadoAlumno/" + id + "/"+status;
-        console.log(environment.urlCharlas+request)
         return new Promise(function(resolve){
             axios.put(environment.urlCharlas + request, null,{headers:header})
             .then(r => resolve(r.data))

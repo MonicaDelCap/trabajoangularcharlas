@@ -54,8 +54,6 @@ export class PerfiladminComponent implements OnInit {
   mostrarUsuarios(): void {
     this._serviceAdmin.getUsuariosActivos().subscribe(response => {
       this.usuarios = response;
-      console.log(response);
-
       this.alumnos = this.usuarios.filter((usuario) => usuario.idRole === 2);
       this.profesores = this.usuarios.filter((usuario) => usuario.idRole === 1);
     })
@@ -64,25 +62,19 @@ export class PerfiladminComponent implements OnInit {
   mostrarProfesores(): void {
     this._serviceAdmin.getProfesores().subscribe(response => {
       this.profesores = response;
-      console.log(response);
     })
   }
 
   updateRolUsuarios(idUsuario: number, rol: number): void {
     this._serviceAdmin.updateRolUsuario(idUsuario, rol).subscribe(response => {
-      console.log(response);
     })
   }
   updateCursoUsuario(idUsuario: number, idCurso: number): void {
     this._serviceAdmin.updateCursoUsuario(idUsuario, idUsuario).subscribe(response => {
-      console.log(response);
-      console.log("OK");
     })
   }
   updateEstadoProfesor(idUsuario: number, nuevoEstado: boolean): void {
     this._serviceAdmin.updateEstadoProfesor(idUsuario, nuevoEstado).subscribe(response => {
-      console.log(response);
-
     })
   }
 
@@ -92,21 +84,16 @@ export class PerfiladminComponent implements OnInit {
       this.cursos = response;
       for(let cur of this.cursos){
       }
-      
       this.filteredCursos=this.cursos;
-      console.log(response);
     })
   }
 
   getUsuariosCurso(idCurso: number): void {
     this.usuarios = new Array<UserAdmin>();
-    console.log("entrando");
     this._serviceAdmin.getUsuariosCurso(idCurso).subscribe(response => {
       this.usuarios = response;
-      console.log("response");
       this.alumnos = this.usuarios.filter((usuario) => usuario.role === "ALUMNO");
       this.profesores = this.usuarios.filter((usuario) => usuario.role === "PROFESOR");
-      console.log(this.profesores);
     })
   }
   loadUser(): void {
@@ -122,7 +109,6 @@ export class PerfiladminComponent implements OnInit {
     var file = this.cajaFileRef.nativeElement.files[0];
     var miPath = this.cajaFileRef.nativeElement.value.split("\\");
     var ficheroNombre = miPath[2];
-    console.log(ficheroNombre);
 
     var reader = new FileReader();
     reader.readAsArrayBuffer(file);
@@ -139,7 +125,6 @@ export class PerfiladminComponent implements OnInit {
       var newFileModel =
         new FileModel(ficheroNombre, base64);
       this._serviceFile.postFileUser(newFileModel, this.user.idUsuario).subscribe(response => {
-        console.log(response.urlFile)
         const newImageUrl = response.urlFile + "?t=" + new Date().getTime();
         this.user.imagen = newImageUrl;
         this.editProfile();
@@ -150,27 +135,22 @@ export class PerfiladminComponent implements OnInit {
     var cont=this.cajaPassRef.nativeElement.value;
     var file = this.cajaFileRef.nativeElement.files[0];
     if(!file && !cont ){
-      console.warn("nulo");
       alert("Accion invalida");
     }else if(!file && cont){
       //metodo para actualizar la contraseña
-      console.log("archivo NO contraseña SI");
       this.updatePassword(cont);
       this._router.navigate(["/"]);
     }else if(file &&!cont)
     {
       //metodo para actualizar foto de perfil
-      console.log("archivo si contraseña no");
       this.subirFichero();
     }else{
-      console.log("CONTRASEÑA SI Y ARCHIVO SI");
       this.editProfile();
       this.updatePassword(cont);
     }
   }
   updatePassword(cont:string):void{
     this._serviceAdmin.updatePassword(cont).subscribe(response=>{
-      console.log(response);
       this._router.navigate(["/"]);
     })
   }

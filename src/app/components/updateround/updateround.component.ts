@@ -48,12 +48,10 @@ export class UpdateroundComponent implements OnInit {
     this.round.duracion = this.duracion.nativeElement.value;
     this.round.descripcionModulo = this.descripcionModulo.nativeElement.value;
     this.round.fechaLimiteVotacion = this.fechaLimiteVotacion.nativeElement.value;
-    console.log(this.round)
     this._serviceRound.updateRoundById(this.round)
     .then(r => {
       this._router.navigate(["/courses"])
     })
-    .catch(r => console.log(r))
   }
 
 

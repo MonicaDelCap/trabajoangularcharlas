@@ -31,7 +31,6 @@ export class CoursesadminComponent implements OnInit {
     this._serviceAdmin.getCursos().subscribe(response => {
       this.cursos = response;
     })
-    console.log(environment.idUsuario)
   }
 
   getCourses(): void {

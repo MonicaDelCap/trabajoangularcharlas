@@ -27,7 +27,6 @@ export class CardroundteacherComponent implements OnInit {
     this.dateExp = this.convertDate(this.round.fechaCierre);
     this._serviceTeacher.getCharlasRonda(this.round.idRonda).then(r => {
       this.charlas = r
-      console.log(this.charlas.length)
     });
     
 
