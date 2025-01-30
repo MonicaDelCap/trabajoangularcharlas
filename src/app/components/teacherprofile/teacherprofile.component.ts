@@ -11,7 +11,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { Router } from '@angular/router';
-
+import esLocale from '@fullcalendar/core/locales/es';
 @Component({
   selector: 'app-teacherprofile',
   templateUrl: './teacherprofile.component.html',
@@ -39,12 +39,18 @@ export class TeacherprofileComponent implements OnInit {
   public calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
+    locale: esLocale,
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay'
     },
     events: []
+    ,
+    eventDidMount: (info) => {
+      info.el.style.textDecoration = 'none'; // Quita subrayado
+      info.el.style.color = 'black'; // Pone el texto negro
+    }
   };
 
   constructor(private _service: ServiceUser,
@@ -119,26 +125,26 @@ export class TeacherprofileComponent implements OnInit {
 
   updateCalendarEvents(): void {
     const colores = ['#7C4DFF', '#90CAF9', '#C5E1A5', '#FFB74D', '#FF7043'];
-  
+
     this.calendarOptions = {
       ...this.calendarOptions,
       events: this.rondas.map((ronda, index) => {
         const color = colores[index % colores.length]; // Asigna un color cíclico basado en el índice
         const fechaCierre = new Date(ronda.fechaCierre);
-      
+
         // Añadimos un día al cierre
-        fechaCierre.setDate(fechaCierre.getDate() + 1);  
-  
+        fechaCierre.setDate(fechaCierre.getDate() + 1);
+
         return [
           {
             title: "Ronda " + ronda.idRonda + " - " + ronda.descripcionModulo,
-            start: this.formatDate(ronda.fechaLimiteVotacion),  
-            end: this.formatDate(fechaCierre.toISOString()),           
-            allDay: true,                                      
+            start: this.formatDate(ronda.fechaLimiteVotacion),
+            end: this.formatDate(fechaCierre.toISOString()),
+            allDay: true,
             description: 'Repeating Event',
             backgroundColor: color, // Color de fondo para el evento
             url: `/teacher/ronda/${ronda.idRonda}`
-          }, 
+          },
           {
             title: "Fin de votación - Ronda " + ronda.idRonda,
             start: this.formatDate(ronda.fechaLimiteVotacion),  // Fecha de fin de votación
@@ -159,7 +165,7 @@ export class TeacherprofileComponent implements OnInit {
       }).flat()  // Aplanar el array para que todos los eventos estén en un solo array
     };
   }
-  
+
   formatDate(date: string): string {
     const formattedDate = new Date(date);
     return formattedDate.toISOString();

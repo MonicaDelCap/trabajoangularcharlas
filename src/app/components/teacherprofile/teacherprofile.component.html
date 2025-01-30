@@ -35,53 +35,21 @@
     </div>
 
     <div class="w-full h-[100px]">
-        <full-calendar [options]="calendarOptions"></full-calendar>
+        <full-calendar  [ngStyle]="{ 'background-color': '#d1cbd5' }" class="p-10" [options]="calendarOptions"></full-calendar>
     </div>
     
-    <hr class="bg-black h-1 my-4 w-full border-none">
 
-    <!-- <div *ngIf="!selectedCurso">
-        <div class="mt-4">
-            <button class="bg-blue-100 text-white font-bold py-2 px-4 rounded disabled">
-                {{ showAlumnos ? 'Ocultar Alumnos' : 'Mostrar Alumnos' }}
-            </button>
-        </div>
-    </div>
-
-    <div *ngIf="selectedCurso">
-        <div class="mt-4">
-            <button (click)="toggleAlumnos()"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                {{ showAlumnos ? 'Ocultar Alumnos' : 'Mostrar Alumnos' }}
-            </button>
-        </div>
-
-        <div *ngIf="showAlumnos" class="mt-4">
-            <div class="overflow-x-auto">
-                <table class="min-w-full bg-white border-collapse border border-slate-500 rounded-lg shadow-md">
-                    <thead class="bg-gray-100">
-                        <tr>
-                            <th class="py-2 px-4 border border-slate-400">Nombre</th>
-                            <th class="py-2 px-4 border border-slate-400">Correo</th>
-                            <th class="py-2 px-4 border border-slate-400">Curso</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let alumno of paginatedAlumnos">
-                            <td class="py-2 px-4 border border-slate-400">{{ alumno.nombre }}</td>
-                            <td class="py-2 px-4 border border-slate-400">{{ alumno.email }}</td>
-                            <td class="py-2 px-4 border border-slate-400">{{ alumno.curso }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="pagination mt-4">
-                <button (click)="previousPage()" class="pagination-btn" [disabled]="currentPage === 1">Anterior</button>
-                <span>{{ currentPage }} de {{ totalPages }}</span>
-                <button (click)="nextPage()" class="pagination-btn"
-                    [disabled]="currentPage === totalPages">Siguiente</button>
-            </div>
-        </div>
-    </div> -->
+</div>
+<div class="particles-container">
+    <!-- Partículas -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
 </div>
