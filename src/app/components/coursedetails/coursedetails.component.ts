@@ -78,12 +78,12 @@ export class CoursedetailsComponent {
     Swal.fire({
       title: "Vas a eliminar el curso ¿Estas seguro?",
       text: "Esta accion no es revertible",
-      icon: "warning",
+      icon: "error",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       cancelButtonText: "Cancelar",
-      confirmButtonText: "Si, desactivar"
+      confirmButtonText: "Si, eliminar"
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
