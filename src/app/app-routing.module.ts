@@ -22,6 +22,8 @@ import { PerfiladminComponent } from './components/perfiladmin/perfiladmin.compo
 import { CourseswithstudentdisableComponent } from './components/courseswithstudentdisable/courseswithstudentdisable.component';
 import { CoursesadminComponent} from './components/coursesadmin/coursesadmin.component';
 import { DetailsstudentadminComponent } from './components/detailsstudentadmin/detailsstudentadmin.component';
+import { UpdatecourseadminComponent } from './components/updatecourseadmin/updatecourseadmin.component';
+import { CoursedetailsadminComponent } from './components/coursedetailsadmin/coursedetailsadmin.component';
 
 const routes: Routes = [
   {
@@ -64,7 +66,13 @@ const routes: Routes = [
     path:"updatecourse/:id", component:UpdatecourseComponent
   },
   {
+    path:"updatecourseadmin/:id", component:UpdatecourseadminComponent
+  },
+  {
     path:"coursedetails/:id", component:CoursedetailsComponent
+  },
+  {
+    path:"coursedetailsadmin/:id", component:CoursedetailsadminComponent
   },
   {
     path:"createcourse", component:CreatecourseComponent

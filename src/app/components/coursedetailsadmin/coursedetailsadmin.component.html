@@ -1,0 +1,32 @@
+<body>
+    <div class="course-container">
+      <i class="arrow-icon fa fa-arrow-left" routerLink="/coursesadmin"></i>
+  
+      <div class="course-header">
+        <h1>Información del Curso</h1>
+      </div>
+      <div class="course-info">
+        <p><strong>ID del Curso:</strong> {{courseNow.idCurso}}</p>
+        <p><strong>Nombre: </strong> {{courseNow.nombre}}</p>
+        <p><strong>Fecha de Inicio: </strong>{{fechaini}}</p>
+        <p><strong>Fecha de Fin: </strong> {{fechafin}}</p>
+        <p style="color: greenyellow;"><strong>Estado: </strong> Activo</p>
+      </div>
+      <div class="course-actions">
+        <button class="btn btn-deactivate" (click)="desactivatedCourse()"> Desactivar </button>
+      </div>
+    </div>
+  </body>
+  <div class="particles-container">
+    <!-- Partículas -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>

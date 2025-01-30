@@ -15,7 +15,7 @@ export class CardstudentComponent implements OnInit{
   public role : number = environment.idUsuario
 
   ngOnInit(): void {
-    console.log(this.role)
+    console.log("role "+ this.role)
     
   }
   
