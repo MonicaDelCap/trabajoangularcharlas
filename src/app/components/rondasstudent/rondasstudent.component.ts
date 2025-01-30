@@ -55,9 +55,7 @@ export class RondasstudentComponent implements OnInit {
           }else{
             this.didUAddTalk = false;
           }
-          
           this.fechaLimiteAniadirCharla ="Fecha limite para añadir charla: " + this.convertDate(this.round.fechaCierre)
-          
         })
       })
     })

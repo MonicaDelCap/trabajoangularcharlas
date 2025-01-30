@@ -38,7 +38,7 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
   public alreadyVotedInRound: boolean = false;
   public votedCharlaTitle: string | null = null;
   public isDropdownOpen: boolean = false;
-  public role!: number;
+  public role!: number | null;
   public state: string = ""
 
   imagenPredef: string | ArrayBuffer | null = '';
@@ -63,9 +63,12 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
 
   async ngOnInit(): Promise<void> {
     // Obtener id del usuario autenticado
-    this.role = environment.idUsuario;
+
     this._service.getProfile()
       .then(profile => {
+        const role = localStorage.getItem('role');
+        this.role = role ? parseInt(role, 10) : 0;
+
         this.idUsuario = profile.usuario.idUsuario;
         this.usuario = profile.usuario.nombre;
         const id = this.route.snapshot.paramMap.get('id');

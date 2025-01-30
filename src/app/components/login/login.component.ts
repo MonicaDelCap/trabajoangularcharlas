@@ -10,13 +10,13 @@ import { environment } from '../../../environments/environment';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
   pantallaSeleccionada: string;
   public login: Login;
-  public user:User;
+  public user: User;
   public mensaje!: string;
-  public inputs!: Array<any> ;
+  public inputs!: Array<any>;
   @ViewChild("passwordbox") passswordbox!: ElementRef;
   @ViewChild("emailbox") emailbox!: ElementRef;
 
@@ -28,9 +28,9 @@ export class LoginComponent implements OnInit{
   @ViewChild("coursecode") coursecode!: ElementRef;
   @ViewChild("isTeacher") isTeacher!: ElementRef;
 
-  constructor(private _router: Router, private _service:ServiceUser){
-    this.login  = new Login("", "");
-    this.user  = new User(1,"","","",true,"imagen.png", "" , 2);
+  constructor(private _router: Router, private _service: ServiceUser) {
+    this.login = new Login("", "");
+    this.user = new User(1, "", "", "", true, "imagen.png", "", 2);
     this.pantallaSeleccionada = 'signin';
   }
 
@@ -42,115 +42,118 @@ export class LoginComponent implements OnInit{
     localStorage.removeItem('authToken');
   }
 
-  
 
-  onLogin():void {
+
+  onLogin(): void {
     this.login.password = this.passswordbox.nativeElement.value;
     this.login.userName = this.emailbox.nativeElement.value;
     this._service.getToken(this.login)
-    .then(r => {
-      localStorage.setItem('authToken', r.response)
-      this._service.getProfile().then(r => {
-        let role = r.usuario.idRole;
-        if (role == 1) {
-          environment.idUsuario = role;
-          this._router.navigate(["/teacherProfile"]);
-        } else if (role == 2) {
-          environment.idUsuario = role;
-          this._router.navigate(["/profile"]);
-        }else if(role == 3){
-          environment.idUsuario = role;
-          this._router.navigate(["/adminprofile"]);
-        }
+      .then(r => {
+        localStorage.setItem('authToken', r.response)
+
+        this._service.getProfile().then(r => {
+          let role = r.usuario.idRole;
+          localStorage.setItem('role', role + "")
+
+          if (role == 1) {
+            environment.idUsuario = role;
+            this._router.navigate(["/teacherProfile"]);
+          } else if (role == 2) {
+            environment.idUsuario = role;
+            this._router.navigate(["/profile"]);
+          } else if (role == 3) {
+            environment.idUsuario = role;
+            this._router.navigate(["/adminprofile"]);
+          }
+        })
       })
-    })
-    .catch(r => {
-      this.mensaje = "Credenciales incorrectas"
-    })
+      .catch(r => {
+        this.mensaje = "Credenciales incorrectas"
+      })
   }
 
-  registerUser():void{
+  registerUser(): void {
     console.log()
-    
-    if(this.checkPassword()){
+
+    if (this.checkPassword()) {
       this.user.nombre = this.nameBox.nativeElement.value;
-      
-      if(this.checkName(this.user.nombre)){    
+
+      if (this.checkName(this.user.nombre)) {
         this.user.apellidos = this.surnameBox.nativeElement.value;
-        
-        if(this.checkSurname(this.user.apellidos)){ 
+
+        if (this.checkSurname(this.user.apellidos)) {
           this.user.email = this.emailBoxRegister.nativeElement.value;
           this.user.password = this.passwordBoxRegister.nativeElement.value;
           let courseCode = this.coursecode.nativeElement.value;
-      
-          if(this.isTeacher.nativeElement.checked){
+
+          if (this.isTeacher.nativeElement.checked) {
             console.log("profe ")
             this.user.idRole = 1;
-            this._service.registerTeacher(this.user,courseCode)
-            .then( response =>{
-              this.cambiarPantalla("signin")
-            }).catch( e => {
-              if(e == "ERR_BAD_RESPONSE"){
-                this.changeInputEmailColorRegister();
-              }else if(e == "ERR_BAD_REQUEST"){
-                this.changeInputCodeColorRegister();
-              } 
-            })
-          }else{
-            this._service.register(this.user,courseCode)
-            .then( response =>{
-              this.cambiarPantalla("signin")
-            }).catch( e => {
-              if(e == "ERR_BAD_RESPONSE"){
-                this.changeInputEmailColorRegister();
-              }else if(e == "ERR_BAD_REQUEST"){
-                this.changeInputCodeColorRegister();
-              } 
-            })
+            this._service.registerTeacher(this.user, courseCode)
+              .then(response => {
+                this.cambiarPantalla("signin")
+              }).catch(e => {
+                if (e == "ERR_BAD_RESPONSE") {
+                  this.changeInputEmailColorRegister();
+                } else if (e == "ERR_BAD_REQUEST") {
+                  this.changeInputCodeColorRegister();
+                }
+              })
+          } else {
+            this._service.register(this.user, courseCode)
+              .then(response => {
+                this.cambiarPantalla("signin")
+              }).catch(e => {
+                if (e == "ERR_BAD_RESPONSE") {
+                  this.changeInputEmailColorRegister();
+                } else if (e == "ERR_BAD_REQUEST") {
+                  this.changeInputCodeColorRegister();
+                }
+              })
           }
-        }else{
+        } else {
           this.changeInputSurnameColorRegister();
         }
 
-      }else{
+      } else {
         this.changeInputNameColorRegister();
       }
 
-    }else{
+    } else {
       this.changeInputPasswordColorRegister();
     }
   }
 
-  checkPassword():boolean{
-    if(this.passwordBoxRegister.nativeElement.value == this.passwordBoxRegisterRepeat.nativeElement.value){
+  checkPassword(): boolean {
+    if (this.passwordBoxRegister.nativeElement.value == this.passwordBoxRegisterRepeat.nativeElement.value) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
 
-  checkName(name:string):boolean{
-    
-    let regex = /^[a-zA-Z]+$/; 
-    if(regex.test(name)){
-      return true ;
-    }else{
+  checkName(name: string): boolean {
+
+    let regex = /^[a-zA-Z]+$/;
+    if (regex.test(name)) {
+      return true;
+    } else {
       return false;
     }
   }
 
-  checkSurname(surname:string):boolean{
-    
-    let regex = /^[a-zA-Z]+$/; 
-    if(regex.test(surname)){
-      return true ;
-    }else{
+  checkSurname(surname: string): boolean {
+
+    let regex = /^[a-zA-Z]+$/;
+    if (regex.test(surname)) {
+      return true;
+    } else {
       return false;
     }
   }
 
 
-  changeInputNameColorRegister():void{
+  changeInputNameColorRegister(): void {
     this.changeAllInputColorRegisterInit();
     let nameInput = this.nameBox.nativeElement;
     nameInput.style.border = '2px solid red'; // Cambia el borde
@@ -158,7 +161,7 @@ export class LoginComponent implements OnInit{
     nameInput.placeholder = "Formato incorrecto"
   }
 
-  changeInputSurnameColorRegister():void{
+  changeInputSurnameColorRegister(): void {
     this.changeAllInputColorRegisterInit();
     let surnameBox = this.surnameBox.nativeElement;
     surnameBox.style.border = '2px solid red'; // Cambia el borde
@@ -166,7 +169,7 @@ export class LoginComponent implements OnInit{
     surnameBox.style.color = 'black'; // Cambia el texto
   }
 
-  changeInputPasswordColorRegister():void{
+  changeInputPasswordColorRegister(): void {
     this.changeAllInputColorRegisterInit();
     let passwordInput = this.passwordBoxRegister.nativeElement;
     passwordInput.style.border = '2px solid red'; // Cambia el borde
@@ -178,49 +181,49 @@ export class LoginComponent implements OnInit{
     passwordInputRepeat.placeholder = 'Las contraseñas no coinciden'; // Cambia el texto
   }
 
-  changeInputEmailColorRegister():void{
+  changeInputEmailColorRegister(): void {
     this.changeAllInputColorRegisterInit();
     let email = this.emailBoxRegister.nativeElement;
     email.style.border = '2px solid red'; // Cambia el borde
     email.style.color = 'black'; // Cambia el texto
   }
 
-  changeInputCodeColorRegister():void{
+  changeInputCodeColorRegister(): void {
     this.changeAllInputColorRegisterInit();
     let code = this.coursecode.nativeElement;
     code.style.border = '2px solid red'; // Cambia el borde
     code.style.color = 'black'; // Cambia el texto
   }
 
-  changeAllInputColorRegisterInit():void{
+  changeAllInputColorRegisterInit(): void {
     let code = this.coursecode.nativeElement;
     code.style.border = '2px solid white'; // Cambia el borde
     code.style.color = 'black';
     let name = this.nameBox.nativeElement;
     name.style.border = '2px solid white'; // Cambia el borde
-    name.style.color = 'black'; 
+    name.style.color = 'black';
     let surname = this.surnameBox.nativeElement;
     surname.style.border = '2px solid white'; // Cambia el borde
-    surname.style.color = 'black'; 
+    surname.style.color = 'black';
     let email = this.emailBoxRegister.nativeElement;
     email.style.border = '2px solid white'; // Cambia el borde
-    email.style.color = 'black'; 
+    email.style.color = 'black';
     let password = this.passwordBoxRegister.nativeElement;
     password.style.border = '2px solid white'; // Cambia el borde
-    password.style.color = 'black'; 
+    password.style.color = 'black';
     let passwordRepeat = this.passwordBoxRegisterRepeat.nativeElement;
     passwordRepeat.style.border = '2px solid white'; // Cambia el borde
-    passwordRepeat.style.color = 'black'; 
+    passwordRepeat.style.color = 'black';
     // Cambia el texto
   }
 
-  erroresRegister(e:string):void{
+  erroresRegister(e: string): void {
     console.log(e)
-    if(e == "ERR_BAD_RESPONSE"){
+    if (e == "ERR_BAD_RESPONSE") {
       this.changeInputEmailColorRegister();
-    }else if(e == "ERR_BAD_REQUEST"){
+    } else if (e == "ERR_BAD_REQUEST") {
       this.changeInputCodeColorRegister();
-    } 
+    }
   }
 
 }
