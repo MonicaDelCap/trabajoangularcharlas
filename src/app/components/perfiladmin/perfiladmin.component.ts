@@ -27,6 +27,8 @@ export class PerfiladminComponent implements OnInit {
   public isEditing = false;
   public fileContent: string;
 
+  public filteredCursos: Curso[] = []; // Charlas filtradas
+  public searchText: string = ''; // Término de búsqueda
   constructor(private _serviceAdmin: ServiceAdmin,
     private _serviceFile: ServicePostFiles,
     private _serviceProfile: ServiceUser,
@@ -78,6 +80,7 @@ export class PerfiladminComponent implements OnInit {
   getCursos(): void {
     this._serviceAdmin.getCursos().subscribe(response => {
       this.cursos = response;
+      this.filteredCursos=this.cursos;
       console.log(response);
     })
   }
@@ -139,7 +142,7 @@ export class PerfiladminComponent implements OnInit {
     }else if(!file && cont){
       //metodo para actualizar la contraseña
       console.log("archivo NO contraseña SI");
-      //this.updatePassword(cont);
+      this.updatePassword(cont);
       this._router.navigate(["/"]);
     }else if(file &&!cont)
     {
@@ -157,5 +160,14 @@ export class PerfiladminComponent implements OnInit {
       console.log(response);
       this._router.navigate(["/"]);
     })
+  }
+
+  filterCursos() {
+    const searchTextLower = this.searchText.toLowerCase();
+    
+    // Filtramos los cursos basándonos en el título que contiene el texto ingresado
+    this.filteredCursos = this.cursos.filter(curso =>
+      curso.nombre.toLowerCase().includes(searchTextLower)
+    );
   }
 }
