@@ -11,10 +11,12 @@
     max-height: 300px;
     overflow-y: auto;
     background-color: #1000;
+    height: 70vh;
 
   }
   .body{
     background-color: #1000;
+    height: max-content;
   }
 
   .particles-container {

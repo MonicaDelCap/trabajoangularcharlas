@@ -43,7 +43,7 @@
     </div>
     }
     <div class="font-sans">
-        <div class="flex min-h-screen">
+        <div class="flex">
             <!-- Div izquierdo -->
             <div class="w-1/2  p-6">
                 <h1 class="text-2xl font-bold mb-6">Cursos</h1>
@@ -51,13 +51,16 @@
                     <input type="text" [(ngModel)]="searchText" (input)="filterCursos()" placeholder="Buscar Curso por nombre..." class="w-full max-w-md px-4 py-2 pr-12 border border-gray-300 rounded-full shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
                 </div>
                 <!-- Cards de los cursos -->
-                <div class="scroll-container max-h-full space-y-4">
+                <div class="scroll-container space-y-4">
                     @for (curso of filteredCursos; track curso) {
                     <div class="card bg-blue-100 p-4 rounded-lg" (click)="getUsuariosCurso(curso.idCurso)">
-                        <h2 class="text-lg font-semibold">{{curso.nombre}}</h2>
+                        <h2 class="text-lg font-semibold">{{curso.nombre.toUpperCase()}}</h2>
                         <p class="text-sm text-gray-700">
-                            Fecha Inicio: {{curso.fechaInicio}}
-                            Fecha Fin : {{curso.fechaFin}}
+                            Fecha Inicio: {{convertDate(curso.fechaInicio)}}
+                            
+                        </p>
+                        <p class="text-sm text-gray-700">
+                            Fecha Fin : {{convertDate(curso.fechaFin)}}
                         </p>
                     </div>
                     }
@@ -65,10 +68,10 @@
             </div>
 
             <!-- Div derecho -->
-            <div class="w-1/2  p-6">
+            <div class="w-1/2 p-6">
                 <!-- Card del profesor -->
-                <div class="mb-6">
-                    <h2 class="text-xl font-bold mb-4">Profesores:</h2>
+                <div class="">
+                    <h2 class="text-xl font-bold">Profesores:</h2>
                     <div *ngIf="profesores.length>0;else noProfes">
                         <div class="scroll-container space-y-4">
                             @for(profesor of profesores;track profesor){
@@ -90,7 +93,7 @@
 
                 <!-- Card de los alumnos -->
                 <div>
-                    <h2 class="text-xl font-bold mb-4">Alumnos</h2>
+                    <h2 class="text-xl font-bold mb-4 mt-3">Alumnos</h2>
                     <div *ngIf="alumnos.length>0;else noAlumnos">
                         <div class="scroll-container space-y-4">
                             @for(alumno of alumnos;track alumno){

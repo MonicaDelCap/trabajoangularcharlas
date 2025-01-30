@@ -8,6 +8,7 @@ import { ServiceUser } from '../../services/service.user';
 import { FileModel } from '../../models/filemodel';
 import { ServicePostFiles } from '../../services/service.postfiles';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-perfiladmin',
@@ -32,7 +33,9 @@ export class PerfiladminComponent implements OnInit {
   constructor(private _serviceAdmin: ServiceAdmin,
     private _serviceFile: ServicePostFiles,
     private _serviceProfile: ServiceUser,
-    private _router: Router) {
+    private _router: Router,
+    private datePipe: DatePipe
+  ) {
     this.fileContent = "";
   }
 
@@ -42,6 +45,10 @@ export class PerfiladminComponent implements OnInit {
     }
     this.loadUser();
     this.getCursos();
+  }
+  
+  convertDate(date: string): string {
+    return this.datePipe.transform(date, 'dd/MM/yyyy')!;
   }
 
   mostrarUsuarios(): void {
@@ -83,6 +90,9 @@ export class PerfiladminComponent implements OnInit {
   getCursos(): void {
     this._serviceAdmin.getCursos().subscribe(response => {
       this.cursos = response;
+      for(let cur of this.cursos){
+      }
+      
       this.filteredCursos=this.cursos;
       console.log(response);
     })

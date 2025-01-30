@@ -122,7 +122,7 @@
   overflow-y: auto;
   display: block;
   scrollbar-width: thin; /* Para navegadores compatibles */
-  scrollbar-color: #4CAF50 #F0F0F0; /* Color del scrollbar y fondo */
+  scrollbar-color: #0056b3 #F0F0F0; /* Color del scrollbar y fondo */
   padding: 10px;
   background: linear-gradient(to top, #CDB4DB 5%, #E4DEE6 95%); 
   border: 1px solid #ddd;
@@ -138,7 +138,7 @@
   flex-direction: row; /* Alinea los elementos en fila */
   flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas si es necesario */
   scrollbar-width: thin; /* Para navegadores compatibles */
-  scrollbar-color: #4CAF50 #F0F0F0; /* Color del scrollbar y fondo */
+  scrollbar-color: #0056b3 #F0F0F0; /* Color del scrollbar y fondo */
   background: linear-gradient(to top, #CDB4DB 5%, #E4DEE6 95%);
   border: 1px solid #ddd;
   border-radius: 8px;
