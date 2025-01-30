@@ -158,11 +158,9 @@ export class ProfileComponent implements OnInit {
     }
   }
   updatePassword(cont: string): void {
-    alert(cont);
     this._serviceAdmin.updatePassword(cont).subscribe(response => {
       console.log(response);
-      alert(cont+response);
-      //this._router.navigate(["/"]);
+      this._router.navigate(["/"]);
     })
   }
 }
