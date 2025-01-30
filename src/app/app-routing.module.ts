@@ -20,6 +20,8 @@ import { AdmingestionalumnosComponent } from './components/admingestionalumnos/a
 import { TeacherRondaComponent } from './components/teacher-ronda/teacher-ronda.component';
 import { PerfiladminComponent } from './components/perfiladmin/perfiladmin.component';
 import { CourseswithstudentdisableComponent } from './components/courseswithstudentdisable/courseswithstudentdisable.component';
+import { CoursesadminComponent} from './components/coursesadmin/coursesadmin.component';
+import { DetailsstudentadminComponent } from './components/detailsstudentadmin/detailsstudentadmin.component';
 
 const routes: Routes = [
   {
@@ -41,7 +43,7 @@ const routes: Routes = [
     path: 'talk/:id', component: CharlaComponent 
   },
   { 
-    path: 'talk/:id/:state', component: CharlaComponent 
+    path: 'talk/:id/:state/:curso', component: CharlaComponent 
   },
   {
     path: 'createtalk/:id', component:CreateTalkComponent
@@ -87,6 +89,15 @@ const routes: Routes = [
   },
   {
     path: 'studentslistdisable/:id', component:CourseswithstudentdisableComponent
+  },
+  {
+    path: 'coursesadmin', component: CoursesadminComponent
+  },
+  {
+    path:'detailstudentadmin/:id/:course', component: DetailsstudentadminComponent
+  },
+  {
+    path:'detailstudentadmin/:id', component: DetailsstudentadminComponent
   }
 ];
 

@@ -68,6 +68,9 @@ import { CourseswithstudentdisableComponent } from './components/courseswithstud
 
 
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { CoursesadminComponent } from './components/coursesadmin/coursesadmin.component';
+import { CardcourseadminComponent } from './components/cardcourseadmin/cardcourseadmin.component';
+import { DetailsstudentadminComponent } from './components/detailsstudentadmin/detailsstudentadmin.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +103,9 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     PerfiladminComponent,
     MenubaradminComponent,
     CourseswithstudentdisableComponent,
+    CoursesadminComponent,
+    CardcourseadminComponent,
+    DetailsstudentadminComponent,
 
   ],
   imports: [

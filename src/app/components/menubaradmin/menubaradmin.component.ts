@@ -21,6 +21,11 @@ export class MenubaradminComponent  {
       icon: 'fal fa-comments',
       label: 'Gestion Alumnos',
     },
+    {
+      routeLink: 'coursesadmin',
+      icon: 'fal fa-comments',
+      label: 'Cursos',
+    },
   ];
 
   

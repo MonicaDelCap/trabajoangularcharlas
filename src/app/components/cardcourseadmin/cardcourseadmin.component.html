@@ -1,10 +1,9 @@
-<div class="course-item"
-  [routerLink]="course.activo ? ['/studentslist/', course.idCurso] :  ['/studentslistdisable/', course.idCurso]">
+<div class="course-item" [routerLink]="['/studentslistdisable/',    this.course.idCurso    ]">
 
   <h1>{{ course.nombre }}</h1>
   <b>Código: {{ course.idCurso }}</b>
   <p [ngStyle]="{ color: course.activo ? 'green' : 'red' }">
-    Estado: {{ course.activo ? 'Activo' : 'Inactivo' }}
+    Estado admin : {{ course.activo ? 'Activo' : 'Inactivo' }}
   </p>
   <div class="button-group" *ngIf="course.activo">
     <button class="btn btn-primary" [routerLink]="['/updatecourse/', course.idCurso]">Editar</button>

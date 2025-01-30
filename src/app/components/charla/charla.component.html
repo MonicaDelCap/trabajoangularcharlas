@@ -30,7 +30,9 @@
 
         <!-- Botones de navegación -->
         <div class="flex justify-between items-center mt-6">
-            <a [routerLink]="role == 2 ? ['/talks'] : ['/detailsstudent/', charla.idUsuario,state] "
+            <a [routerLink]="role == 2 ? ['/talks'] : 
+            (role == 1 ? ['/detailsstudent/', charla.idUsuario, state] : 
+            ['/detailstudentadmin/', charla.idUsuario, curso])"
                 class="inline-flex items-center px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-xl shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-300">
                 ← Volver a las charlas
             </a>
@@ -159,7 +161,9 @@
     <p>{{ errorMessage }}</p>
 </div>
 
-<div class="particles-container" [ngClass]="role === 2 ? 'particles-container1' : 'particles-container2'">
+<div class="particles-container" 
+     [ngClass]="role === 2 ? 'particles-container1' : 
+                (role === 1 ? 'particles-container2' : 'particles-container3')">
     <div class="particle"></div>
     <div class="particle"></div>
     <div class="particle"></div>

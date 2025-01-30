@@ -1,0 +1,89 @@
+/* Contenedor de todos los cursos */
+
+
+/* Estilos generales para los items */
+.course-item {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ancho uniforme */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    gap: 20px;
+    height: 20px;
+    flex-direction: column; /* Alinea los contenidos verticalmente */
+    justify-content:center; /* Acomoda el espacio entre elementos internos */
+    min-height: 250px; /* Asegura que todos tengan la misma altura mínima */
+}
+
+/* Efecto al pasar el cursor */
+.course-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: #f4f6ff;
+}
+
+/* Elementos deshabilitados */
+.course-item.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+/* Botones */
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.button-group .btn {
+    font-size: 14px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.button-group .btn-primary {
+    background-color: #F9CD87;
+    color: #ffffff;
+}
+
+.button-group .btn-primary:hover {
+    background-color: #F29A0E;
+    transform: scale(1.1);
+}
+
+.button-group .btn-secondary {
+    background-color: #b2bec3;
+    color: #2d3436;
+}
+
+.button-group .btn-secondary:hover {
+    background-color: #636e72;
+    transform: scale(1.1);
+}
+
+/* Texto */
+.course-item h1 {
+    margin-top: 10px;
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.course-item b {
+    font-size: 1rem;
+    color: #34495e;
+    margin-bottom: 5px;
+}
+
+.course-item p {
+    font-weight: bold;
+    font-size: 0.9rem;
+}

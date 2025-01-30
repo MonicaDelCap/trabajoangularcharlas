@@ -1,27 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceTeacherM } from '../../services/service.teacher';
 import { StudentsCoursesTeacher } from '../../models/studentscourseteacher';
 import { Course } from '../../models/course';
 import { environment } from '../../../environments/environment';
+import { ServiceTeacherM } from '../../services/service.teacher';
+import { ServiceAdmin } from '../../services/service.admin';
+import { Curso } from '../../models/curso';
 
 @Component({
-  selector: 'app-courses',
-  templateUrl: './courses.component.html',
-  styleUrl: './courses.component.css'
+  selector: 'app-coursesadmin',
+  templateUrl: './coursesadmin.component.html',
+  styleUrl: './coursesadmin.component.css'
 })
-export class CoursesComponent implements OnInit {
+export class CoursesadminComponent implements OnInit {
 
   public courses!:Array<StudentsCoursesTeacher>
   public coursesName!: Array<Course>
   public role : number = environment.idUsuario;
-  constructor(private _serviceTeacher:ServiceTeacherM){}
+  public cursos!: Array<Curso>;
+  constructor(private _serviceAdmin:ServiceAdmin){}
 
   ngOnInit(): void {
       this.coursesName = new Array<Course>
-      this._serviceTeacher.getCourses().then(r => {
-      this.courses=r;
-      this.getCourses();
-    });
+      this._serviceAdmin.getCursos().subscribe(response => {
+        this.cursos = response;
+      })
+      console.log(environment.idUsuario)
   }
 
   getCourses():void{

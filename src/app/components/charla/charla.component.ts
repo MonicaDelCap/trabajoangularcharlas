@@ -48,6 +48,7 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
   // Agrega la referencia a la lista de comentarios
   @ViewChild('comentariosContainer') comentariosContainer: ElementRef | undefined;
 
+  public curso!: string |null;
   constructor(
     private route: ActivatedRoute,
     private _service: ServiceUser,
@@ -59,19 +60,18 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
   async ngOnInit(): Promise<void> {
     // Obtener id del usuario autenticado
     this.role = environment.idUsuario;
-    console.log(this.role)
     this._service.getProfile()
       .then(profile => {
         this.idUsuario = profile.usuario.idUsuario;
         this.usuario = profile.usuario.nombre;
         const id = this.route.snapshot.paramMap.get('id');
-
+        this.curso = this.route.snapshot.paramMap.get('curso');
         if (id) {
           this._service.getCharlaById(id).then((charla) => {
             this.charla = charla;
-      console.log(this.charla.idUsuario)
-
             console.log(charla)
+            
+
             this.charlaEditada = { ...charla };
             this.esPropietario = charla.idUsuario === this.idUsuario; // Verificar si es propietario
             this.checkVoteStatus();

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Student } from '../../models/student';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-cardstudent',
@@ -11,9 +12,11 @@ export class CardstudentComponent implements OnInit{
   @Input() student!: Student
 
   @Input() state!: string;
+  public role : number = environment.idUsuario
 
   ngOnInit(): void {
-    console.log(this.state)
+    console.log(this.role)
+    
   }
   
   

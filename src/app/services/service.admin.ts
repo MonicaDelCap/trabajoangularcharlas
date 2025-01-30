@@ -143,5 +143,16 @@ export class ServiceAdmin {
         return this._htpp.put(environment.urlCharlas+request,body,{headers:header});
     }
 
+    getUsuarioById(id:number):Promise<any>{
+        let header = {"Authorization": `Bearer ${localStorage.getItem('authToken')}`};
+        let request = "api/Usuarios/" + id ;
+        return new Promise(function(resolve){
+            axios.get(environment.urlCharlas + request,{headers:header})
+            .then(r => resolve(r.data))
+        })
+    }
+
+ 
+
 
 }

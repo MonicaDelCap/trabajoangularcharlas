@@ -5,20 +5,13 @@
         </header>
         <div class="course-list flex justify-content-center grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- Recorremos los cursos -->
-           
-            <div *ngFor="let course of coursesName">
-                <app-cardcourse [course]="course"></app-cardcourse>
+            <div *ngFor="let course of cursos">
+                <app-cardcourseadmin [course]="course"></app-cardcourseadmin>
             </div>
-           
         </div>
-        <!-- Botón Deshabilitado según la lógica -->
-        <button class="add-button mt-4 btn btn-primary rounded-circle" [disabled]="hasActiveCourses()"
-            routerLink="/createcourse">
-            +
-        </button>
     </div>
 </body>
-<div class="particles-container" >
+<div class="particles-container">
     <!-- Partículas -->
     <div class="particle"></div>
     <div class="particle"></div>

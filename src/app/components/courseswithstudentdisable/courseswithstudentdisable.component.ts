@@ -4,6 +4,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { ServiceTeacherM } from '../../services/service.teacher';
 import { ServiceRound } from '../../services/service.round';
 import { StudentsCoursesTeacher } from '../../models/studentscourseteacher';
+import { environment } from '../../../environments/environment';
+import { ServiceAdmin } from '../../services/service.admin';
 
 @Component({
   selector: 'app-courseswithstudentdisable',
@@ -16,9 +18,10 @@ export class CourseswithstudentdisableComponent implements OnInit {
   public courses!:Array<StudentsCoursesTeacher>
   public isCourse!: StudentsCoursesTeacher
   public disable: string = "disable";
-
+  public role: number = environment.idUsuario;
     constructor(
       private _serviceTeacher: ServiceTeacherM,
+      private _serviceAdmin: ServiceAdmin,
       private _active:ActivatedRoute,
       private _serviceRound:ServiceRound
     ) { 
@@ -27,17 +30,32 @@ export class CourseswithstudentdisableComponent implements OnInit {
    ngOnInit(): void {
       this._active.params.subscribe((params: Params) => {
         this.idCourse = params["id"];
+        if(this.role == 2){
+          this._serviceTeacher.getStudentsCourseDisable().then(r => {
+            console.log(this.courses)
+            this.courses = r;
+            this.selectCourse();
+          })
+        }else{
+          this._serviceAdmin.getUsuariosCurso(this.idCourse).subscribe(r => this.students = r)
+        }
         
-        this._serviceTeacher.getStudentsCourseDisable().then(r => {
-          console.log(this.courses)
-          this.courses = r;
-          this.selectCourse();
-        })
       })
     
     }
   
    
+    selectCourseWithTeacher():void{
+      let estudiantes = this.students;
+      this.students = new Array<Student>
+      for(let stu of estudiantes){
+        if(stu.idRole == 1 ){
+          
+        }else{
+          this.students.push(stu)
+        }
+      }
+    }
   
     selectCourse():boolean{
       for(let course of this.courses){
