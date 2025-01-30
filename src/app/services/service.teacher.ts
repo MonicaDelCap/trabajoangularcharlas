@@ -95,4 +95,13 @@ export class ServiceTeacherM {
         })
     }
 
+    disableCourseWithAllStudents(id:number, state:boolean): Promise<any>{
+        let header = {"Authorization": `Bearer ${localStorage.getItem('authToken')}`};
+        let request = "api/Usuarios/UpdateEstadoUsuariosCurso/" + id + "/" + state;
+        return new Promise(function(resolve){
+            axios.put(environment.urlCharlas + request,null, {headers:header})
+            .then(r => resolve(r.data))
+        })
+    }
+
 }

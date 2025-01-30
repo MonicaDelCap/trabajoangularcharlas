@@ -166,6 +166,8 @@ export class AdmingestionalumnosComponent implements OnInit {
   deleteProfesor(): void {
     if (this.selectedProfesor) {
       const id = this.selectedProfesor.idUsuario;
+      console.log(this.selectedProfesor)
+
       this._service.deleteUsuario(id).then(response => {
         const index = this.alumnos.findIndex(alumno => alumno.idUsuario === id);
         if (index !== -1) {
@@ -208,6 +210,8 @@ export class AdmingestionalumnosComponent implements OnInit {
         password: this.selectedAlumno.password,
         idRole: this.selectedAlumno.idRole
       };
+      console.log(this.selectedAlumno.idRole)
+
   
       this._service.updateUsuario(updatedAlumno).then(response => {
         const index = this.alumnos.findIndex(alumno => alumno.idUsuario === updatedAlumno.idUsuario);

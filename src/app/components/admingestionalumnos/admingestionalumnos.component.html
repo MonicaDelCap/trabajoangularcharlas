@@ -9,7 +9,7 @@
       ALUMNOS
     </div>
 
-    <div *ngIf="showAlumnos" class="mt-4">
+    <div *ngIf="showAlumnos" class="mt-4 h-auto">
       <input type="text" placeholder="Buscar por email" [(ngModel)]="searchTerm" (input)="filterAlumnos()"
         class="mb-4 p-2 border border-gray-300 rounded w-full" />
       <div class="overflow-hidden">
@@ -41,17 +41,13 @@
       </div>
       @if(isEditing){
       @if(selectedAlumno){
-      <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="fixed  inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white p-6 rounded-2xl shadow-xl w-full max-w-md relative">
           <button class="absolute top-4 right-4 text-gray-500 hover:text-gray-700" (click)="changeEditing()">
             ✕
           </button>
           <h1 class="text-xl font-semibold mb-4">Datos del Alumno</h1>
           <form #alumnoForm="ngForm" (ngSubmit)="updateUsuario()">
-            <div class="mb-2">
-              <label class="font-medium">ID Usuario:</label>
-              <input type="text" class="w-full p-2 border rounded" [value]="selectedAlumno.idUsuario" disabled>
-            </div>
             <div class="mb-2">
               <label class="font-medium">Nombre:</label>
               <input type="text" class="w-full p-2 border rounded" [(ngModel)]="selectedAlumno.nombre" name="nombre"
@@ -68,16 +64,6 @@
                 #email="ngModel">
             </div>
             <div class="mb-2">
-              <label class="font-medium">Estado Usuario:</label>
-              <input type="text"  class="w-full p-2 border rounded" [(ngModel)]="selectedAlumno.estadoUsuario" name="estadoUsuario"
-                #estadoUsuario="ngModel">
-            </div>
-            <div class="mb-2">
-              <label class="font-medium">Imagen:</label>
-              <input type="text" class="w-full p-2 border rounded" [(ngModel)]="selectedAlumno.imagen" name="imagen"
-                #imagen="ngModel">
-            </div>
-            <div class="mb-2">
               <label class="font-medium">Password:</label>
               <div class="relative">
                 <input [type]="showPassword ? 'text' : 'password'" class="w-full p-2 border rounded"
@@ -90,8 +76,10 @@
             </div>
             <div class="mb-2">
               <label class="font-medium">ID Role:</label>
-              <input type="number" class="w-full p-2 border rounded" [(ngModel)]="selectedAlumno.idRole" name="idRole"
-                min="1" max="3" #idRole="ngModel">
+              <select id="myDropdown" class="w-full p-2 border rounded"  [(ngModel)]="selectedAlumno.idRole" name="idRole"  #idRole="ngModel">
+                <option value="1">PROFESOR</option>
+                <option value="2">ALUMNO</option>
+              </select>
             </div>
             <div class="flex gap-4">
               <button type="submit"
@@ -128,9 +116,7 @@
     </div>
   </div>
 
-  <div class="p-4 m-4"></div>
-  <hr class="bg-black h-1 my-4 w-full border-none">
-  <div class="p-4 m-4"></div>
+  
   <div>
     <div
       class="bg-blue-500 text-white text-center p-4 rounded hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 transition duration-300"
@@ -172,12 +158,8 @@
             <button class="absolute top-4 right-4 text-gray-500 hover:text-gray-700" (click)="changeEditingProfe()">
               ✕
             </button>
-            <h1 class="text-xl font-semibold mb-4">Datos del Alumno</h1>
+            <h1 class="text-xl font-semibold mb-4">Datos del Profesor</h1>
             <form #alumnoForm="ngForm" (ngSubmit)="updateUsuario()">
-              <div class="mb-2">
-                <label class="font-medium">ID Usuario:</label>
-                <input type="text" class="w-full p-2 border rounded" [value]="selectedProfesor.idUsuario" disabled>
-              </div>
               <div class="mb-2">
                 <label class="font-medium">Nombre:</label>
                 <input type="text" class="w-full p-2 border rounded" [(ngModel)]="selectedProfesor.nombre" name="nombre"
@@ -194,16 +176,6 @@
                   #email="ngModel">
               </div>
               <div class="mb-2">
-                <label class="font-medium">Estado Usuario:</label>
-                <input type="text" class="w-full p-2 border rounded" [(ngModel)]="selectedProfesor.estadoUsuario" name="estadoUsuario"
-                  #estadoUsuario="ngModel">
-              </div>
-              <div class="mb-2">
-                <label class="font-medium">Imagen:</label>
-                <input type="text" class="w-full p-2 border rounded" [(ngModel)]="selectedProfesor.imagen" name="imagen"
-                  #imagen="ngModel">
-              </div>
-              <div class="mb-2">
                 <label class="font-medium">Password:</label>
                 <div class="relative">
                   <input [type]="showPassword ? 'text' : 'password'" class="w-full p-2 border rounded"
@@ -216,8 +188,10 @@
               </div>
               <div class="mb-2">
                 <label class="font-medium">ID Role:</label>
-                <input type="number" class="w-full p-2 border rounded" [(ngModel)]="selectedProfesor.idRole" name="idRole"
-                  min="1" max="3" #idRole="ngModel">
+                <select id="myDropdown" class="w-full p-2 border rounded"   [(ngModel)]="selectedProfesor.idRole" name="idRole"  #idRole="ngModel">
+                  <option value="1">PROFESOR</option>
+                  <option value="2">ALUMNO</option>
+                </select>
               </div>
               <div class="flex gap-4">
                 <button type="submit"
@@ -232,7 +206,7 @@
                 </button>
                 <button type="button"
                   class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition duration-300"
-                  (click)="deleteUser()">
+                  (click)="deleteProfesor()">
                   Eliminar Usuario
                 </button>
               </div>
@@ -254,4 +228,17 @@
         </div>
     </div>
   </div>
+</div>
+<div class="particles-container">
+  <!-- Partículas -->
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
 </div>

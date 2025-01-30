@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Course } from '../../models/course';
 import { ServiceTeacherM } from '../../services/service.teacher';
 import { StudentsCoursesTeacher } from '../../models/studentscourseteacher';
@@ -27,7 +27,8 @@ export class CoursewithstudentComponent implements OnInit {
   constructor(
     private _serviceTeacher: ServiceTeacherM,
     private _active:ActivatedRoute,
-    private _serviceRound:ServiceRound
+    private _serviceRound:ServiceRound,
+    private _router:Router
   ) { 
     this.students = new Array<Student>;
   }
@@ -63,5 +64,11 @@ export class CoursewithstudentComponent implements OnInit {
       }
     }
     return false;
+  }
+
+  disableCourseStudents():void{
+    this._serviceTeacher.disableCourseWithAllStudents(this.idCourse,false);
+    this._serviceTeacher.updateCourse(this.idCourse,false);
+    this._router.navigate(["/courses"])
   }
 }
