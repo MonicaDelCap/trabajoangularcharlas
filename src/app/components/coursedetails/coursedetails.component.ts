@@ -87,13 +87,12 @@ export class CoursedetailsComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
-          title: "¡Desactivado!",
-          text: "El curso ha sido desactivado",
+          title: "¡Eliminado!",
+          text: "El curso ha sido eliminado",
           icon: "success"
         });
         setTimeout(() => {
-          this._serviceTeacher.updateCourse(this.courseNow.idCurso, false)
-            .then(r => console.log(r));
+          this._serviceTeacher.deleteCourse(this.idCurso);
         }, 2000);
       }
     });

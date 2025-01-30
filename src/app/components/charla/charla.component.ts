@@ -217,6 +217,7 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
 
       // this.modalEditarAbierto = false;
       // location.reload();
+      this._router.navigate(["/talks"])
     } catch (error) {
       console.error("Error al guardar cambios:", error);
       this.snackBar.open("Error al guardar cambios. Inténtalo de nuevo.", "Cerrar", { duration: 3000 });

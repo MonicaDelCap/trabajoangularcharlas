@@ -86,4 +86,13 @@ export class ServiceTeacherM {
         })
     }
 
+    deleteCourse(id:number): Promise<any>{
+        let header = {"Authorization": `Bearer ${localStorage.getItem('authToken')}`};
+        let request = "api/Cursos/" + id;
+        return new Promise(function(resolve){
+            axios.delete(environment.urlCharlas + request, {headers:header})
+            .then(r => resolve(r.data))
+        })
+    }
+
 }
