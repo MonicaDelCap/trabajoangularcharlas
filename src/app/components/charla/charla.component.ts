@@ -42,6 +42,10 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
   public state: string = ""
 
   imagenPredef: string | ArrayBuffer | null = '';
+  recursoEditando: any = null;
+  recursoEditado: Recurso = new Recurso(0, 0, '', '', '');
+  
+
 
   public imagenServer: FileModel = new FileModel("", "");
   @ViewChild("fileupload") fileupload !: ElementRef
@@ -300,6 +304,36 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
     if (this.comentariosContainer) {
       const container = this.comentariosContainer.nativeElement;
       container.scrollTop = container.scrollHeight;
+    }
+  }
+
+  editarRecurso(recurso: Recurso) {
+    this.recursoEditando = recurso;
+    this.recursoEditado = { ...recurso };
+  }
+
+  guardarRecurso(recurso: Recurso) {
+    // Actualizar los valores en la lista de recursos de la charla
+    if (this.charla) {
+      const index = this.charla.recursos.findIndex(r => r.idRecurso === recurso.idRecurso);
+      if (index !== -1) {
+        // Se actualiza el recurso en la charla
+        this.charla.recursos[index] = { ...this.recursoEditado };
+      }
+    }
+  
+    // Llamar a la API para actualizar el recurso en la base de datos
+    if (this.charla) {
+      const recursoEditado = { ...this.recursoEditado };
+      this._service.updateRecurso(recursoEditado)  // Se hace la llamada a la API de actualización
+        .then(() => {
+          this.snackBar.open('Recurso actualizado correctamente', 'Cerrar', { duration: 2000 });
+          this.recursoEditando = null;  // Cerrar el modal de edición
+        })
+        .catch(error => {
+          console.error('Error al actualizar recurso en la API:', error);
+          this.snackBar.open('Error al actualizar el recurso', 'Cerrar', { duration: 2000 });
+        });
     }
   }
 }
