@@ -12,6 +12,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { Router } from '@angular/router';
 import esLocale from '@fullcalendar/core/locales/es';
+import { ServiceAdmin } from '../../services/service.admin';
 @Component({
   selector: 'app-teacherprofile',
   templateUrl: './teacherprofile.component.html',
@@ -19,6 +20,7 @@ import esLocale from '@fullcalendar/core/locales/es';
 })
 export class TeacherprofileComponent implements OnInit {
   @ViewChild("cajafile") cajaFileRef!: ElementRef;
+  @ViewChild("cajaPassword") cajaPassRef!:ElementRef;
 
   activeDayIsOpen: boolean = true;
   showAlumnos: boolean = false;
@@ -56,7 +58,8 @@ export class TeacherprofileComponent implements OnInit {
   constructor(private _service: ServiceUser,
     private _serviceFile: ServicePostFiles,
     private _serviceTeacher: ServiceTeacher,
-    private router: Router
+    private _serviceAdmin:ServiceAdmin,
+    private _router: Router
   ) {
     this.fileContent = "";
   }
@@ -181,7 +184,7 @@ export class TeacherprofileComponent implements OnInit {
     }
   }
 
-  subirFichero(event: any): void {
+  subirFichero(): void {
     var file = this.cajaFileRef.nativeElement.files[0];
     var miPath = this.cajaFileRef.nativeElement.value.split("\\");
     var ficheroNombre = miPath[2];
@@ -208,5 +211,33 @@ export class TeacherprofileComponent implements OnInit {
         this.editProfile();
       })
     };
+  }
+  editarDatos():void{
+    var cont=this.cajaPassRef.nativeElement.value;
+    var file = this.cajaFileRef.nativeElement.files[0];
+    if(!file && !cont ){
+      console.warn("nulo");
+      alert("Accion invalida");
+    }else if(!file && cont){
+      //metodo para actualizar la contraseña
+      console.log("archivo NO contraseña SI");
+      this.updatePassword(cont);
+      this._router.navigate(["/"]);
+    }else if(file &&!cont)
+    {
+      //metodo para actualizar foto de perfil
+      console.log("archivo si contraseña no");
+      this.subirFichero();
+    }else{
+      console.log("CONTRASEÑA SI Y ARCHIVO SI");
+      this.editProfile();
+      this.updatePassword(cont);
+    }
+  }
+  updatePassword(cont:string):void{
+    this._serviceAdmin.updatePassword(cont).subscribe(response=>{
+      console.log(response);
+      this._router.navigate(["/"]);
+    })
   }
 }

@@ -10,6 +10,9 @@
             <h1 class="text-3xl font-bold text-gray-900">
                 Bienvenido, {{ user.nombre }}
             </h1>
+            <h2 class="text-2xl font-bold text-gray-600">
+                {{user.email}}
+            </h2>
             <button class="button-primario" (click)="editProfile()">Editar</button>
         </div>
     </div>
@@ -18,19 +21,16 @@
     @if(isEditing){
     <div class="overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-40">
         <div class="edit-profile-container bg-white p-8 rounded-lg shadow-lg w-full max-w-md z-50">
-            <form #fileForm="ngForm" class="edit-profile-form space-y-4">
+            <div class="edit-profile-form space-y-4">
                 <h2 class="text-2xl font-semibold mb-4">Editar Perfil</h2>
-                <label for="editName" class="block text-sm font-medium text-gray-700">Nombre:</label>
-                <input type="text" #cajanombre id="editName" name="cajanombre" value="{{ user.nombre }}"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" disabled />
-                <label for="editEmail" class="block text-sm font-medium text-gray-700">Correo:</label>
-                <input type="email" #cajaemail id="editEmail" name="cajaemail" value="{{ user.email }}"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" disabled />
+                <label for="editPswrd" class="block text-sm font-medium text-gray-700">Contraseña:</label>
+                <input type="password" #cajaPassword id="editPswrd" name="cajaPassword" value="{{ user.password }}"
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
                 <label for="editImage" class="block text-sm font-medium text-gray-700">Imagen de Perfil:</label>
                 <input type="file" #cajafile id="editImage" name="cajafile"
                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
                 <div class="form-actions flex justify-end space-x-2">
-                    <button type="submit" class="button-primario" (click)="subirFichero($event)">
+                    <button type="submit" class="button-primario" (click)="editarDatos()">
                         Guardar
                     </button>
                     <button type="button"
@@ -39,7 +39,7 @@
                         Cancelar
                     </button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
     }
