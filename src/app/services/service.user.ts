@@ -284,6 +284,27 @@ export class ServiceUser {
     
         return from(axios.post(url, recursoData, { headers: headers }));
     }
-
-
+    addRecurso(recurso: Recurso): Promise<any> {
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+        };
+        const request = `api/Recursos`; // Endpoint para agregar un nuevo recurso
+        const url = environment.urlCharlas + request;
+    
+        // Objeto con los datos del recurso
+        const recursoData = {
+            idRecurso: 0, // El ID será generado automáticamente por la base de datos
+            idCharla: recurso.idCharla,
+            url: recurso.url,
+            nombre: recurso.nombre,
+            descripcion: recurso.descripcion
+        };
+    
+        return new Promise((resolve, reject) => {
+            axios.post(url, recursoData, { headers: headers })
+                .then(response => resolve(response.data))
+                .catch(error => reject(error));
+        });
+    }
 }

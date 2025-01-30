@@ -44,8 +44,8 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
   imagenPredef: string | ArrayBuffer | null = '';
   recursoEditando: any = null;
   recursoEditado: Recurso = new Recurso(0, 0, '', '', '');
-  
-
+  public modalAgregarRecurso: boolean = false;
+  public nuevoRecurso: Recurso = new Recurso(0, 0, '', '', '');
 
   public imagenServer: FileModel = new FileModel("", "");
   @ViewChild("fileupload") fileupload !: ElementRef
@@ -306,6 +306,30 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
       const container = this.comentariosContainer.nativeElement;
       container.scrollTop = container.scrollHeight;
     }
+  }
+  async agregarRecurso(): Promise<void> {
+    if (!this.nuevoRecurso.nombre.trim() || !this.nuevoRecurso.url.trim()) {
+      this.snackBar.open('Por favor, complete todos los campos.', 'Cerrar', { duration: 3000 });
+      return;
+    }
+    try {
+      this.nuevoRecurso.idCharla = this.idCharla;
+      const recursoCreado = await this._service.addRecurso(this.nuevoRecurso);
+      this.charla?.recursos.push(recursoCreado);
+      this.snackBar.open('Recurso agregado correctamente.', 'Cerrar', { duration: 3000 });
+      this.cerrarModalAgregarRecurso();
+    } catch (error) {
+      console.error('Error al agregar recurso:', error);
+      this.snackBar.open('Error al agregar el recurso.', 'Cerrar', { duration: 3000 });
+    }
+  }
+  abrirModalAgregarRecurso(): void {
+    this.modalAgregarRecurso = true;
+    this.nuevoRecurso = new Recurso(0, this.idCharla, '', '', '');
+  }
+
+  cerrarModalAgregarRecurso(): void {
+    this.modalAgregarRecurso = false;
   }
 
   editarRecurso(recurso: Recurso) {
