@@ -3,6 +3,13 @@
     margin: 0 auto;
   }
   
+  .buttondesp{
+    background-color: #8503A9;
+
+  }
+  .buttonprof{
+    background-color: #610CBB;
+  }
   button {
     transition: background-color 0.3s ease;
   }

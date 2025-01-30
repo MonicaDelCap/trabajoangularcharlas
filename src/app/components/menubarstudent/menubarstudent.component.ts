@@ -24,7 +24,7 @@ export class MenubarstudentComponent implements OnInit {
       routeLink: 'talks',
       icon: 'fal fa-comments',
       label: 'Charlas',
-    },
+    }
   ];
 
   constructor(private _serviceRound: ServiceRound) {}

@@ -8,6 +8,11 @@
     height: 100vh;
     box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
   }
+  .logout-container {
+    margin-top: auto; /* Esto empuja el contenedor del logout hacia el final */
+    padding: 0.938rem;
+    width: 100%;
+}
   .sidenav-collapsed {
     width: 5rem;
   }

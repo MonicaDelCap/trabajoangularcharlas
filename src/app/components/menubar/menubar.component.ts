@@ -19,7 +19,12 @@ export class MenubarComponent {
       routeLink: 'teacherProfile',
       icon: 'fal fa-home',
       label: 'Perfil'
-    }
+    },
+    {
+      routeLink: '/',
+      icon: 'fal fa-sign-out-alt',
+      label: 'Cerra Sesion',
+    },
 
   ]
 

@@ -62,5 +62,18 @@
         }
       </div>
     </li>
+    <li class="sidenav-nav-item">
+      <a
+        class="sidenav-nav-link"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <i class="sidenav-link-icon fal fa-sign-out-alt" ></i>
+        @if(!isLeftSidebarCollapsed()){
+        <span class="sidenav-link-text">Cerra Sesion</span>
+        }
+      </a>
+    </li>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, input, OnInit, output } from '@angular/core';
 import { ServiceRound } from '../../services/service.round';
 import { Round } from '../../models/round';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menubaradmin',
@@ -26,7 +27,14 @@ export class MenubaradminComponent  {
       icon: 'fal fa-comments',
       label: 'Cursos',
     },
+    {
+      routeLink: '/',
+      icon: 'fal fa-sign-out-alt',
+      label: 'Cerra Sesion',
+    },
   ];
+
+  constructor(private router:Router){}
 
   
 

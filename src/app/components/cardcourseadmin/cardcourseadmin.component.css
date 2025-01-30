@@ -49,12 +49,12 @@
 }
 
 .button-group .btn-primary {
-    background-color: #F9CD87;
+    background-color: #8503A9;
     color: #ffffff;
 }
 
 .button-group .btn-primary:hover {
-    background-color: #F29A0E;
+    background-color: #610CBB;
     transform: scale(1.1);
 }
 
