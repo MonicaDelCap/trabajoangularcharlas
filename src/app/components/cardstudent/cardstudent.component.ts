@@ -12,10 +12,11 @@ export class CardstudentComponent implements OnInit{
   @Input() student!: Student
 
   @Input() state!: string;
-  public role : number = environment.idUsuario
+  public role !: number |null ;
 
   ngOnInit(): void {
-    console.log("role "+ this.role)
+    const role = localStorage.getItem('role');
+        this.role = role ? parseInt(role, 10) : 0;
     
   }
   
