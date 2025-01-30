@@ -37,6 +37,9 @@ export class PerfiladminComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
     this.loadUser();
     this.getCursos();
   }

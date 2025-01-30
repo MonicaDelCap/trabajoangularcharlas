@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Round } from '../../models/round';
 import { ServiceRound } from '../../services/service.round';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './createround.component.html',
   styleUrl: './createround.component.css'
 })
-export class CreateroundComponent {
+export class CreateroundComponent implements OnInit{
 
   @ViewChild("fechaPresentacion") fechaPresentacion!:ElementRef;
   @ViewChild("fechaCierre") fechaCierre!:ElementRef;
@@ -23,6 +23,11 @@ export class CreateroundComponent {
     private _router:Router
   ){
     this.round = new Round(0,0,"","",0,"","");
+  }
+  ngOnInit(): void {
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
   }
 
   createRound():void{

@@ -26,6 +26,9 @@ export class UpdateroundComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
     this._active.params.subscribe((params: Params) => {
       this.idRound = params["idround"];
       this._serviceRound.getRoundById(this.idRound).then(r => {

@@ -50,6 +50,9 @@ export class CreateTalkComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
     this._active.params.subscribe((params: Params) => {
       this.idRonda = parseInt(params['id'], 10);
       this._serviceRounds.getRoundById(this.idRonda).then(r => {

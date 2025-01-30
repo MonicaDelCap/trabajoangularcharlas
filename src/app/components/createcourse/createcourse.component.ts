@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceTeacherM } from '../../services/service.teacher';
 import { Course } from '../../models/course';
@@ -8,7 +8,7 @@ import { Course } from '../../models/course';
   templateUrl: './createcourse.component.html',
   styleUrl: './createcourse.component.css'
 })
-export class CreatecourseComponent {
+export class CreatecourseComponent implements OnInit {
 
   newCourse !: Course;
 
@@ -25,6 +25,11 @@ export class CreatecourseComponent {
     this.newCourse = new Course(0, "", "", "", true);
   }
 
+  ngOnInit(): void {
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
+  }
   createCourse(): void {
     this.newCourse.idCurso = this.id.nativeElement.value; 
     this.newCourse.nombre = this.nombre.nativeElement.value; 

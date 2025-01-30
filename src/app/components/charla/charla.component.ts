@@ -62,7 +62,9 @@ export class CharlaComponent implements OnInit, AfterViewChecked {
     private _active: ActivatedRoute) { }
 
   async ngOnInit(): Promise<void> {
-    // Obtener id del usuario autenticado
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
 
     this._service.getProfile()
       .then(profile => {

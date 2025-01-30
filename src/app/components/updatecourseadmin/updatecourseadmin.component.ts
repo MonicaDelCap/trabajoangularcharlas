@@ -25,6 +25,9 @@ export class UpdatecourseadminComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
     this._active.params.subscribe((params: Params) => {
       this.idCurso = params['id']
       this._serviceAdmin.getCursoById(this.idCurso).then(r => {

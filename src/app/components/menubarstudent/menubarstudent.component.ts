@@ -1,5 +1,5 @@
 import { Component, input, OnInit, output } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RondasstudentComponent } from '../rondasstudent/rondasstudent.component';
 import { ServiceRound } from '../../services/service.round';
@@ -27,7 +27,9 @@ export class MenubarstudentComponent implements OnInit {
     }
   ];
 
-  constructor(private _serviceRound: ServiceRound) {}
+  constructor(
+    private _serviceRound: ServiceRound,
+  ) {}
   ngOnInit(): void {
     this._serviceRound.getRounds().then((r) => {
       this.roundsArray = r;

@@ -40,6 +40,9 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
     this.loadUser()
     this.loadCharlas();
     this.loadRondas();

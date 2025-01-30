@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Charla } from '../../models/charla';
 import { ServiceUser } from '../../services/service.user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-charlas',
@@ -12,9 +13,15 @@ export class CharlasComponent implements OnInit {
   public filteredCharlas: Charla[] = []; // Charlas filtradas
   public searchText: string = ''; // Término de búsqueda
 
-  constructor(private _service: ServiceUser) {}
+  constructor(
+    private _service: ServiceUser,
+    private _router:Router
+  ) {}
 
   ngOnInit(): void {
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
     this._service.getCharlasCurso().then(charlas => {
       this.charlas = charlas;
       this.filteredCharlas = charlas;

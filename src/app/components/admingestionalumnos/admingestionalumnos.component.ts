@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../models/user';
 import { ServiceAdmin } from '../../services/service.admin';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admingestionalumnos',
@@ -31,10 +32,17 @@ export class AdmingestionalumnosComponent implements OnInit {
   public showPopup: boolean = false;
   public showPassword: boolean = false;
 
-  constructor(private _service: ServiceAdmin) { }
+  constructor(
+    private _service: ServiceAdmin,
+    private _router:Router
+  ) { }
 
   ngOnInit(): void {
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
     this.loadUsers();
+
   }
 
   loadUsers(): void {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../../models/student';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ServiceTeacherM } from '../../services/service.teacher';
 import { ServiceRound } from '../../services/service.round';
 import { StudentsCoursesTeacher } from '../../models/studentscourseteacher';
@@ -23,11 +23,15 @@ export class CourseswithstudentdisableComponent implements OnInit {
       private _serviceTeacher: ServiceTeacherM,
       private _serviceAdmin: ServiceAdmin,
       private _active:ActivatedRoute,
-      private _serviceRound:ServiceRound
+      private _serviceRound:ServiceRound,
+      private _router:Router
     ) { 
       this.students = new Array<Student>;
     }
    ngOnInit(): void {
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
       this._active.params.subscribe((params: Params) => {
         this.idCourse = params["id"];
         if(this.role == 2){

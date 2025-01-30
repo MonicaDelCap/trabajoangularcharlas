@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 import { ServiceTeacherM } from '../../services/service.teacher';
 import { ServiceAdmin } from '../../services/service.admin';
 import { Curso } from '../../models/curso';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-coursesadmin',
@@ -13,23 +14,29 @@ import { Curso } from '../../models/curso';
 })
 export class CoursesadminComponent implements OnInit {
 
-  public courses!:Array<StudentsCoursesTeacher>
+  public courses!: Array<StudentsCoursesTeacher>
   public coursesName!: Array<Course>
-  public role : number = environment.idUsuario;
+  public role: number = environment.idUsuario;
   public cursos!: Array<Curso>;
-  constructor(private _serviceAdmin:ServiceAdmin){}
+  constructor(
+    private _serviceAdmin: ServiceAdmin,
+    private _router:Router
+  ) { }
 
   ngOnInit(): void {
-      this.coursesName = new Array<Course>
-      this._serviceAdmin.getCursos().subscribe(response => {
-        this.cursos = response;
-      })
-      console.log(environment.idUsuario)
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
+    this.coursesName = new Array<Course>
+    this._serviceAdmin.getCursos().subscribe(response => {
+      this.cursos = response;
+    })
+    console.log(environment.idUsuario)
   }
 
-  getCourses():void{
-    for(let course of this.courses){
-      if(course.curso != null){
+  getCourses(): void {
+    for (let course of this.courses) {
+      if (course.curso != null) {
         this.coursesName.push(course.curso);
       }
     }
@@ -37,6 +44,6 @@ export class CoursesadminComponent implements OnInit {
 
   hasActiveCourses(): boolean {
     return this.coursesName.some(course => course.activo === true);
-  } 
+  }
 
 }

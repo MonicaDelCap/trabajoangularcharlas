@@ -30,6 +30,9 @@ export class DetailsstudentadminComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
     this._active.params.subscribe((params: Params) => {
       this.idStudent = params["id"]
       this.idCourse = params["course"]

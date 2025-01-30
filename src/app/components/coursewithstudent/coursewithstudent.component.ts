@@ -17,8 +17,8 @@ import { Round } from '../../models/round';
 export class CoursewithstudentComponent implements OnInit {
 
   isFlipped = false;
-  public courses!:Array<StudentsCoursesTeacher>
-  public idCourse!:number;
+  public courses!: Array<StudentsCoursesTeacher>
+  public idCourse!: number;
   public isCourse!: StudentsCoursesTeacher
   public students!: Array<Student>
   public rounds !: Array<Round>
@@ -26,38 +26,41 @@ export class CoursewithstudentComponent implements OnInit {
 
   constructor(
     private _serviceTeacher: ServiceTeacherM,
-    private _active:ActivatedRoute,
-    private _serviceRound:ServiceRound,
-    private _router:Router
-  ) { 
+    private _active: ActivatedRoute,
+    private _serviceRound: ServiceRound,
+    private _router: Router
+  ) {
     this.students = new Array<Student>;
   }
 
   ngOnInit(): void {
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
     this._active.params.subscribe((params: Params) => {
       this.idCourse = params["idCourse"];
       this._serviceTeacher.getCourses().then(r => {
         this.courses = r;
-      console.log(r)
+        console.log(r)
 
         this.selectCourse();
         console.log(this.students)
-        this._serviceRound.getRounds().then( r => this.rounds = r)
+        this._serviceRound.getRounds().then(r => this.rounds = r)
       })
     })
-  
+
   }
 
   flipCard() {
     this.isFlipped = !this.isFlipped;
   }
 
-  selectCourse():boolean{
-    for(let course of this.courses){
+  selectCourse(): boolean {
+    for (let course of this.courses) {
 
-      if(course.curso != null && course.curso.idCurso == this.idCourse){
+      if (course.curso != null && course.curso.idCurso == this.idCourse) {
         this.isCourse = course
-        for(let student of course.alumnos){
+        for (let student of course.alumnos) {
           this.students.push(student.alumno)
         }
         return true;
@@ -66,9 +69,9 @@ export class CoursewithstudentComponent implements OnInit {
     return false;
   }
 
-  disableCourseStudents():void{
-    this._serviceTeacher.disableCourseWithAllStudents(this.idCourse,false);
-    this._serviceTeacher.updateCourse(this.idCourse,false);
+  disableCourseStudents(): void {
+    this._serviceTeacher.disableCourseWithAllStudents(this.idCourse, false);
+    this._serviceTeacher.updateCourse(this.idCourse, false);
     this._router.navigate(["/courses"])
   }
 }

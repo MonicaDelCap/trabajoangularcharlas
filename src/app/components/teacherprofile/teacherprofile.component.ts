@@ -65,6 +65,9 @@ export class TeacherprofileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
     this.loadUser();
     this.loadCursos();
     this.loadRondas();

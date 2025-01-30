@@ -31,6 +31,9 @@ export class TeacherRondaComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
+    if (!localStorage.getItem('authToken')) {
+      this._router.navigate(["/"])
+    }
     this.idRonda = Number(this.route.snapshot.paramMap.get('idRonda'));
     this.idCurso = Number(this.route.snapshot.paramMap.get('idCurso'));
     this.cargarCharlas();
