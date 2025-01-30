@@ -14,12 +14,12 @@ export class MenubaradminComponent  {
   itemsStudent = [
     {
       routeLink: 'adminprofile',
-      icon: 'fal fa-user',
+      icon: 'fal fa-regular fa-user',
       label: 'Perfil',
     },
     {
       routeLink: 'gestionusuarios',
-      icon: 'fal fa-comments',
+      icon: 'fal fa-solid fa-users',
       label: 'Gestion Alumnos',
     },
     {

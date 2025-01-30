@@ -145,7 +145,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: linear-gradient(to top, #97f1c4 5%, #ffffff 95%); /* Azul claro en 30%, blanco arriba */
+    background: linear-gradient(to top, #D1ECC2 5%, #ffffff 97%); /* Azul claro en 30%, blanco arriba */
     z-index: -1; /* En el fondo */
   }
   

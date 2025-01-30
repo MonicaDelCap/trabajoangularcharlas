@@ -11,20 +11,21 @@ export class MenubarComponent {
   changeIsLeftSidebarCollapsed = output<boolean>();
   itemsStudent = [
     {
-      routeLink: 'courses',
-      icon: 'fal fa-home',
-      label: 'Cursos'
-    },
-    {
       routeLink: 'teacherProfile',
-      icon: 'fal fa-home',
+      icon: 'fal fa-regular fa-user',
       label: 'Perfil'
     },
+    {
+      routeLink: 'courses',
+      icon: 'fal fa-solid fa-chalkboard-user',
+      label: 'Cursos'
+    },
+   
     {
       routeLink: '/',
       icon: 'fal fa-sign-out-alt',
       label: 'Cerra Sesion',
-    },
+    }
 
   ]
 

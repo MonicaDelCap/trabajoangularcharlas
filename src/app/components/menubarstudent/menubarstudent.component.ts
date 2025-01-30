@@ -17,7 +17,7 @@ export class MenubarstudentComponent implements OnInit {
   itemsStudent = [
     {
       routeLink: 'profile',
-      icon: 'fal fa-user',
+      icon: 'fal fa-regular fa-user',
       label: 'Perfil',
     },
     {
