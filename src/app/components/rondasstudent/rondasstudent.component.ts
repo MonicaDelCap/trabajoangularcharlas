@@ -68,11 +68,11 @@ export class RondasstudentComponent implements OnInit {
     let diferenciaMilisegundos =  dateinit.getTime() - dateend.getTime();
 
     let diferenciaDias = diferenciaMilisegundos / (1000 * 60 * 60 * 24);
-
-    console.log(dateinit)
-    console.log(dateend)
-    console.log(Math.round(diferenciaDias))
-    return Math.round(diferenciaDias);
+    if(diferenciaDias > 0){
+      return 1;
+    }else{
+      return Math.round(diferenciaDias);
+    }
   }
 
   searchTalkInRound(): boolean {
