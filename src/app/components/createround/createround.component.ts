@@ -26,6 +26,7 @@ export class CreateroundComponent {
   }
 
   createRound():void{
+    console.log(this.fechaPresentacion.nativeElement.value)
     this.round.fechaPresentacion = this.fechaPresentacion.nativeElement.value;
     this.round.fechaCierre = this.fechaCierre.nativeElement.value;
     this.round.duracion = this.duracion.nativeElement.value;

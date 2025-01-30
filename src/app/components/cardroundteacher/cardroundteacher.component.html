@@ -1,18 +1,25 @@
 <div class="ronda-card">
-  <div class="ronda-header">
-      <h3 class="ronda-title">Ronda {{round.idRonda}}</h3>
-      <p class="ronda-duration">⏱️ Tiempo: {{round.duracion}}</p>
-      <div class="ronda-actions">
-          <button class="icon-button edit-button" title="Editar" [routerLink]="['/updateround/',round.idRonda]">
-              🖉
-          </button>
-          <button class="icon-button delete-button" title="Borrar" (click)="deleteRound()">
-              🗑
-          </button>
-      </div>
-  </div>
-  <p class="ronda-date">📅 Fecha presentación: {{dateExp}}</p>
-  <div class="ronda-footer">
-      <button class="view-talks-button" [routerLink]="['/teacher/ronda/', round.idRonda]">Ver Charlas</button>
-  </div>
+    <div class="ronda-header">
+        <h3 class="ronda-title">Ronda {{round.idRonda}}</h3>
+        <p class="ronda-duration">⏱️ Tiempo: {{round.duracion}}</p>
+        <div class="ronda-actions">
+            <button class="icon-button edit-button" title="Editar" [routerLink]="['/updateround/',round.idRonda]">
+                🖉
+            </button>
+            <button class="icon-button delete-button" title="Borrar" (click)="deleteRound()">
+                🗑
+            </button>
+        </div>
+    </div>
+    <p class="ronda-date">📅 Fecha presentación: {{dateExp}}</p>
+    <div class="ronda-footer">
+        <button *ngIf="charlas.length !== 0" class="view-talks-button"
+            [routerLink]="['/teacher/ronda/', round.idRonda]">
+            Ver Charlas
+        </button>
+
+        <div *ngIf="charlas.length === 0" class="alert alert-warning">
+            No hay charlas disponibles.
+        </div>
+    </div>
 </div>
