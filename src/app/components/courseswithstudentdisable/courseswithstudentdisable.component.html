@@ -4,12 +4,12 @@
     <app-cardstudent [student]="student" [state]="disable"></app-cardstudent>
     }
 }@else{
-    <h1 class="text-center">NO HAY ALUMNOS EN ESTE CURSO</h1>
+    <h1 class="text-center">NO HAY USUARIOS EN ESTE CURSO</h1>
     
 }
 
 </div>
-<div class="particles-container" [ngClass]="role === 2 ? 'particles-container1' : 'particles-container2'">
+<div class="particles-container" [ngClass]="role === 1 ? 'particles-container1' : 'particles-container2'">
     <!-- Partículas -->
     <div class="particle"></div>
     <div class="particle"></div>
