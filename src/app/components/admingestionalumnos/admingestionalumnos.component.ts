@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../models/user';
 import { ServiceAdmin } from '../../services/service.admin';
 import { NgForm } from '@angular/forms';
@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class AdmingestionalumnosComponent implements OnInit {
 
   @ViewChild('alumnoForm') alumnoForm!: NgForm;
+  @ViewChild('curso') curso!: ElementRef;
+  
 
   public allUsers: Array<User> = [];
   public alumnos: Array<User> = [];
@@ -31,6 +33,7 @@ export class AdmingestionalumnosComponent implements OnInit {
   public totalPages: number = 1;
   public showPopup: boolean = false;
   public showPassword: boolean = false;
+  public idUsuario!:number;
 
   constructor(
     private _service: ServiceAdmin,
@@ -105,14 +108,24 @@ export class AdmingestionalumnosComponent implements OnInit {
 
   selectAlumno(alumno: User): void {
     this.selectedAlumno = alumno;
+    this.idUsuario = this.selectedAlumno.idUsuario;
     this.changeEditing();
   }
   selectProfesor(profesor: User): void {
     this.selectedProfesor = profesor;
+    this.idUsuario = this.selectedProfesor.idUsuario;
+
     this.changeEditingProfe();
   }
   closePopup() {
     this.showPopup = false;
+  }
+
+  updateCourse():void{
+    console.log("usuario")
+    console.log(this.idUsuario)
+    console.log(this.curso.nativeElement.value)
+    this._service.updateUserCourse(this.idUsuario,this.curso.nativeElement.value).then(r => this._router.navigate(["/coursesadmin"]) )
   }
 
   changeStatus(): void {

@@ -81,6 +81,9 @@
                 <option value="2">ALUMNO</option>
               </select>
             </div>
+            <div class="mb-2">
+              <input type="text" name="curso" #curso placeholder="Nuevo Curso" class="form-control"/>
+            </div>
             <div class="flex gap-4">
               <button type="submit"
                 class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition duration-300">
@@ -91,10 +94,15 @@
                 (click)="changeStatus()">
                 Cambiar Estado
               </button>
-              <button type="button"
+              <!-- <button type="button"
                 class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition duration-300"
                 (click)="deleteUser()">
                 Eliminar Usuario
+              </button> -->
+              <button type="button"
+                class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition duration-300"
+                (click)="updateCourse()">
+                Cambiar Curso
               </button>
             </div>
           </form>
@@ -193,6 +201,9 @@
                   <option value="2">ALUMNO</option>
                 </select>
               </div>
+              <div class="mb-2">
+                <input type="text" name="curso" #curso placeholder="Nuevo Curso" class="form-control"/>
+              </div>
               <div class="flex gap-4">
                 <button type="submit"
                   class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition duration-300"
@@ -205,10 +216,10 @@
                   Cambiar Estado
                 </button>
                 <button type="button"
-                  class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition duration-300"
-                  (click)="deleteProfesor()">
-                  Eliminar Usuario
-                </button>
+                class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition duration-300"
+                (click)="updateCourse()">
+                Cambiar Curso
+              </button>
               </div>
             </form>
           </div>

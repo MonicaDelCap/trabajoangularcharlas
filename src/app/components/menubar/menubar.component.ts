@@ -24,7 +24,7 @@ export class MenubarComponent {
     {
       routeLink: '/',
       icon: 'fal fa-sign-out-alt',
-      label: 'Cerra Sesion',
+      label: 'Cerrar Sesion',
     }
 
   ]

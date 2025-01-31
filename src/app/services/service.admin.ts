@@ -159,6 +159,14 @@ export class ServiceAdmin {
     }
 
  
+    updateUserCourse(idusuario:number, curso:number):Promise<any>{
+        let header = {"Authorization": `Bearer ${localStorage.getItem('authToken')}`};
+        let request = "api/Admin/UpdateCursoUsuario/" + idusuario+"/"+curso ;
+        return new Promise(function(resolve){
+            axios.put(environment.urlCharlas + request,null,{headers:header})
+            .then(r => resolve(r.data))
+        })
+    }
 
 
 }
